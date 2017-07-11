@@ -1,0 +1,26 @@
+#portfolio {
+  .main-content {
+    display: flex;
+  }
+  .content-wrapper {
+    text-align: left;
+    h1 {margin-left: 40px;}
+  }
+  .content {
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    li {
+      width: 31%;
+      margin: 1%;
+      a {
+        color: rgb(102, 170, 173);
+        font-weight: bold;
+      }
+      img {
+
+      }
+    }
+  }
+}
