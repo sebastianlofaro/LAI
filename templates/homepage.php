@@ -17,7 +17,7 @@
         <?php foreach ( $results['articles'] as $article ) { ?>
                 <li>
                   <a href=".?action=viewArticle&amp;articleId=<?php echo $article->id?>">
-                    <img src="media/img/tuscan_lakes.jpg" alt="">
+                    <img src="<?php echo $article->imagePath ?>" alt=''>
                     <?php echo htmlspecialchars($article->title); ?>
                   </a>
                 </li>

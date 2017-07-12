@@ -19,7 +19,7 @@
         <div class="content-wrapper">
           <h1><?php echo htmlspecialchars($results['article']->title) ?></h1>
           <div class="main-image">
-            <img src="media/img/tuscan_lakes.jpg" alt="">
+            <img src="<?php echo $results['article']->imagePath ?>" alt=''>
           </div>
           <section class="details">
             <div class="col col1">

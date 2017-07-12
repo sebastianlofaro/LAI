@@ -87,7 +87,7 @@ function newArticle() {
       $uploadOk = 0;
     }
     // Check file size
-    if ($_FILES["fileToUpload"]["size"] > 5000000) {
+    if ($_FILES["imagePath"]["size"] > 500000000) {
       // TODO notify user the file is too large
       $uploadOk = 0;
     }
@@ -101,7 +101,7 @@ function newArticle() {
 
 
 
-    array_push($_POST, $target_file);
+    $_POST["imagePath"]=$target_file;
 
     $article = new Article;
     //$article->storeImage($imagePath);
@@ -117,7 +117,7 @@ function newArticle() {
 
     // User has not posted the article edit form yet: display the form
     $results['article'] = new Article;
-    require( TEMPLATE_PATH . "/admin/editArticle.php" );
+    require( TEMPLATE_PATH . "/admin/editArticleGUI.php" );
   }
 
 }
@@ -150,7 +150,7 @@ function editArticle() {
 
     // User has not posted the article edit form yet: display the form
     $results['article'] = Article::getById( (int)$_GET['articleId'] );
-    require( TEMPLATE_PATH . "/admin/editArticle.php" );
+    require( TEMPLATE_PATH . "/admin/editArticleGUI.php" );
   }
 
 }
@@ -162,7 +162,6 @@ function deleteArticle() {
     header( "Location: admin.php?error=articleNotFound" );
     return;
   }
-  //var_dump($article);
   $article->delete();
   header( "Location: admin.php?status=articleDeleted" );
 }

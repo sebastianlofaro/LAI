@@ -15,7 +15,7 @@ class Article
 
   public function __construct($data=array()) {
     if (isset($data['id'])) $this->id = (int) $data['id'];
-    if (isset($data[0])) $this->imagePath = $data[0];
+    if (isset($data['imagePath'])) $this->imagePath = $data['imagePath'];
     if (isset($data['title'])) $this->title = preg_replace ( "/[^\.\,\-\_\'\"\@\?\!\:\$ a-zA-Z0-9()]/", "", $data['title'] );
     if (isset($data['summary'])) $this->summary = preg_replace ( "/[^\.\,\-\_\'\"\@\?\!\:\$ a-zA-Z0-9()]/", "", $data['summary'] );
     if (isset($data['content'])) $this->content = $data['content'];
@@ -102,6 +102,9 @@ class Article
 
     // Does the Article object have an ID?
     if ( is_null( $this->id ) ) trigger_error ( "Article::delete(): Attempt to delete an Article object that does not have its ID property set.", E_USER_ERROR );
+
+    // Delete the image
+    unlink($this->imagePath);
 
     // Delete the Article
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
