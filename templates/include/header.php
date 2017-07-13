@@ -7,8 +7,11 @@
   <title>Landscape Art inc.</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
   <link rel="stylesheet" href="styles/css/style.css">
+  <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/script.js"></script> -->
 </head>
 <body id="portfolio" class="dark">
+
   <div id="<?php echo $pageID ?>" class="wrapper">
     <section id="header" class="spread">
       <a href="."><img src="media/img/LAI-logo.png" alt=""></a>

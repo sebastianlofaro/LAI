@@ -34,7 +34,7 @@ switch ( $action ) {
 function login() {
 
   $results = array();
-  $results['pageTitle'] = "Admin Login | Widget News";
+  $results['pageTitle'] = "Admin Login";
 
   if ( isset( $_POST['login'] ) ) {
 
@@ -98,9 +98,7 @@ function newArticle() {
           // TODO notify user there was an error uploading the image
       }
     }
-
-
-
+    // add the image path to the rest of the form post information
     $_POST["imagePath"]=$target_file;
 
     $article = new Article;
@@ -129,8 +127,17 @@ function editArticle() {
   $results['pageTitle'] = "Edit Article";
   $results['formAction'] = "editArticle";
 
-  if ( isset( $_POST['saveChanges'] ) ) {
+  // if (isset($_POST['addService'])) {
+  //   echo "ADD SERVICE";
+  //   // if ( !$article = Article::getById( (int)$_POST['articleId'] ) ) {
+  //   //   header( "Location: admin.php?error=articleNotFound" );
+  //   //   return;
+  //   // }
+  //   //$article->addService( $_POST );
+  //   //$article->update();
+  // }
 
+  if ( isset( $_POST['saveChanges'] ) ) {
     // User has posted the article edit form: save the article changes
 
     if ( !$article = Article::getById( (int)$_POST['articleId'] ) ) {

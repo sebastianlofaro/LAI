@@ -56,7 +56,7 @@
           </section>
           <section id="description">
             <h2>Project Narrative</h2>
-            <p><?php echo htmlspecialchars($results['article']->content); ?></p>
+            <p><?php echo nl2br($results['article']->content); ?></p>
           </section>
         </div>
       </section>

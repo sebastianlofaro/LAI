@@ -9,17 +9,21 @@ class Article
   public $id = null;
   public $imagePath = null;
   public $title = null;
-  public $summary = null;
+  public $services = null;
   public $content = null;
-
+  public $personnel = null;
+  public $contractAmount = null;
+  public $completionDate = null;
 
   public function __construct($data=array()) {
     if (isset($data['id'])) $this->id = (int) $data['id'];
     if (isset($data['imagePath'])) $this->imagePath = $data['imagePath'];
     if (isset($data['title'])) $this->title = preg_replace ( "/[^\.\,\-\_\'\"\@\?\!\:\$ a-zA-Z0-9()]/", "", $data['title'] );
-    if (isset($data['summary'])) $this->summary = preg_replace ( "/[^\.\,\-\_\'\"\@\?\!\:\$ a-zA-Z0-9()]/", "", $data['summary'] );
+    if (isset($data['services'])) $this->summary = preg_replace ( "/[^\.\,\-\_\'\"\@\?\!\:\$ a-zA-Z0-9()]/", "", $data['services'] );
     if (isset($data['content'])) $this->content = $data['content'];
-
+    // if (isset($data['personnel'])) $this->personnel  = $data["personnel"];
+    // if (isset($data['contractAmount'])) $this->contractAmount  = $data["contractAmount"];
+    // if (isset($data['completionDate'])) $this->completionDate  = $data["completionDate"];
   }
 
   public function storeFormValues ($params) {
@@ -70,12 +74,15 @@ class Article
 
   // Insert the Article
   $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-  $sql = "INSERT INTO portfolio ( title, summary, content, imagePath ) VALUES ( :title, :summary, :content, :imagePath )";
+  $sql = "INSERT INTO portfolio ( title, services, content, imagePath, personnel, contractAmount, completionDate ) VALUES ( :title, :services, :content, :imagePath, :personnel, :contractAmount, :completionDate )";
   $st = $conn->prepare ( $sql );
   $st->bindValue( ":title", $this->title, PDO::PARAM_STR );
-  $st->bindValue( ":summary", $this->summary, PDO::PARAM_STR );
+  $st->bindValue( ":services", $this->services, PDO::PARAM_STR );
   $st->bindValue( ":content", $this->content, PDO::PARAM_STR );
   $st->bindValue( ":imagePath", $this->imagePath, PDO::PARAM_STR );
+  $st->bindValue( ":personnel", $this->personnel, PDO::PARAM_STR );
+  $st->bindValue( ":contractAmount", $this->contractAmount, PDO::PARAM_STR );
+  $st->bindValue( ":completionDate", $this->completionDate, PDO::PARAM_STR );
   $st->execute();
   $this->id = $conn->lastInsertId();
   $conn = null;
@@ -88,11 +95,14 @@ class Article
 
     // Update the Article
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-    $sql = "UPDATE portfolio SET title=:title, summary=:summary, content=:content WHERE id = :id";
+    $sql = "UPDATE portfolio SET title=:title, services=:services, content=:content, personnel=:personnel, contractAmount=:contractAmount, completionDate=:completionDate WHERE id = :id";
     $st = $conn->prepare ( $sql );
     $st->bindValue( ":title", $this->title, PDO::PARAM_STR );
-    $st->bindValue( ":summary", $this->summary, PDO::PARAM_STR );
     $st->bindValue( ":content", $this->content, PDO::PARAM_STR );
+    $st->bindValue( ":services", $this->services, PDO::PARAM_STR );
+    $st->bindValue( ":personnel", $this->personnel, PDO::PARAM_STR );
+    $st->bindValue( ":contractAmount", $this->contractAmount, PDO::PARAM_STR );
+    $st->bindValue( ":completionDate", $this->completionDate, PDO::PARAM_STR );
     $st->bindValue( ":id", $this->id, PDO::PARAM_INT );
     $st->execute();
     $conn = null;
