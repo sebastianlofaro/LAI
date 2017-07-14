@@ -22,10 +22,7 @@
                   </a>
                 </li>
         <?php } ?>
-        <!-- <li><a href="#"><img src="media/img/eagle_springs.jpg" alt="">Eagle Springs Section 35</a></li>
-        <li><a href="#"><img src="media/img/tuscan_lakes.jpg" alt="">Tuscan Lakes Main Entry</a></li>
-        <li><a href="#"><img src="media/img/east_shore.jpg" alt="">East Shore Park</a></li>
-        <li><a href="#"><img src="media/img/meredith_gardens.jpg" alt="">Mandell Park Renovation</a></li> -->
+
       </ul>
     </div>
   </div>

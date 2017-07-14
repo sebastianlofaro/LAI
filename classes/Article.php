@@ -19,11 +19,11 @@ class Article
     if (isset($data['id'])) $this->id = (int) $data['id'];
     if (isset($data['imagePath'])) $this->imagePath = $data['imagePath'];
     if (isset($data['title'])) $this->title = preg_replace ( "/[^\.\,\-\_\'\"\@\?\!\:\$ a-zA-Z0-9()]/", "", $data['title'] );
-    if (isset($data['services'])) $this->summary = preg_replace ( "/[^\.\,\-\_\'\"\@\?\!\:\$ a-zA-Z0-9()]/", "", $data['services'] );
+    if (isset($data['services'])) $this->services = $data['services'];
     if (isset($data['content'])) $this->content = $data['content'];
-    // if (isset($data['personnel'])) $this->personnel  = $data["personnel"];
-    // if (isset($data['contractAmount'])) $this->contractAmount  = $data["contractAmount"];
-    // if (isset($data['completionDate'])) $this->completionDate  = $data["completionDate"];
+    if (isset($data['personnel'])) $this->personnel  = $data["personnel"];
+    if (isset($data['contractAmount'])) $this->contractAmount  = $data["contractAmount"];
+    if (isset($data['completionDate'])) $this->completionDate  = $data["completionDate"];
   }
 
   public function storeFormValues ($params) {
@@ -71,7 +71,6 @@ class Article
 
   // Does the Article object already have an ID?
   if ( !is_null( $this->id ) ) trigger_error ( "Article::insert(): Attempt to insert an Article object that already has its ID property set (to $this->id).", E_USER_ERROR );
-
   // Insert the Article
   $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
   $sql = "INSERT INTO portfolio ( title, services, content, imagePath, personnel, contractAmount, completionDate ) VALUES ( :title, :services, :content, :imagePath, :personnel, :contractAmount, :completionDate )";
@@ -98,8 +97,9 @@ class Article
     $sql = "UPDATE portfolio SET title=:title, services=:services, content=:content, personnel=:personnel, contractAmount=:contractAmount, completionDate=:completionDate WHERE id = :id";
     $st = $conn->prepare ( $sql );
     $st->bindValue( ":title", $this->title, PDO::PARAM_STR );
-    $st->bindValue( ":content", $this->content, PDO::PARAM_STR );
     $st->bindValue( ":services", $this->services, PDO::PARAM_STR );
+    $st->bindValue( ":content", $this->content, PDO::PARAM_STR );
+
     $st->bindValue( ":personnel", $this->personnel, PDO::PARAM_STR );
     $st->bindValue( ":contractAmount", $this->contractAmount, PDO::PARAM_STR );
     $st->bindValue( ":completionDate", $this->completionDate, PDO::PARAM_STR );

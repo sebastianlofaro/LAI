@@ -1,5 +1,11 @@
 <?php include "templates/include/header.php" ?>
 
+<div id="listArticles" class="content-wrapper">
+  <h1>Neighborhoods</h1>
+  <div class="content">
+
+
+
       <div id="adminHeader">
         <p>You are logged in as <b><?php echo htmlspecialchars( $_SESSION['username']) ?></b>. <a href="admin.php?action=logout"?>Log out</a></p>
       </div>
@@ -15,28 +21,29 @@
         <div class="statusMessage"><?php echo $results['statusMessage'] ?></div>
 <?php } ?>
 
-      <table>
-        <tr>
-          <th>Publication Date</th>
-          <th>Article</th>
-        </tr>
 
-<?php foreach ( $results['articles'] as $article ) { ?>
+<ul>
+  <li>
+    <a href="admin.php?action=newArticle">
+      <img class="darkBorder thumbnail" src="media/img/addimage.png" alt=''>
+      <p>New Article</p>
+    </a>
+  </li>
+  <?php foreach ( $results['articles'] as $article ) { ?>
+    <li>
+      <a href="location='admin.php?action=editArticle&amp;articleId=<?php echo $article->id?>'">
+        <img class="thumbnail" src="<?php echo $article->imagePath ?>" alt=''>
+        <p><?php echo htmlspecialchars($article->title); ?></p>
+      </a>
+    </li>
+  <?php } ?>
+</ul>
 
-        <tr onclick="location='admin.php?action=editArticle&amp;articleId=<?php echo $article->id?>'">
-          <!-- <td><?php echo date('j M Y', $article->publicationDate)?></td> -->
-          <td>
-            <?php echo $article->title?>
-          </td>
-          <td><?php echo $article->id ?></td>
-        </tr>
-
-<?php } ?>
 
       </table>
 
       <p><?php echo $results['totalRows']?> article<?php echo ( $results['totalRows'] != 1 ) ? 's' : '' ?> in total.</p>
 
-      <p><a href="admin.php?action=newArticle">Add a New Article</a></p>
-
+    </div>
+  </div>
 <?php include "templates/include/footer.php" ?>

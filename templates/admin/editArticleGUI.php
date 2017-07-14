@@ -31,7 +31,7 @@
               </div>
               <div class="col col2">
                 <h2>Services</h2>
-                <textarea name="services" ><?php echo $results['article']->services; ?></textarea>
+                <textarea name="services" ><?php echo $results['article']->services ?></textarea>
               </div>
               <div class="col col3">
                 <h2>Contract Amount</h2>

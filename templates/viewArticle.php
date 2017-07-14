@@ -24,33 +24,18 @@
           <section class="details">
             <div class="col col1">
               <h2>Personnel</h2>
-              <ul>
-                <li>Landscape Art, General</li>
-                <li>Contractor</li>
-                <br>
-                <li>Tuscan Lakes Development</li>
-                <li>Bob Douglas</li>
-                <br>
-                <li>TBG Partners, Architect</li>
-                <li>John Wallace</li>
-              </ul>
+              <p><?php echo nl2br($results['article']->personnel) ?></p>
             </div>
             <div class="col col2">
               <h2>Services</h2>
-              <ul>
-                <li>Landscaping</li>
-                <li>Irrigation</li>
-                <li>Entry Wall</li>
-              </ul>
+              <p><?php echo nl2br($results['article']->services) ?></p>
             </div>
             <div class="col col3">
               <h2>Contract Amount</h2>
-              <ul>
-                <li>$256,490</li>
-              </ul>
+              <p><?php echo nl2br($results['article']->contractAmount) ?></p>
               <h2>Completion Date</h2>
               <ul>
-                <li>May 2006</li>
+                <p><?php echo nl2br($results['article']->completionDate) ?></p>
               </ul>
             </div>
           </section>
