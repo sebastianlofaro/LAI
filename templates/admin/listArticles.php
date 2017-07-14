@@ -31,7 +31,7 @@
   </li>
   <?php foreach ( $results['articles'] as $article ) { ?>
     <li>
-      <a href="location='admin.php?action=editArticle&amp;articleId=<?php echo $article->id?>'">
+      <a href=admin.php?action=editArticle&amp;articleId=<?php echo $article->id?>">
         <img class="thumbnail" src="<?php echo $article->imagePath ?>" alt=''>
         <p><?php echo htmlspecialchars($article->title); ?></p>
       </a>
