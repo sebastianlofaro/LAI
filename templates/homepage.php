@@ -13,11 +13,12 @@
   <div class="content-wrapper">
     <h1>Neighborhoods</h1>
     <div class="content">
-      <ul>
+      <ul class="articles">
         <?php foreach ( $results['articles'] as $article ) { ?>
                 <li>
                   <a href=".?action=viewArticle&amp;articleId=<?php echo $article->id?>">
-                    <img src="<?php echo $article->imagePath ?>" alt=''>
+                    <div class="thumbnail" style="background-image: url('<?php echo $article->imagePath ?>')"></div>
+                    <!-- <img src="<?php echo $article->imagePath ?>" alt=''> -->
                     <?php echo htmlspecialchars($article->title); ?>
                   </a>
                 </li>

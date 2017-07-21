@@ -5,7 +5,7 @@
       <div style="width: 75%;"><?php echo $results['article']->content?></div>
       <p class="pubDate">Published on <?php echo date('j F Y', $results['article']->publicationDate)?></p> -->
 
-      <section class="main-content">
+      <section id="viewArticle" class="main-content">
         <nav class="side-nav">
           <ul>
             <li class="selected"><a href="#">Neighborhoods</a></li>

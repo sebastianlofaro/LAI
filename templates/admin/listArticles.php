@@ -22,7 +22,7 @@
 <?php } ?>
 
 
-<ul>
+<ul class="articles">
   <li>
     <a href="admin.php?action=newArticle">
       <img class="darkBorder thumbnail" src="media/img/addimage.png" alt=''>
@@ -31,8 +31,9 @@
   </li>
   <?php foreach ( $results['articles'] as $article ) { ?>
     <li>
-      <a href=admin.php?action=editArticle&amp;articleId=<?php echo $article->id?>">
-        <img class="thumbnail" src="<?php echo $article->imagePath ?>" alt=''>
+      <a href=admin.php?action=editArticle&amp;articleId=<?php echo $article->id?>>
+        <!-- <img class="thumbnail" src="<?php echo $article->imagePath ?>" alt=''> -->
+        <div class="thumbnail" style="background-image: url('<?php echo $article->imagePath ?>')"></div>
         <p><?php echo htmlspecialchars($article->title); ?></p>
       </a>
     </li>
