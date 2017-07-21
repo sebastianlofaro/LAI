@@ -22,8 +22,9 @@
             </div>
 
             <div class="main-image">
-              <img src="<?php echo $results['article']->imagePath ?>" alt=''>
+              <img id="coverPhoto" src="<?php echo $results['article']->imagePath ?>" alt=''>
             </div>
+
             <section class="details">
               <div class="col col1">
                 <h2>Personnel</h2>
@@ -40,6 +41,7 @@
                 <input type="text" name="completionDate" value="<?php echo $results['article']->completionDate ?>">
               </div>
             </section>
+
             <section id="description">
               <h2>Project Narrative</h2>
               <textarea name="content" id="content" placeholder="The HTML content of the article" required maxlength="100000" ><?php echo htmlspecialchars( $results['article']->content )?></textarea>

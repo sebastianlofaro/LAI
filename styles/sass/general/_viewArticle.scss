@@ -1,27 +1,31 @@
 #viewArticle {
-  .main-content{
-
     display: flex;
-      .main-image {
-        width: 100%;
+    .main-image {
+      width: 100%;
+    }
+    .details {
+      margin-top: 50px;
+      background-color: #f2f2f2;
+      border: 1px solid #d9d9d9;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+      @include desktop {
+        flex-direction: row;
       }
-      .details {
-        margin-top: 50px;
-        background-color: #f2f2f2;
-        border: 1px solid #d9d9d9;
-        width: 100%;
-        display: flex;
-        justify-content: space-around;
-        .col {
+      .col {
+        text-align: center;
+        @include desktop {
           text-align: left;
-          ul {
-            padding: 0;
-          }
+        }
+        ul {
+          padding: 0;
         }
       }
-      #description {
-        width: 100%;
-        text-align: left;
-      }
-  }
+    }
+    #description {
+      width: 100%;
+      text-align: left;
+    }
 }
