@@ -9,7 +9,6 @@
   display: flex;
   flex-wrap: wrap;
   padding: 0;
-  justify-content: space-around;
 
   li {
     max-width: 225px;
@@ -36,24 +35,47 @@
 }
 
 footer {
+  text-align: left;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   background-color: rgb(102, 170, 173);
   color: white;
   padding: 12px;
   font-size: .8em;
+  flex-wrap: wrap;
+  @include desktop {
+    flex-direction: row;
+  }
+  .col {
+    margin: 10px;
+  }
   .col2 {
     flex-grow: 2;
-    text-align: center;
-
+    @include desktop {
+      text-align: center;
+    }
+    p {
+      padding: 5px;
+    }
   }
   .col3 {
     flex-grow: 2;
     text-align: right;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    @include desktop {
+      align-items: flex-start;
+      justify-content: flex-end;
+    }
+    p {
+      margin-left: 5px;
+      margin-top: 8px;
+    }
+  }
+  .col4 {
+    text-align: right;
+    width: 100%;
+    margin: 0;
   }
   p {
     margin: 0;
@@ -130,6 +152,7 @@ footer {
     }
   }
 }
+
 
 .selected {
   background-color: rgb(102, 170, 173);

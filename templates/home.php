@@ -11,12 +11,12 @@
 <body class="dark">
   <div class="wrapper">
     <section id="header" class="spread">
-      <a href="home.html"><img src="media/img/LAI-logo.png" alt=""></a>
+      <a href="."><img src="media/img/LAI-logo.png" alt=""></a>
       <img src="media/img/slogan.png" alt="">
     </section>
     <section class="nav">
       <ul class="spread nav-items">
-        <li><a href="portfolio.html">PORTFOLIO</a></li>
+        <li><a href=".?action=viewArticle">PORTFOLIO</a></li>
         <li><a href="#">CLIENTS</a></li>
         <li><a href="#">ABOUT US</a></li>
         <li><a href="#">BLOG</a></li>
@@ -26,7 +26,8 @@
     <section class="main-content">
       <img src="media/img/bridgepoint.jpg" alt="">
     </section>
-    <footer>
+    <?php include 'include/footer.php'; ?>
+    <!-- <footer>
       <div class="col1">
         <p>Landscape Art, Inc.</p>
         <p>2303 Dickinson Avenue</p>
@@ -45,4 +46,4 @@
     </footer>
   </div>
 </body>
-</html>
+</html> -->

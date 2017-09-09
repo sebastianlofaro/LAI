@@ -53,8 +53,8 @@
             </div>
 
             <div class="buttons">
-              <input type="submit" name="saveChanges" value="Save Changes" />
-              <input type="submit" formnovalidate name="cancel" value="Cancel" />
+              <input type="submit" id="save" name="saveChanges" value="Save Changes" />
+              <input type="submit" id="cancle" formnovalidate name="cancel" value="Cancel" />
             </div>
           </form>
           <?php if ( $results['article']->id ) { ?>

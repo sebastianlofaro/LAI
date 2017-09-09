@@ -19,7 +19,7 @@
     </section>
     <nav class="nav">
       <ul class="spread nav-items">
-        <li class="selected"><a href=".">PORTFOLIO</a></li>
+        <li class="selected"><a href=".?action=portfolio">PORTFOLIO</a></li>
         <li><a href="#">CLIENTS</a></li>
         <li><a href="#">ABOUT US</a></li>
         <li><a href="#">BLOG</a></li>

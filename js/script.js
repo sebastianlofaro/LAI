@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
   var $coverPhoto = $('#coverPhoto');
   if ($coverPhoto.attr('src') != "") {
     console.log($coverPhoto.attr('src'))
@@ -25,15 +26,17 @@ $(document).ready(function() {
 
   $('#imagePath').change(function() {
     console.log($('#imagePath').val());
-
-    var success = function(event) {
-      console.log(event);
-    }
-    $.ajax({
-        type: "POST",
-        url: "classes/photoUpload.php",
-        data: {getPhoto:true},
-        success: success
-     });
+    $coverPhoto.attr('src', 'media/img/photoSuccess.png');
   });
+
+
+  // Replace empty image
+  $('.thumbnail').each( function() {
+    console.log()
+  });
+
+
+
+
+
 });
