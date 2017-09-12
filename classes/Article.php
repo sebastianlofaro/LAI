@@ -14,6 +14,7 @@ class Article
   public $personnel = null;
   public $contractAmount = null;
   public $completionDate = null;
+  public $subcategory = null;
 
   public function __construct($data=array()) {
     if (isset($data['id'])) $this->id = (int) $data['id'];
@@ -24,6 +25,7 @@ class Article
     if (isset($data['personnel'])) $this->personnel  = $data["personnel"];
     if (isset($data['contractAmount'])) $this->contractAmount  = $data["contractAmount"];
     if (isset($data['completionDate'])) $this->completionDate  = $data["completionDate"];
+    if (isset($data['subcategory'])) $this->subcategory = (int) $data['subcategory'];
   }
 
   public function storeFormValues ($params) {
@@ -44,6 +46,22 @@ class Article
     $row = $st->fetch();
     $conn = null;
     if ($row) return new Article ($row);
+  }
+
+  public static function getListOfSubCat($key) {
+    $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+    $sql = "SELECT * FROM portfolio WHERE subcategory = $key";
+
+    $st = $conn->prepare( $sql );
+    //$st = bindValue( ":key", $key, PDO::PARAM_INT );
+    $st->execute();
+    $list = array();
+
+    while ( $row = $st->fetch() ) {
+      $article = new Article( $row );
+      $list[] = $article;
+    }
+    return $list;
   }
 
   public static function getList($numRows=5, $order="id DESC") {

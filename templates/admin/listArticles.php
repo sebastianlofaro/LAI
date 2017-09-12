@@ -1,9 +1,9 @@
 <?php include "templates/include/header.php" ?>
 <section class="main-content">
-  <?php include "include/sideNav.php" ?>
+  <?php include "include/sidenav.php" ?>
   <div id="listArticles" class="content-wrapper">
 
-    <h1>Neighborhoods</h1>
+    <h1 class="pageTitle">Neighborhoods</h1>
     <div class="content">
 
 

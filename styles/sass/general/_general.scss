@@ -160,7 +160,7 @@ footer {
 }
 
 .side-nav {
-  display: none;
+  // display: none;
   @include desktop {
     display: inline-block;
   }

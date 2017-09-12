@@ -28,9 +28,19 @@ switch ( $action ) {
   case 'deleteArticle':
     deleteArticle();
     break;
+  case 'selectSub':
+    # code...
+    testFunction();
+    break;
   default:
     listArticles();
 }
+
+
+// function testFunction() {
+//   var junk = "Junk"
+//   var_dump(junk);
+// }
 
 
 function login() {
@@ -179,9 +189,11 @@ function deleteArticle() {
 function listArticles() {
   $results = array();
   $data = Article::getList();
+  $sideMenuData = Subcategory::getList();
   $results['articles'] = $data['results'];
   $results['totalRows'] = $data['totalRows'];
   $results['pageTitle'] = "All Articles";
+  $results['subcategories'] = $sideMenuData['results'];
 
   if ( isset( $_GET['error'] ) ) {
     if ( $_GET['error'] == "articleNotFound" ) $results['errorMessage'] = "Error: Article not found.";

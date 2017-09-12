@@ -2,11 +2,8 @@ $(document).ready(function() {
 
   var $coverPhoto = $('#coverPhoto');
   if ($coverPhoto.attr('src') != "") {
-    console.log($coverPhoto.attr('src'))
-    console.log("Test");
   }
   else {
-    console.log("empty string");
     $coverPhoto.attr('src', 'media/img/addPhoto.png')
   }
 
@@ -38,5 +35,36 @@ $(document).ready(function() {
 
 
 
+  //###################### AJAX ######################
 
+  $("#subcategories").on("click", "a", function(e) {
+    e.preventDefault();
+    //Store key in local variable
+    var $key = $(this).attr('id');
+    console.log("KEY: " + $(this).attr('id'));
+    console.log($(this).children().html());
+    $(".articles").html("<li><a href='admin.php?action=newArticle'><img class='darkBorder thumbnail' src='media/img/addimage.png'><p>New Article</p></a></li>");
+    $(".pageTitle").html($(this).children().html());
+
+
+
+    // Make the AJAX request for page content and supply the key of the subcategory selected
+
+    $.ajax({
+      url: 'ajax.php',
+      type: 'post',
+      data: {'action': 'selectSub', 'key': $key},
+      success: function(data, status) {
+        var dataObject = $.parseJSON(data)
+        console.log(dataObject);
+        console.log(status);
+        //console.log('Key: ' + $key);
+      },
+      error: function(xhr, desc, err) {
+        console.log("ERROR: " . xhr);
+        console.log("Details: " + desc + "\nError:" + err);
+      }
+    });
+
+});
 });
