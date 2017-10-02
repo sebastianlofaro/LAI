@@ -25,7 +25,7 @@ class Article
     if (isset($data['personnel'])) $this->personnel  = $data["personnel"];
     if (isset($data['contractAmount'])) $this->contractAmount  = $data["contractAmount"];
     if (isset($data['completionDate'])) $this->completionDate  = $data["completionDate"];
-    if (isset($data['subcategory'])) $this->subcategory = (int) $data['subcategory'];
+    if (isset($data['subcategory'])) $this->subcategory = (int) $data["subcategory"];
   }
 
   public function storeFormValues ($params) {
@@ -50,7 +50,7 @@ class Article
 
   public static function getListOfSubCat($key) {
     $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-    $sql = "SELECT * FROM portfolio WHERE subcategory = $key";
+    $sql = "SELECT SQL_CALC_FOUND_ROWS * FROM portfolio WHERE subcategory = $key";
 
     $st = $conn->prepare( $sql );
     //$st = bindValue( ":key", $key, PDO::PARAM_INT );
@@ -61,7 +61,12 @@ class Article
       $article = new Article( $row );
       $list[] = $article;
     }
-    return $list;
+
+    $sql = "SELECT FOUND_ROWS() AS totalRows";
+    $totalRows = $conn->query($sql)->fetch();
+    $conn = null;
+
+    return (array("results"=>$list,"totalRows"=>$totalRows[0]));
   }
 
   public static function getList($numRows=5, $order="id DESC") {
@@ -91,7 +96,7 @@ class Article
   if ( !is_null( $this->id ) ) trigger_error ( "Article::insert(): Attempt to insert an Article object that already has its ID property set (to $this->id).", E_USER_ERROR );
   // Insert the Article
   $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-  $sql = "INSERT INTO portfolio ( title, services, content, imagePath, personnel, contractAmount, completionDate ) VALUES ( :title, :services, :content, :imagePath, :personnel, :contractAmount, :completionDate )";
+  $sql = "INSERT INTO portfolio ( title, services, content, imagePath, personnel, contractAmount, completionDate, subcategory ) VALUES ( :title, :services, :content, :imagePath, :personnel, :contractAmount, :completionDate, :subcategory )";
   $st = $conn->prepare ( $sql );
   $st->bindValue( ":title", $this->title, PDO::PARAM_STR );
   $st->bindValue( ":services", $this->services, PDO::PARAM_STR );
@@ -100,6 +105,7 @@ class Article
   $st->bindValue( ":personnel", $this->personnel, PDO::PARAM_STR );
   $st->bindValue( ":contractAmount", $this->contractAmount, PDO::PARAM_STR );
   $st->bindValue( ":completionDate", $this->completionDate, PDO::PARAM_STR );
+  $st->bindValue( ":subcategory", $this->subcategory, PDO::PARAM_INT );
   $st->execute();
   $this->id = $conn->lastInsertId();
   $conn = null;

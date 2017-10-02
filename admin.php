@@ -37,12 +37,6 @@ switch ( $action ) {
 }
 
 
-// function testFunction() {
-//   var junk = "Junk"
-//   var_dump(junk);
-// }
-
-
 function login() {
 
   $results = array();
@@ -81,8 +75,8 @@ function logout() {
 
 
 function newArticle() {
-
   $results = array();
+
   $results['pageTitle'] = "New Article";
   $results['formAction'] = "newArticle";
 
@@ -111,9 +105,11 @@ function newArticle() {
       }
     }
     // add the image path to the rest of the form post information
-    $_POST["imagePath"]=$target_file;
+    $_POST["imagePath"] = $target_file;
+    $_POST["subcategory"] = (int) $_SESSION["subCat"];
 
     $article = new Article;
+
     //$article->storeImage($imagePath);
     $article->storeFormValues( $_POST );
     $article->insert();
@@ -188,8 +184,12 @@ function deleteArticle() {
 
 function listArticles() {
   $results = array();
-  $data = Article::getList();
   $sideMenuData = Subcategory::getList();
+  //$data = Article::getList();
+  // FIXME:
+  $data = Article::getListOfSubCat((int)Subcategory::topSubCat()['id']);
+
+
   $results['articles'] = $data['results'];
   $results['totalRows'] = $data['totalRows'];
   $results['pageTitle'] = "All Articles";

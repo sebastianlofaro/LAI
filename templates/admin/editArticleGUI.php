@@ -53,7 +53,7 @@
             </div>
 
             <div class="buttons">
-              <input type="submit" id="save" name="saveChanges" value="Save Changes" />
+              <input type="submit" id="save" class="<?php $_GET['subcategory']; ?>" name="saveChanges" value="Save Changes" />
               <input type="submit" id="cancle" formnovalidate name="cancel" value="Cancel" />
             </div>
           </form>

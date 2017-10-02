@@ -1,0 +1,75 @@
+.caret {
+  position: relative;
+  height: 60px;
+  width: 100%;
+}
+
+.caret:after {
+  content: '';
+  position: absolute;
+  left: 0px;
+  top: 0;
+  border-top: 60px solid #ffffff;
+  border-left: 50vw solid transparent;
+  border-right: 50vw solid transparent;
+}
+footer {
+  box-shadow: inset 0px 33px 29px -31px rgba(0,0,0,0.75);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(47, 48, 53);
+  color: white;
+  //padding: 12px;
+  font-size: .8em;
+  flex-wrap: wrap;
+  #coppyRight {
+    background: rgb(41, 42, 46);
+    height: 50px;
+    text-align: center;
+    padding-top: 15px;
+  }
+  @include desktop {
+    flex-direction: row;
+  }
+  .col {
+    margin: 10px;
+  }
+  .col2 {
+    flex-grow: 2;
+    @include desktop {
+      text-align: center;
+    }
+    p {
+      padding: 5px;
+    }
+  }
+  .col3 {
+    flex-grow: 2;
+    text-align: right;
+    display: flex;
+    flex-direction: row;
+    @include desktop {
+      align-items: flex-start;
+      justify-content: flex-end;
+    }
+    p {
+      margin-left: 5px;
+      margin-top: 8px;
+    }
+  }
+  .col4 {
+    text-align: right;
+    width: 100%;
+    margin: 0;
+  }
+  p {
+    margin: 0;
+  }
+  a {
+    color: white;
+    :hover {
+      cursor: pointer;
+    }
+  }
+}

@@ -1,7 +1,20 @@
 <?php include "templates/include/header.php" ?>
-<section class="main-content">
+<section id="listArticles" class="main-content">
+  <div class="jumbotron">
+    <div class="jumbotronImage"></div>
+    <div class="jumbotronMessage">
+      <div class="">
+        <h1>Our Work</h1>
+        <div class="greenUnderline"></div>
+      </div>
+
+    </div>
+  </div>
+  <div class="descriptiveText">
+    <p>Cookie tootsie roll pastry. Gummi bears chocolate cake tart sesame snaps jelly beans marzipan brownie danish jelly-o. Bear claw soufflé oat cake wafer lemon drops pudding ice cream. Cake chocolate bar oat cake ice cream I love gummi bears. Sugar plum liquorice brownie tiramisu chupa chups muffin carrot cake I love. Sweet macaroon oat cake.</p>
+  </div>
   <?php include "include/sidenav.php" ?>
-  <div id="listArticles" class="content-wrapper">
+  <div  class="content-wrapper">
 
     <h1 class="pageTitle">Neighborhoods</h1>
     <div class="content">
@@ -41,12 +54,11 @@
       </li>
     <?php } ?>
   </ul>
-
-
-        </table>
-
         <p><?php echo $results['totalRows']?> article<?php echo ( $results['totalRows'] != 1 ) ? 's' : '' ?> in total.</p>
 
+      </div>
+      <div class="secondaryCTA">
+        <button type="button" name="button">CONTACT US TO GET STARTED</button>
       </div>
     </div>
 </section>

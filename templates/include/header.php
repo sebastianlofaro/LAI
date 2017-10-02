@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
   <link rel="stylesheet" href="styles/css/style.css">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
   <script type="text/javascript" src="js/script.js"></script>
 </head>
 <body class="dark">
@@ -21,8 +22,7 @@
       <ul class="spread nav-items">
         <li class="selected"><a href=".?action=portfolio">PORTFOLIO</a></li>
         <li><a href="#">CLIENTS</a></li>
-        <li><a href="#">ABOUT US</a></li>
-        <li><a href="#">BLOG</a></li>
+        <li><a href="?action=aboutUs">ABOUT US</a></li>
         <li><a href="#">CONTACT US</a></li>
       </ul>
     </nav>

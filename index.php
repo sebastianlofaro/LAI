@@ -1,3 +1,5 @@
+
+
 <?php
 
 require( "config.php" );
@@ -10,11 +12,18 @@ switch ( $action ) {
   case 'viewArticle':
     viewArticle();
     break;
+  case 'aboutUs':
+    aboutUs();
+    break;
   default:
     //portfolio();
     home();
 }
 
+
+function aboutUs() {
+  require( TEMPLATE_PATH . "/about.php" );
+}
 
 function home() {
   require( TEMPLATE_PATH . "/home.php" );
@@ -28,7 +37,7 @@ function viewArticle() {
 
   $results = array();
   $results['article'] = Article::getById( (int)$_GET["articleId"] );
-  $results['pageTitle'] = $results['article']->title . " | Widget News";
+  $results['pageTitle'] = $results['article']->title . "Title";
   $pageID = "viewArticle";
   require( TEMPLATE_PATH . "/viewArticle.php" );
 }

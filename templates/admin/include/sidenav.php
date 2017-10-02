@@ -11,6 +11,10 @@
 
 <nav class="side-nav">
   <ul id="subcategories">
+    <li id="newSubCatWrapper">
+      <input id="newSubCat" type="text" name="" value="" placeholder="new subcategory" style="display: block">
+      <button id="newSubCatBtn" type="button" name="button">+</button>
+    </li>
     <?php foreach ( $results['subcategories'] as $subcategory ) { ?>
       <li class="subcategory">
         <a id="<?php echo $subcategory->id?>" href="#">
