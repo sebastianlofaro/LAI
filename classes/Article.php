@@ -33,10 +33,6 @@ class Article
     $this ->__construct($params);
   }
 
-  // public static function storeImage($data=array()) {
-  //   $imagePath = $data['imagePath'];
-  // }
-
   public static function getById($id) {
     $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
     $sql = "SELECT * FROM portfolio WHERE id = :id";

@@ -1,6 +1,5 @@
 .caret {
   position: relative;
-  height: 60px;
   width: 100%;
 }
 
@@ -8,21 +7,21 @@
   content: '';
   position: absolute;
   left: 0px;
-  top: 0;
-  border-top: 60px solid #ffffff;
-  border-left: 50vw solid transparent;
-  border-right: 50vw solid transparent;
+  top: -60px;
+  border-top: 60px solid transparent;
+  border-left: 50vw solid #2f3035;
+  border-right: 50vw solid #2f3035;
 }
 footer {
-  box-shadow: inset 0px 33px 29px -31px rgba(0,0,0,0.75);
   text-align: left;
   display: flex;
-  flex-direction: column;
   background-color: rgb(47, 48, 53);
   color: white;
-  //padding: 12px;
   font-size: .8em;
   flex-wrap: wrap;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
   #coppyRight {
     background: rgb(41, 42, 46);
     height: 50px;

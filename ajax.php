@@ -21,8 +21,23 @@ switch ( $action ) {
   case 'deleteSubCat':
     deleteSubCat();
     break;
+  case 'newClient':
+    newClient();
+    break;
   default:
     echo "ERROR";
+}
+
+function newClient() {
+  $key = $_POST['key'];
+  $clientName = $_POST['name'];
+  $package = array();
+  $package['subcategory'] = $key;
+  $package['name'] = $clientName;
+  $Client = new Client;
+  $Client->storeFormValues($package);
+  $Client->insert();
+  echo json_encode(Client::getListOfClients($key));
 }
 
 function selectSubCat() {

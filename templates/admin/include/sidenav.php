@@ -1,16 +1,5 @@
-<!-- <nav class="side-nav">
-  <ul>
-    <li class="selected"><a href="#">Neighborhoods</a></li>
-    <li><a href="#">Parks</a></li>
-    <li><a href="#">Playgrounds</a></li>
-    <li><a href="#">Splash Parks</a></li>
-    <li><a href="#">Roof Gardens</a></li>
-    <li><a href="#">Institutions/Commercial</a></li>
-  </ul>
-</nav> -->
-
 <nav class="side-nav">
-  <ul id="subcategories">
+  <ul id="adminSubcategories">
     <li id="newSubCatWrapper">
       <input id="newSubCat" type="text" name="" value="" placeholder="new subcategory" style="display: block">
       <button id="newSubCatBtn" type="button" name="button">+</button>

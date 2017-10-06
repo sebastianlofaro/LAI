@@ -2,23 +2,28 @@
   list-style: none;
   text-decoration: none;
   box-sizing: border-box;
-  font-family: "Helvetica Neue"
+  font-family: "Helvetica Neue";
+  :focus {
+      outline: none;
+  }
 }
 
 
-
+body {
+  position: relative;
+  min-height: 100vh;
+}
 
 .content-wrapper {
 }
 
 .dark {
-  background-color: #32383f;
+  background-color: #292a2e;;
 }
 
 .darkBorder {
   border: 1px solid black;
 }
-
 
 
 .form-wrapper {
@@ -51,13 +56,35 @@
   text-align: center;
   display: flex;
   flex-direction: column;
+  padding-bottom: 60px;
+  background-image: url('../../media/cream_dust.png');
+  background-repeat: repeat;
   img {
     width: 100%;
   }
 }
 
 
+.secondaryMenu {
+  //box-shadow: 0px 11px 29px 5px rgba(0,0,0,0.22);
+  width: 100%;
+  margin: 0;
+  ul {
+    margin-top: 0;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  li {
+    padding: 17px;
+    margin: 0;
 
+  }
+  a:hover {
+    color: #23c1ee;
+  }
+}
 
 .selected {
   background-color: white;
@@ -89,6 +116,12 @@
       }
     }
   }
+}
+
+.shadowTop {
+  width: 100%;
+  height: 30px;
+  box-shadow: inset 0px 25px 20px -24px rgba(0,0,0,0.7);
 }
 
 .spread {

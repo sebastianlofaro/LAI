@@ -1,6 +1,14 @@
 <?php include "templates/include/header.php" ?>
 
 <div class="aboutUs">
+  <nav class="secondaryMenu">
+    <ul>
+      <li><a href="?action='aboutUs'&amp;subMenu='companyProfile'">Company Profile</a></li>
+      <li><a href="?action='aboutUs'&amp;subMenu='team'">Our Team</a></li>
+      <li><a href="?action='aboutUs'&amp;subMenu='affiliations'">Affiliations, Licenses, Qualifications</a></li>
+    </ul>
+  </nav>
+  <div class="shadowTop"></div>
   <div class="content">
     <h1>Company Profile</h1>
     <p>Landscape Art installs landscaping, irrigation and light construction for all types of commercial, institutional and governmental projects. Over the last thirteen years, we have focused primarily on high-end, architect-supervised, commercial projects. Our work includes award-winning commercial office complexes, neighborhood entries, common areas and parks, playgrounds, spray parks, roof gardens and landscape decorating for professional golf tournaments.</p>

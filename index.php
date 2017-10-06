@@ -15,11 +15,21 @@ switch ( $action ) {
   case 'aboutUs':
     aboutUs();
     break;
+  case 'clients':
+    clients();
+    break;
   default:
     //portfolio();
     home();
 }
 
+
+function clients() {
+  $data = Client::getListOfClients(1);
+  $results = array();
+  $results['clients'] = $data['results'];
+  require( TEMPLATE_PATH . "/clients.php");
+}
 
 function aboutUs() {
   require( TEMPLATE_PATH . "/about.php" );
@@ -44,10 +54,12 @@ function viewArticle() {
 
 function portfolio() {
   $results = array();
-  $data = Article::getList( HOMEPAGE_NUM_ARTICLES );
+  $secondaryMenuData = Subcategory::getList();
+  $data = Article::getListOfSubCat( $secondaryMenuData['results'][0]->id );
   $results['articles'] = $data['results'];
   $results['totalRows'] = $data['totalRows'];
   $results['pageTitle'] = "Landscape Art inc.";
+  $results['subcategories'] = $secondaryMenuData['results'];
   require( TEMPLATE_PATH . "/portfolio.php" );
 }
 

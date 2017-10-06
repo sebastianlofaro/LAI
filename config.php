@@ -11,6 +11,7 @@ define( "ADMIN_USERNAME", "admin" );
 define( "ADMIN_PASSWORD", "password" );
 require( CLASS_PATH . "/Article.php" );
 require( CLASS_PATH . "/Subcategory.php" );
+require( CLASS_PATH . "/Client.php" );
 
 function handleException( $exception ) {
   echo $exception;

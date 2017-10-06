@@ -1,11 +1,10 @@
 
-<nav class="side-nav">
+<nav id="portfolioSecondaryMenu" class="secondaryMenu side-nav">
   <ul>
-    <li class="selected"><a href="#">Neighborhoods</a></li>
-    <li><a href="#">Parks</a></li>
-    <li><a href="#">Playgrounds</a></li>
-    <li><a href="#">Splash Parks</a></li>
-    <li><a href="#">Roof Gardens</a></li>
-    <li><a href="#">Institutions/Commercial</a></li>
+    <?php foreach ($results['subcategories'] as $subcategory) { ?>
+      <li>
+        <a id="<?php echo $subcategory->id?>" href="#"><?php echo htmlspecialchars($subcategory->name) ?></a>
+      </li>
+<?php } ?>
   </ul>
 </nav>

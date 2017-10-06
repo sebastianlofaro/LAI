@@ -32,10 +32,21 @@ switch ( $action ) {
     # code...
     testFunction();
     break;
+  case 'clients':
+    clients();
+    break;
   default:
     listArticles();
 }
 
+
+
+function clients() {
+  $data = Client::getListOfClients(1);
+  $results = array();
+  $results['clients'] = $data['results'];
+  require( TEMPLATE_PATH . "/admin/editClients.php");
+}
 
 function login() {
 
