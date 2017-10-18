@@ -1,65 +1,43 @@
 <?php include "templates/include/header.php" ?>
 
 <div id="clients">
-  <div class="secondaryMenu">
+
+  <nav class="secondaryMenu">
     <ul>
-      <li>Developers</li>
-      <li>Commercial</li>
-      <li>Institutions</li>
-      <li>Municipalities</li>
-      <li>General Contractors</li>
-      <li>Landscape Architects</li>
+      <?php
+      $index = 0;
+      foreach ($results['menuData'] as $subcategory) { ?>
+        <li class="subcategory">
+          <a href="?action=clientsSubCat&amp;id=<?php echo $subcategory->id ?>&amp;category=<?php echo $subcategory->mainCategory ?>&amp;index=<?php echo $index ?>">
+            <p><?php echo htmlspecialchars($subcategory->name); ?></p>
+          </a>
+        </li>
+    <?php
+    ++$index;
+    } ?>
     </ul>
-  </div>
+  </nav>
 
   <div class="content">
     <div class="wrapper">
-      <h1>Developers</h1>
-      <p>The listing below represents a partial listing of our Developers clientele.</p>
-      <ul>
-        <?php foreach ($results['clients'] as $client) { ?>
-          <li>
-            <?php echo $client->name; ?>
-          </li>
-      <?php  } ?>
-      </ul>
-      <table>
-        <tr>
-          <td>Tuscan Lakes</td>
-          <td>South Shore Harbour</td>
-          <td>Edgewater</td>
-        </tr>
-        <tr>
-          <td>The Woodlands</td>
-          <td>Aliana</td>
-          <td>Sienna Plantation</td>
-        </tr>
-        <tr>
-          <td>Telfair</td>
-          <td>Riverstone</td>
-          <td>Whispering Lakes Ranch</td>
-        </tr>
-        <tr>
-          <td>Marbella</td>
-          <td>Summerwood</td>
-          <td>Eagle Springs</td>
-        </tr>
-        <tr>
-          <td>Village of Tuscan Lakes</td>
-          <td>Summerlyn</td>
-          <td>Centex</td>
-        </tr>
-        <tr>
-          <td>Pulte Homes</td>
-          <td>Johnson Development</td>
-          <td>KB Homes</td>
-        </tr>
-        <tr>
-          <td>Newland Communities</td>
-          <td>Taylor Morrison</td>
-          <td>Beazer Homes</td>
-        </tr>
+      <h1><?php echo $results['menuData'][$titleIndex]->name ?></h1>
+      <p>The listing below represents a partial listing of our <?php echo strtolower($results['menuData'][$titleIndex]->name) ?> clientele.</p>
+
+      <table id="clientsTable">
+        <?php
+        // Makes a table 3 columns wide
+        $html = "<tr>";
+        for ($i=0; $i < count($results['clients']); $i++) {
+          $html = $html . "<td class='client' id='" . $results['clients'][$i]->id . "''>" . $results['clients'][$i]->name . "</td>";
+          if (($i + 1) % 3 == 0) {
+            $html = $html . "</tr><tr>";
+          }
+        }
+        $html = $html . "</tr>";
+        echo $html;
+         ?>
       </table>
+
     </div>
 
   </div>

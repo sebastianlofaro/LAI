@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -22,8 +22,12 @@
         <li><a href="#">BLOG</a></li>
         <li><a href="#">CONTACT US</a></li>
       </ul>
-    </section>
-    <section class="main-content">
-      <div class="jumbotron"></div>
-    </section>
+    </section> -->
+    <?php include 'include/header.php'; ?>
+    <div class="home">
+      <section class="main-content">
+        <div class="jumbotron"></div>
+      </section>
+    </div>
+
     <?php include 'include/footer.php'; ?>

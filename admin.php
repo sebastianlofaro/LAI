@@ -28,23 +28,57 @@ switch ( $action ) {
   case 'deleteArticle':
     deleteArticle();
     break;
-  case 'selectSub':
-    # code...
-    testFunction();
-    break;
   case 'clients':
     clients();
+    break;
+  case 'clientsSubCat':
+    clientSubCatForID();
+    break;
+  case 'deleteSubCat':
+    deleteSubCat();
+    break;
+  case 'portfolioSubCat':
+    portfolioSubCat();
     break;
   default:
     listArticles();
 }
 
 
+function deleteSubCat() {
+  $category = $_GET['category'];
+  $subcategory = $_GET['subcategory'];
+  Subcategory::deleteSubCat($category, $subcategory);
+  if ($category == 1) {
+    // Reload clients page
+    clients();
+  }
+  if ($category == 0) {
+    // Reload portfolio page
+    listArticles();
+  }
+}
 
-function clients() {
-  $data = Client::getListOfClients(1);
+function clientSubCatForID() {
+  $subCatID = $_GET['id'];
+  $category = $_GET['category'];
+  $titleIndex = $_GET['index'];
+  $data = Client::getListOfClients($subCatID);
+  $subMenuData = Subcategory::getListForCategory($category);
   $results = array();
   $results['clients'] = $data['results'];
+  $results['menuData'] = $subMenuData['results'];
+  require( TEMPLATE_PATH . "/admin/editClients.php");
+}
+
+function clients() {
+  $titleIndex = 0;
+  $topSubCat = Subcategory::topSubCatForCategory(1);
+  $data = Client::getListOfClients($topSubCat['id']);
+  $subMenuData = Subcategory::getListForCategory(1);
+  $results = array();
+  $results['clients'] = $data['results'];
+  $results['menuData'] = $subMenuData['results'];
   require( TEMPLATE_PATH . "/admin/editClients.php");
 }
 
@@ -192,10 +226,25 @@ function deleteArticle() {
   header( "Location: admin.php?status=articleDeleted" );
 }
 
+function portfolioSubCat() {
+  $subCatID = $_GET['id'];
+  $subCatIndex = $_GET['index'];
+  $results = array();
+  $subMenuData = Subcategory::getListForCategory(0);
+  $data = Article::getListOfSubCat($subCatID);
+
+  $results['articles'] = $data['results'];
+  $results['totalRows'] = $data['totalRows'];
+  $results['subcategories'] = $subMenuData['results'];
+
+  require( TEMPLATE_PATH . "/admin/listArticles.php" );
+}
 
 function listArticles() {
   $results = array();
-  $sideMenuData = Subcategory::getList();
+  $subCatIndex = 0;
+  // $sideMenuData = Subcategory::getList();
+  $subMenuData = Subcategory::getListForCategory(0);
   //$data = Article::getList();
   // FIXME:
   $data = Article::getListOfSubCat((int)Subcategory::topSubCat()['id']);
@@ -203,17 +252,16 @@ function listArticles() {
 
   $results['articles'] = $data['results'];
   $results['totalRows'] = $data['totalRows'];
-  $results['pageTitle'] = "All Articles";
-  $results['subcategories'] = $sideMenuData['results'];
+  $results['subcategories'] = $subMenuData['results'];
 
-  if ( isset( $_GET['error'] ) ) {
-    if ( $_GET['error'] == "articleNotFound" ) $results['errorMessage'] = "Error: Article not found.";
-  }
-
-  if ( isset( $_GET['status'] ) ) {
-    if ( $_GET['status'] == "changesSaved" ) $results['statusMessage'] = "Your changes have been saved.";
-    if ( $_GET['status'] == "articleDeleted" ) $results['statusMessage'] = "Article deleted.";
-  }
+  // if ( isset( $_GET['error'] ) ) {
+  //   if ( $_GET['error'] == "articleNotFound" ) $results['errorMessage'] = "Error: Article not found.";
+  // }
+  //
+  // if ( isset( $_GET['status'] ) ) {
+  //   if ( $_GET['status'] == "changesSaved" ) $results['statusMessage'] = "Your changes have been saved.";
+  //   if ( $_GET['status'] == "articleDeleted" ) $results['statusMessage'] = "Article deleted.";
+  // }
 
   require( TEMPLATE_PATH . "/admin/listArticles.php" );
 }

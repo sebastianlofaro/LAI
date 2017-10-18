@@ -23,7 +23,7 @@ footer {
   width: 100%;
   bottom: 0;
   #coppyRight {
-    background: rgb(41, 42, 46);
+    //background: rgb(41, 42, 46);
     height: 50px;
     text-align: center;
     padding-top: 15px;
@@ -57,10 +57,15 @@ footer {
       margin-top: 8px;
     }
   }
+  .col-double {
+    display: flex;
+    flex-direction: column;
+  }
   .col4 {
     text-align: right;
     width: 100%;
     margin: 0;
+    background: rgb(41, 42, 46);
   }
   p {
     margin: 0;

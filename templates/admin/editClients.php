@@ -1,66 +1,38 @@
-<?php include "templates/include/header.php" ?>
+<?php include "templates/admin/include/header.php" ?>
 <div id="clients">
-  <div class="secondaryMenu">
-    <ul>
-      <li>Developers</li>
-      <li>Commercial</li>
-      <li>Institutions</li>
-      <li>Municipalities</li>
-      <li>General Contractors</li>
-      <li>Landscape Architects</li>
-    </ul>
-  </div>
+
+    <?php include "templates/admin/include/clientsSecondaryMenu.php" ?>
 
   <div class="content">
-    <h1>Developers</h1>
-    <p>The listing below represents a partial listing of our Developers clientele.</p>
-    <ul>
-      <li>
-        <input type="text" id="newClientInput" name="client" value="" placeholder="newClient">
-        <button type="button" name="newClient" class="newClientBtn" id="<?php echo $results['clients'][0]->id; ?>"> + </button>
-      </li>
+    <div class="wrapper">
+      <h1><?php echo $results['menuData'][$titleIndex]->name ?></h1>
+      <a href="?action=deleteSubCat&amp;category=1&amp;subcategory=<?php echo $results['menuData'][$titleIndex]->id; ?>"><button type="button" name="deleteClientSubCatBtn">Delete</button></a>
+      <p>The listing below represents a partial listing of our <?php echo strtolower($results['menuData'][$titleIndex]->name) ?> clientele.</p>
+      <ul>
+        <li>
+          <input type="text" id="newClientInput" name="client" value="" placeholder="newClient">
+          <button type="button" name="newClient" class="newClientBtn" id="<?php echo $results['menuData'][$titleIndex]->id; ?>"> + </button>
+        </li>
 
 
 
 
-    </ul>
-    <table id="clientsTable">
-      <tr>
-        <td>Tuscan Lakes</td>
-        <td>South Shore Harbour</td>
-        <td>Edgewater</td>
-      </tr>
-      <tr>
-        <td>The Woodlands</td>
-        <td>Aliana</td>
-        <td>Sienna Plantation</td>
-      </tr>
-      <tr>
-        <td>Telfair</td>
-        <td>Riverstone</td>
-        <td>Whispering Lakes Ranch</td>
-      </tr>
-      <tr>
-        <td>Marbella</td>
-        <td>Summerwood</td>
-        <td>Eagle Springs</td>
-      </tr>
-      <tr>
-        <td>Village of Tuscan Lakes</td>
-        <td>Summerlyn</td>
-        <td>Centex</td>
-      </tr>
-      <tr>
-        <td>Pulte Homes</td>
-        <td>Johnson Development</td>
-        <td>KB Homes</td>
-      </tr>
-      <tr>
-        <td>Newland Communities</td>
-        <td>Taylor Morrison</td>
-        <td>Beazer Homes</td>
-      </tr>
-    </table>
+      </ul>
+      <table id="clientsTable">
+        <?php
+        // Makes a table 3 columns wide
+        $html = "<tr>";
+        for ($i=0; $i < count($results['clients']); $i++) {
+          $html = $html . "<td class='client clientAdmin' id='" . $results['clients'][$i]->id . "''>" . $results['clients'][$i]->name . "</td>";
+          if (($i + 1) % 3 == 0) {
+            $html = $html . "</tr><tr>";
+          }
+        }
+        $html = $html . "</tr>";
+        echo $html;
+         ?>
+      </table>
+    </div>
   </div>
 </div>
 <?php include "templates/include/footer.php" ?>

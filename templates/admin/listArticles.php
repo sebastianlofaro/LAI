@@ -1,11 +1,11 @@
-<?php include "templates/include/header.php" ?>
+<?php include "templates/admin/include/header.php" ?>
 <section id="listArticles" class="main-content">
   <div class="jumbotron">
     <div class="jumbotronImage"></div>
     <div class="jumbotronMessage">
       <div class="">
-        <h1>Our Work</h1>
-        <div class="greenUnderline"></div>
+        <h1 class="pageTitle"><?php echo $results['subcategories'][(int)$subCatIndex]->name; ?></h1>
+        <a href="?action=deleteSubCat&amp;category=0&amp;subcategory=<?php echo $results['subcategories'][(int)$subCatIndex]->id; ?>"><button type="button" name="deletePortfolioSubCat" class="deleteSubCatBtn">DELETE</button></a>
       </div>
 
     </div>
@@ -13,16 +13,8 @@
   <?php include "include/sidenav.php" ?>
   <div  class="content-wrapper">
 
-    <h1 class="pageTitle">Neighborhoods</h1>
+
     <div class="content">
-
-
-
-        <div id="adminHeader">
-          <p>You are logged in as <b><?php echo htmlspecialchars( $_SESSION['username']) ?></b>. <a href="admin.php?action=logout"?>Log out</a></p>
-        </div>
-
-        <h1>All Articles</h1>
 
   <?php if ( isset( $results['errorMessage'] ) ) { ?>
           <div class="errorMessage"><?php echo $results['errorMessage'] ?></div>
@@ -51,12 +43,9 @@
       </li>
     <?php } ?>
   </ul>
-        <p><?php echo $results['totalRows']?> article<?php echo ( $results['totalRows'] != 1 ) ? 's' : '' ?> in total.</p>
+        <!-- <p><?php echo $results['totalRows']?> article<?php echo ( $results['totalRows'] != 1 ) ? 's' : '' ?> in total.</p> -->
 
-      </div>
-      <div class="secondaryCTA">
-        <button type="button" name="button">CONTACT US TO GET STARTED</button>
       </div>
     </div>
 </section>
-<?php include "templates/include/footer.php" ?>
+<?php include "templates/admin/include/footer.php" ?>

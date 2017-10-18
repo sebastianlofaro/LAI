@@ -52,6 +52,15 @@ class Client
     return;
   }
 
+  public static function delete($key) {
+    // Delete the client form the database
+    $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
+    $st = $conn->prepare ( "DELETE FROM clients WHERE id = :id LIMIT 1" );
+    $st->bindValue( ":id", $key, PDO::PARAM_INT );
+    $st->execute();
+    $conn = null;
+  }
+
 
 
 

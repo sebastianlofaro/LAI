@@ -1,9 +1,9 @@
 #clients {
   .content {
-    min-height: calc(100vh - 220px);
+    min-height: calc(100vh - 291px);
     width: 100%;
     margin: 0 auto;
-    padding: 100px 0 160px 0;
+    padding: 100px 0 250px 0;
     text-align: center;
     //background-color: rgb(239,239,239);
     background-image: url('../../media/shattered.png');
@@ -23,4 +23,8 @@
       padding: 10px 20px;
     }
   }
+}
+.clientAdmin:hover {
+  cursor: default;
+  color: red;
 }
