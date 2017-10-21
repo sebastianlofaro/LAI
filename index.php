@@ -18,6 +18,9 @@ switch ( $action ) {
   case 'clients':
     clients();
     break;
+  case 'contactUs':
+    contactUs();
+    break;
   case 'clientsSubCat':
     clientSubCatForID();
     break;
@@ -33,6 +36,8 @@ switch ( $action ) {
 
 
 function clientSubCatForID() {
+  $pageTitle = "Clients";
+  $selectedCategory = 2;
   $subCatID = $_GET['id'];
   $category = $_GET['category'];
   $titleIndex = $_GET['index'];
@@ -45,6 +50,8 @@ function clientSubCatForID() {
 }
 
 function clients() {
+  $pageTitle = "Clients";
+  $selectedCategory = 2;
   $topSubCat = Subcategory::topSubCatForCategory(1);
   $data = Client::getListOfClients($topSubCat['id']);
   $subMenuData = Subcategory::getListForCategory(1);
@@ -56,15 +63,28 @@ function clients() {
 }
 
 function aboutUs() {
+  $pageTitle = "About Us";
+  $selectedCategory = 3;
   $selectedSubCat = isset($_GET['subMenu'])?$_GET['subMenu']:'';
   require( TEMPLATE_PATH . "/about.php" );
 }
 
+function contactUs() {
+  $pageTitle = "Contact Us";
+  $selectedCategory = 4;
+  require( TEMPLATE_PATH . "/contactUs.php" );
+}
+
 function home() {
+  $pageTitle = "";
+  $selectedCategory = 0;
   require( TEMPLATE_PATH . "/home.php" );
 }
 
 function viewArticle() {
+  $pageTitle = "Portfolio";
+  $selectedCategory = 1;
+  $titleIndex = 0;
   if ( !isset($_GET["articleId"]) || !$_GET["articleId"] ) {
     portfolio();
     return;
@@ -78,6 +98,8 @@ function viewArticle() {
 }
 
 function portfolioSubCatForID() {
+  $pageTitle = "Portfolio";
+  $selectedCategory = 1;
   $subCatID = $_GET['id'];
   $category = $_GET['category'];
   $titleIndex = $_GET['index'];
@@ -90,6 +112,9 @@ function portfolioSubCatForID() {
 }
 
 function portfolio() {
+  $selectedCategory = 1;
+  $pageTitle = "Portfolio";
+  $titleIndex = 0;
   $results = array();
   $secondaryMenuData = Subcategory::getListForCategory(0);
   $data = Article::getListOfSubCat( $secondaryMenuData['results'][0]->id );

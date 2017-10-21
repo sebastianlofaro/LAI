@@ -1,0 +1,100 @@
+#contactUsWrapper {
+  .titleWrapper {
+    width: 100%;
+    text-align: center;
+    color: white;
+    background-color: #2f3035;
+    height: 120px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    @include desktop {
+      display: flex;
+    }
+    h1 {
+      margin: 0;
+      font-weight: 400;
+      border-bottom: 3px solid #23c1ee;
+      display: inline;
+      padding: 0 10px 10px 10px;
+    }
+  }
+  .content-wrapper {
+    background-color: white;
+    width: 100%;
+    min-height: calc(100vh - 411px);
+    box-shadow: inset 0px 25px 20px -24px rgba(0,0,0,0.7);
+  }
+  form {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    .inputs {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding-top: 50px;
+    }
+    .textFieldWrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      flex-direction: column;
+      width: 90%;
+      div {
+        display: flex;
+        justify-content: space-between;
+        margin: 0;
+        flex-direction: column;
+        @include desktop {
+          flex-direction: row;
+          margin-top: 50px;
+        }
+        input {
+          background-color: rgb(235,235,235);
+          width: 100%;
+          border: none;
+          font-size: 1.4em;
+          font-weight: 300;
+          padding: 10px;
+          margin: 20px auto;
+          @include desktop {
+            margin: 0;
+            width: 45%;
+          }
+        }
+      }
+    }
+    textarea {
+      margin-top: 50px;
+      background-color: rgb(235,235,235);
+      border: none;
+      resize: none;
+      width: 90%;
+      height: 30vh;
+    }
+    #submit {
+      margin: 30px auto;
+      background-color: white;
+      padding: 10px;
+      border: 3px solid green;
+      color: green;
+      width: 150px;
+    }
+    #submit:hover {
+      background-color: green;
+      color: white;
+    }
+  }
+  .mapWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  #map {
+    margin-bottom: 250px;
+    box-shadow: 1px 6px 18px -2px rgba(0,0,0,0.62);
+  }
+}

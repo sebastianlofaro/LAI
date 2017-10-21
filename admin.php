@@ -46,6 +46,7 @@ switch ( $action ) {
 
 
 function deleteSubCat() {
+  $pageTitle = "";
   $category = $_GET['category'];
   $subcategory = $_GET['subcategory'];
   Subcategory::deleteSubCat($category, $subcategory);
@@ -60,6 +61,7 @@ function deleteSubCat() {
 }
 
 function clientSubCatForID() {
+  $pageTitle = "";
   $subCatID = $_GET['id'];
   $category = $_GET['category'];
   $titleIndex = $_GET['index'];
@@ -72,6 +74,7 @@ function clientSubCatForID() {
 }
 
 function clients() {
+  $pageTitle = "";
   $titleIndex = 0;
   $topSubCat = Subcategory::topSubCatForCategory(1);
   $data = Client::getListOfClients($topSubCat['id']);
@@ -83,6 +86,7 @@ function clients() {
 }
 
 function login() {
+  $pageTitle = "";
 
   $results = array();
   $results['pageTitle'] = "Admin Login";
@@ -114,15 +118,16 @@ function login() {
 
 
 function logout() {
+  $pageTitle = "";
   unset( $_SESSION['username'] );
   header( "Location: admin.php" );
 }
 
 
 function newArticle() {
+  $pageTitle = "";
   $results = array();
 
-  $results['pageTitle'] = "New Article";
   $results['formAction'] = "newArticle";
 
   if ( isset( $_POST['saveChanges'] ) ) {
@@ -151,7 +156,7 @@ function newArticle() {
     }
     // add the image path to the rest of the form post information
     $_POST["imagePath"] = $target_file;
-    $_POST["subcategory"] = (int) $_SESSION["subCat"];
+    //$_POST["subcategory"] = (int) $_SESSION["subCat"];
 
     $article = new Article;
 
@@ -175,6 +180,7 @@ function newArticle() {
 
 
 function editArticle() {
+  $pageTitle = "";
 
   $results = array();
   $results['pageTitle'] = "Edit Article";
@@ -217,6 +223,7 @@ function editArticle() {
 
 
 function deleteArticle() {
+  $pageTitle = "";
 
   if ( !$article = Article::getById( (int)$_GET['articleId'] ) ) {
     header( "Location: admin.php?error=articleNotFound" );
@@ -227,6 +234,7 @@ function deleteArticle() {
 }
 
 function portfolioSubCat() {
+  $pageTitle = "";
   $subCatID = $_GET['id'];
   $subCatIndex = $_GET['index'];
   $results = array();
@@ -241,6 +249,7 @@ function portfolioSubCat() {
 }
 
 function listArticles() {
+  $pageTitle = "";
   $results = array();
   $subCatIndex = 0;
   // $sideMenuData = Subcategory::getList();

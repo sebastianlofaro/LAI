@@ -1,18 +1,44 @@
 #editForm {
-  width: calc(100% - 16px;);
+  width: 100%;
   margin: 0 auto;
   // background-color: #f2f2f2;
   // border: 1px solid #d9d9d9;
   margin-bottom: 50px;
-  padding: 25px;
+
+  .content-wrapper {
+    padding-top: 1px;
+  }
+
+  .title {
+    display: flex;
+    justify-content: center;
+  }
+
+  .side-nav {
+    width: 100%;
+  }
 
   #title {
     width: 100%;
+    max-width: 500px;
+    border: none;
+    border-bottom: 3px solid #23c1ee;
+    text-align: center;
     height: 50px;
+    color: white;
+    background-color: #2f3035;
+    font-size: 2em;
+    font-weight: bold;
   }
 
   .main-image:hover {
     cursor: pointer;
+  }
+
+  .main-image {
+    img {
+      width: 100%;
+    }
   }
 
   .col {
@@ -23,10 +49,9 @@
     }
   }
 
+
   .details {
     margin-top: 10px;
-    background-color: #f2f2f2;
-    border: 1px solid #d9d9d9;
     padding-bottom: 20px;
     display: flex;
     flex-direction: column;
@@ -39,7 +64,7 @@
   }
 
   #description {
-    width: 100%;
+    width: 90%;
     text-align: center;
     textarea {
       width: 100%;
@@ -47,21 +72,46 @@
     }
   }
 
+  .buttons {
+    display: flex;
+    justify-content: center;
+  }
+  .button {
+    width: 150px;
+  }
   #save {
-    border-radius: 20px;
     margin: 10px;
-    padding: 10px;
     background-color: white;
-
+    padding: 10px;
+    border: 3px solid green;
+    color: green;
+  }
+  #save:hover {
+    background-color: green;
+    color: white;
   }
   #cancle {
-    border-radius: 20px;
     margin: 10px;
+    background-color: white;
     padding: 10px;
-    background-color: #ddd;
-
+    border: 3px solid grey;
+    color: grey;
   }
-
+  #cancle:hover {
+    background-color: grey;
+    color: white;
+  }
+  #delete {
+    margin: 10px;
+    background-color: white;
+    padding: 10px;
+    border: 3px solid red;
+    color: red;
+  }
+  #delete:hover {
+    background-color: red;
+    color: white;
+  }
   .imageUpload {
     display: none;
   }

@@ -9,7 +9,7 @@
       foreach ($results['menuData'] as $subcategory) { ?>
         <li class="subcategory">
           <a href="?action=clientsSubCat&amp;id=<?php echo $subcategory->id ?>&amp;category=<?php echo $subcategory->mainCategory ?>&amp;index=<?php echo $index ?>">
-            <p><?php echo htmlspecialchars($subcategory->name); ?></p>
+            <?php echo htmlspecialchars($subcategory->name); ?>
           </a>
         </li>
     <?php
@@ -19,9 +19,18 @@
   </nav>
 
   <div class="content">
+    <div class="shadowTop"></div>
     <div class="wrapper">
       <h1><?php echo $results['menuData'][$titleIndex]->name ?></h1>
       <p>The listing below represents a partial listing of our <?php echo strtolower($results['menuData'][$titleIndex]->name) ?> clientele.</p>
+
+      <ul class="mobile-list">
+        <?php foreach ($results['clients'] as $client) { ?>
+          <li>
+            <?php echo $client->name ?>
+          </li>
+        <?php } ?>
+      </ul>
 
       <table id="clientsTable">
         <?php

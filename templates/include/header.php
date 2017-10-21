@@ -21,11 +21,19 @@
       <img id="slogan" src="media/img/slogan.png" alt="">
     </section>
     <nav class="nav">
-      <ul class="spread nav-items">
-        <li class=""><a href="?action=home">HOME</a></li>
-        <li class=""><a href="?action=portfolio">PORTFOLIO</a></li>
-        <li class=""><a href="?action=clients">CLIENTS</a></li>
-        <li class=""><a href="?action=aboutUs">ABOUT US</a></li>
-        <li class=""><a href="#">CONTACT US</a></li>
+      <div class="hamburger-wrapper">
+        <h1 class="mobile-page-title"><?php echo  strtoupper($pageTitle)?></h1>
+        <div class="hamburger-menu">
+          <div class=""></div>
+          <div class=""></div>
+          <div class=""></div>
+        </div>
+      </div>
+      <ul class="nav-items">
+        <li class="<?php if(isset($selectedCategory)) if($selectedCategory == 0) echo "selected"; ?>"><a href="?action=home">HOME</a></li>
+        <li class="<?php if(isset($selectedCategory)) if($selectedCategory == 1) echo "selected"; ?>"><a href="?action=portfolio">PORTFOLIO</a></li>
+        <li class="<?php if(isset($selectedCategory)) if($selectedCategory == 2) echo "selected"; ?>"><a href="?action=clients">CLIENTS</a></li>
+        <li class="<?php if(isset($selectedCategory)) if($selectedCategory == 3) echo "selected"; ?>"><a href="?action=aboutUs">ABOUT&nbsp;US</a></li>
+        <li class="<?php if(isset($selectedCategory)) if($selectedCategory == 4) echo "selected"; ?>"><a href="?action=contactUs">CONTACT&nbsp;US</a></li>
       </ul>
     </nav>

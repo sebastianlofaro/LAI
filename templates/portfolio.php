@@ -4,7 +4,7 @@
     <div class="jumbotronImage"></div>
     <div class="jumbotronMessage">
       <div class="">
-        <h1>Neighborhoods</h1>
+        <h1><?php echo $results['menuData'][(int)$titleIndex]->name; ?></h1>
         <div class="greenUnderline"></div>
       </div>
     </div>

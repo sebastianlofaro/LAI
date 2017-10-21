@@ -3,6 +3,7 @@
   .content-wrapper{
     box-shadow: inset 0px 6px 18px -6px rgba(0,0,0,0.62);
     min-height: calc(100vh - 800px);
+    padding-bottom: 250px;
   }
   .secondaryMenu {
     box-shadow: none;
@@ -20,14 +21,20 @@
     flex-wrap: wrap;
     padding: 0;
     justify-content: center;
-    margin-bottom: 230px;
-    margin-top: 100px;
+    width: 100%;
+    @include desktop {
+      margin-bottom: 230px;
+      margin-top: 100px;
+    }
     li {
-      //max-width: 400px;
+      max-width: 90%;
       //border: 2px solid black;
       box-shadow: 1px 6px 18px -2px rgba(0,0,0,0.62);
-      margin: 50px;
       background-color: white;
+      margin: 15px;
+      @include desktop{
+        margin: 50px;
+      }
       a {
         color: black;
         h3 {
@@ -40,12 +47,16 @@
 
       .thumbnail {
         //box-shadow: 5px 4px 10px -4px rgba(0,0,0,0.81);
-        width: calc(225px * 2.5);
-        height: calc(150px * 2.5);
+        width: calc(250px * 1.5);
+        height: calc(150px * 1.5);
+        max-width: 100%;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
         //margin-bottom: 10px;
+        @include desktop {
+          background-size: cover;
+        }
       }
     }
   }
@@ -59,26 +70,29 @@
     }
   }
   .jumbotron {
-    .jumbotronImage {
-      box-shadow: inset 0px 33px 29px -31px rgba(0,0,0,0.75);
-      background-image: url('../../media/img/jumbotronBackground.jpg');
-      background-position: center;
-      background-size: cover;
-      height: 250px;
-    }
-    .jumbotronMessage {
-      background-color: rgb(47,48,53);
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      height: 120px;
-      h1 {
-        margin: 0;
-        color: white;
-        padding: 3px;
-        font-weight: 200;
-        border-bottom: 3px solid rgb(35,193,238);
-        padding-bottom: 10px;
+    display: none;
+    @include desktop {
+      .jumbotronImage {
+        box-shadow: inset 0px 33px 29px -31px rgba(0,0,0,0.75);
+        background-image: url('../../media/img/jumbotronBackground.jpg');
+        background-position: center;
+        background-size: cover;
+        height: 250px;
+      }
+      .jumbotronMessage {
+        background-color: rgb(47,48,53);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 120px;
+        h1 {
+          margin: 0;
+          color: white;
+          padding: 3px;
+          font-weight: 200;
+          border-bottom: 3px solid rgb(35,193,238);
+          padding-bottom: 10px;
+        }
       }
     }
   }

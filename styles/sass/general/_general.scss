@@ -17,8 +17,6 @@ body {
   min-height: 100vh;
 }
 
-.content-wrapper {
-}
 
 .dark {
   background-color: #292a2e;;
@@ -72,8 +70,12 @@ body {
   display: flex;
   flex-direction: column;
   padding-bottom: 60px;
+  background: rgb(180,180,180);
   background-image: url('../../media/shattered.png');
   background-repeat: repeat;
+  @include desktop {
+
+  }
   img {
     width: 100%;
   }
@@ -90,11 +92,20 @@ body {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    padding: 0;
   }
   li {
-    padding: 17px;
+    padding: 7px;
     margin: 0;
-
+    width: 100%;
+    text-align: center;
+    @include desktop {
+      padding: 17px;
+      width: auto;
+    }
+  }
+  a {
+    color: black;
   }
   a:hover {
     color: #23c1ee;

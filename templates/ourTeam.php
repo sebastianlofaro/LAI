@@ -6,7 +6,7 @@
     <div class="headshotThumbnail" style="background-image: url('media/headshots/AnitaMcCormick.jpg')"></div>
     <h3>Anita McCormick</h3>
     <h4>Founder, Owner, President</h4>
-    <div class="popOut hidden">
+    <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
@@ -27,7 +27,7 @@
     <div class="headshotThumbnail" style="background-image: url('media/headshots/JayWilliams.jpg')"></div>
     <h3>Jay Williams</h3>
     <h4>Vice President, General&nbsp;Manager</h4>
-    <div class="popOut hidden">
+    <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
@@ -50,7 +50,7 @@
     <div class="headshotThumbnail" style="background-image: url('media/headshots/CarmeloOrellana.jpg')"></div>
     <h3>Carmelo Orellana</h3>
     <h4>Operations Manager</h4>
-    <div class="popOut hidden">
+    <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
@@ -72,7 +72,7 @@
     <div class="headshotThumbnail" style="background-image: url('media/headshots/KevinArp.png')"></div>
     <h3>Kevin Arp</h3>
     <h4>Senior Project Manager</h4>
-    <div class="popOut hidden">
+    <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
@@ -91,7 +91,7 @@
     <div class="headshotThumbnail" style="background-image: url('media/headshots/DebbieGerac.jpg')"></div>
     <h3>Debbie Gerac</h3>
     <h4>Office Manager</h4>
-    <div class="popOut hidden">
+    <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
@@ -111,7 +111,7 @@
     <div class="headshotThumbnail" style="background-image: url('media/headshots/DanaMcCormick.jpg')"></div>
     <h3>Dana McCormick</h3>
     <h4>Corporate Secretary, Estimator, Purchaser</h4>
-    <div class="popOut hidden">
+    <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
@@ -133,7 +133,7 @@
     <div class="headshotThumbnail" style="background-image: url('media/headshots/KarenOrellana.jpg')"></div>
     <h3>Karen Orellana</h3>
     <h4>Administrative Assistant</h4>
-    <div class="popOut hidden">
+    <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
@@ -152,7 +152,7 @@
     <div class="headshotThumbnail" style="background-image: url('media/headshots/DebbieODonnell.jpg')"></div>
     <h3>Debbie O’Donnell</h3>
     <h4>Human Resources Manager</h4>
-    <div class="popOut hidden">
+    <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
@@ -171,7 +171,7 @@
     <div class="headshotThumbnail" style="background-image: url('media/headshots/FavioOrellana.jpg')"></div>
     <h3>Favio Orellana</h3>
     <h4>Project Manager</h4>
-    <div class="popOut hidden">
+    <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
@@ -192,7 +192,7 @@
     <div class="headshotThumbnail" style="background-image: url('media/headshots/PorfirioMartinez.jpg')"></div>
     <h3>Porfirio Martinez</h3>
     <h4>Project Manager</h4>
-    <div class="popOut hidden">
+    <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
@@ -213,7 +213,7 @@
     <div class="headshotThumbnail" style="background-image: url('media/headshots/MichelleGerac.jpg')"></div>
     <h3>Michelle Gerac</h3>
     <h4>Project Manager</h4>
-    <div class="popOut hidden">
+    <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
@@ -233,7 +233,7 @@
     <div class="headshotThumbnail" style="background-image: url('media/headshots/SantosSorto.jpg')"></div>
     <h3>Santos Sorto</h3>
     <h4>Project Manager</h4>
-    <div class="popOut hidden">
+    <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
@@ -252,7 +252,7 @@
     <div class="headshotThumbnail" style="background-image: url('media/headshots/OscarVega.jpg')"></div>
     <h3>Oscar Vega</h3>
     <h4>Mechanic</h4>
-    <div class="popOut hidden">
+    <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
@@ -271,7 +271,7 @@
     <div class="headshotThumbnail" style="background-image: url('media/headshots/MaryGarcia.png')"></div>
     <h3>Mary Garcia</h3>
     <h4>Bookkeeper</h4>
-    <div class="popOut hidden">
+    <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
@@ -290,7 +290,7 @@
     <div class="headshotThumbnail" style="background-image: url('media/headshots/FreddieDelcid.png')"></div>
     <h3>Freddie Delcid</h3>
     <h4>Mechanic</h4>
-    <div class="popOut hidden">
+    <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
@@ -309,7 +309,7 @@
     <div class="headshotThumbnail" style="background-image: url('media/headshots/NolanLamar.jpg')"></div>
     <h3>Nolan Lamar</h3>
     <h4>Project Manager</h4>
-    <div class="popOut hidden">
+    <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">

@@ -1,5 +1,14 @@
 $(document).ready(function() {
 
+
+  $('.hamburger-menu').on("click", function() {
+    $('.nav-items').slideToggle("slow", function() {
+      
+    });
+  });
+
+
+
   $('a').on("click", function() {console.log("Button Clicked!")});
 
    var $coverPhoto = $('#coverPhoto');
@@ -60,6 +69,19 @@ $(document).ready(function() {
   });
 
 
+$('.teamList li').on("click", function() {
+  if ($(this).find('.popOut').css('display') == 'none') {
+    $(this).find('.popOut').show();
+  }
+  else {
+    $(this).find('.popOut').hide();
+  }
 
+  console.log("Error");
+});
+
+$('.popOut').on("click", function() {
+  console.log("clicked on pop out");
+});
 
 });

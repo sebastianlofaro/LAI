@@ -20,7 +20,11 @@
     max-width: 500px;
   }
   .content {
-    margin-top: calc(20vh - 50px);
+    margin-top: 0;
+    padding-bottom: 250px;
+    @include desktop {
+      margin-top: calc(20vh - 50px);
+    }
     img {
       margin: 50px;
     }
