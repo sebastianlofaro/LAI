@@ -126,7 +126,10 @@ function logout() {
 
 function newArticle() {
   $pageTitle = "";
+  $subcategory = $_GET["subcategory"];
+  $_POST['subcategory'] = $subcategory;
   $results = array();
+  $imagePath = 'media/img/addPhoto.png';
 
   $results['formAction'] = "newArticle";
 
@@ -186,16 +189,6 @@ function editArticle() {
   $results['pageTitle'] = "Edit Article";
   $results['formAction'] = "editArticle";
 
-  // if (isset($_POST['addService'])) {
-  //   echo "ADD SERVICE";
-  //   // if ( !$article = Article::getById( (int)$_POST['articleId'] ) ) {
-  //   //   header( "Location: admin.php?error=articleNotFound" );
-  //   //   return;
-  //   // }
-  //   //$article->addService( $_POST );
-  //   //$article->update();
-  // }
-
   if ( isset( $_POST['saveChanges'] ) ) {
     // User has posted the article edit form: save the article changes
 
@@ -216,6 +209,9 @@ function editArticle() {
 
     // User has not posted the article edit form yet: display the form
     $results['article'] = Article::getById( (int)$_GET['articleId'] );
+    // Get image URLs
+    $imageURLs = explode(",", $results['article']->imagePath);
+    // var_dump($imageURLs);
     require( TEMPLATE_PATH . "/admin/editArticleGUI.php" );
   }
 
@@ -252,10 +248,9 @@ function listArticles() {
   $pageTitle = "";
   $results = array();
   $subCatIndex = 0;
-  // $sideMenuData = Subcategory::getList();
   $subMenuData = Subcategory::getListForCategory(0);
-  //$data = Article::getList();
-  // FIXME:
+  $subCatID = $subMenuData['results'][$subCatIndex]->id;
+
   $data = Article::getListOfSubCat((int)Subcategory::topSubCat()['id']);
 
 

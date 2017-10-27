@@ -30,8 +30,36 @@ switch ( $action ) {
   case 'deleteClient':
     deleteClient();
     break;
+  case 'uploadPhotos':
+    echo "Upload Succesful";
+    break;
+  case 'newArticle':
+    newArticle();
+    break;
   default:
     echo "ERROR";
+}
+
+
+function newArticle() {
+  $title = $_POST['title'];
+  $personnel = $_POST['personnel'];
+  $services = $_POST['services'];
+  $contractAmount = $_POST['contractAmount'];
+  $completionDate = $_POST['completionDate'];
+  $content = $_POST['content'];
+  $photoURL = $_POST['photoURL'];
+  $subcategory = $_POST['subcategory'];
+  //$photoURLList = explode(',',$photoURL);
+  $package = [ "title" => $title, "personnel" => $personnel, "services" => $services, "contractAmount" => $contractAmount, "completionDate" => $completionDate, "content" => $content, "imagePath" => $photoURL, "subcategory" => $subcategory];
+
+  // Add the article to the database
+  $article = new Article;
+
+  //$article->storeImage($imagePath);
+  $article->storeFormValues( $package );
+  $article->insert();
+  echo json_encode($package);
 }
 
 function newClient() {
@@ -61,7 +89,11 @@ function newSubCatForCategory() {
   $Subcategory = new Subcategory;
   $Subcategory->storeFormValues($package);
   $Subcategory->insert();
-  echo json_encode(Subcategory::getListForCategory($category));
+  // Creat photo directory for this subcategory
+  $subcategoryList = Subcategory::getListForCategory($category);
+  $subCatID = $subcategoryList['results'][(sizeof($subcategoryList['results']) - 1)]->id;
+  mkdir(dirname(__FILE__) . "/media/img/portfolio/" . $subCatID);
+  echo json_encode($subcategoryList);
 }
 
 function addSubCat() {

@@ -28,14 +28,14 @@
 
   <ul class="articles">
     <li>
-      <a href="admin.php?action=newArticle">
+      <a href="admin.php?action=newArticle&amp;subcategory=<?php echo $subCatID ?>">
         <img class="darkBorder thumbnail" src="media/img/addimage.png" alt=''>
         <p>New Article</p>
       </a>
     </li>
     <?php foreach ( $results['articles'] as $article ) { ?>
       <li>
-        <a href=admin.php?action=editArticle&amp;articleId=<?php echo $article->id?>>
+        <a href="admin.php?action=editArticle&amp;articleId=<?php echo $article->id?>&amp;subcategory=<?php echo $subCatID ?>" >
           <!-- <img class="thumbnail" src="<?php echo $article->imagePath ?>" alt=''> -->
           <div class="thumbnail" style="background-image: url('<?php echo $article->imagePath ?>')"></div>
           <p><?php echo htmlspecialchars($article->title); ?></p>

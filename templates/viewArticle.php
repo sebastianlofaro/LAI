@@ -25,25 +25,25 @@
             <section class="details">
               <div class="col col1">
                 <h2>Personnel</h2>
-                <p><?php echo nl2br($results['article']->personnel) ?></p>
+                <p><?php echo htmlspecialchars(nl2br($results['article']->personnel)) ?></p>
               </div>
               <div class="col col2">
                 <h2>Services</h2>
-                <p><?php echo nl2br($results['article']->services) ?></p>
+                <p><?php echo htmlspecialchars(nl2br($results['article']->services)) ?></p>
               </div>
               <div class="col col3">
                 <h2>Contract Amount</h2>
-                <p><?php echo nl2br($results['article']->contractAmount) ?></p>
+                <p><?php echo htmlspecialchars(nl2br($results['article']->contractAmount)) ?></p>
                 <h2>Completion Date</h2>
                 <ul>
-                  <p><?php echo nl2br($results['article']->completionDate) ?></p>
+                  <p><?php echo htmlspecialchars(nl2br($results['article']->completionDate)) ?></p>
                 </ul>
               </div>
             </section>
             <div class="pageBreak"></div>
             <section id="description">
               <h2>Project Narrative</h2>
-              <p><?php echo nl2br($results['article']->content); ?></p>
+              <p><?php echo htmlspecialchars(nl2br($results['article']->content)); ?></p>
             </section>
             <div class="pageBreak"></div>
           </div>

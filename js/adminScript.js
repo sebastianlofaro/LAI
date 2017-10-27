@@ -126,7 +126,82 @@ $("#newSubCatBtn").on("click", function(e) {
 });
 
 
+//###################### Handle Photo Upload ######################
+var photoURL = [];
+(function() {
+  var dropzone = document.getElementById('dropzone');
 
+  var upload = function(files) {
+    var formData = new FormData(),
+        xhr = new XMLHttpRequest(),
+        x;
+
+    for (x = 0; x < files.length; x++) {
+      formData.append('files[]',files[x], x);
+    }
+    //formData.append('subcategory', $(".save").attr("id"));
+    xhr.onload = function() {
+      var data = JSON.parse(this.responseText);
+      console.log(data);
+      var html = "";
+      $.each(data, function(index, value) {
+        //console.log('value.file: ' + value.file);
+        photoURL.push(value.file);
+        html = html + "<li><div class='uploaded-image' style = 'background-image: url(" + value.file + ")'></div></li>"
+      });
+      photoURL = photoURL.toString();
+      console.log("photoURL String: " + photoURL);
+      $('#uploaded-images').html(html);
+    }
+
+    xhr.open('post', 'upload.php');
+    xhr.send(formData);
+  }
+
+  dropzone.ondrop = function(e) {
+    e.preventDefault();
+    this.className = 'dropzone';
+    upload(e.dataTransfer.files);
+  }
+  dropzone.ondragover = function() {
+    this.className = 'dropzone dragover';
+    return false;
+  }
+  dropzone.ondragleave = function() {
+    this.className = 'dropzone';
+    return false;
+  }
+}());
+
+// Save new job
+$('.save').on('click', function(e) {
+  e.preventDefault();
+  // get values of form fields.
+  $title = $('#title').val();
+  $personnel = $('#personnel').val();
+  $services = $('#services').val();
+  $contractAmount = $('#contractAmount').val();
+  $completionDate = $('#completionDate').val();
+  $content = $('#content').val();
+  $subcategory = $(this).attr('id');
+  console.log("title: " + $title + "   personnel: " + $personnel + "   services: " + $services + "   contractAmount: " + $contractAmount + "   completionDate: " + $completionDate + "   content: " + $content + "   photoURL: " + photoURL);
+
+  $.ajax({
+    url: 'ajax.php',
+    type: 'post',
+    data: {'action': 'newArticle', 'subcategory': $subcategory,  'title': $title , 'personnel': $personnel , 'services': $services , 'contractAmount': $contractAmount , 'completionDate': $completionDate , 'content': $content , 'photoURL': photoURL },
+    success: function(data, status) {
+      // window.history.back();
+      console.log(data);
+    }
+  });
+});
+
+
+// Delete image
+$('#uploaded-images').on("click", '.uploaded-image', function(e) {
+  console.log($(this));
+});
 
 
 

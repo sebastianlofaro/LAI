@@ -3,26 +3,19 @@ $(document).ready(function() {
 
   $('.hamburger-menu').on("click", function() {
     $('.nav-items').slideToggle("slow", function() {
-      
+
     });
   });
 
 
 
-  $('a').on("click", function() {console.log("Button Clicked!")});
-
-   var $coverPhoto = $('#coverPhoto');
-
-  if ($coverPhoto.attr('src') == "") {
-    $coverPhoto.attr('src', 'media/img/addPhoto.png');
-
-    // Link click of photo to click of button
-    $coverPhoto.on("click", function() {
-      $('#imagePath').trigger("click");
-    });
-
-
-  }
+  // $('a').on("click", function() {console.log("Button Clicked!")});
+  //
+  //   // Link click of photo to click of button
+  //   // $coverPhoto.on("click", function() {
+  //   //   $('#imagePath').trigger("click");
+  //   // });
+  // }
 
 
 

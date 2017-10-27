@@ -1,6 +1,6 @@
-<?php include "templates/include/header.php" ?>
+<?php include "templates/admin/include/header.php" ?>
   <section id="viewArticle" class="">
-    <form id='editForm' action="admin.php?action=<?php echo $results['formAction']?>&amp;subcategory=<?php echo 1 ?>" method="post" enctype="multipart/form-data">
+    <form id='editForm' action="admin.php?action=<?php echo $results['formAction']?>&amp;subcategory=<?php echo $subcategory ?>" method="post" enctype="multipart/form-data">
       <div class="pageTitleContainer">
         <div class="">
           <div class="title">
@@ -28,23 +28,47 @@
 
 
             <div class="main-image">
-              <img id="coverPhoto" src="<?php echo $results['article']->imagePath ?>" alt=''>
+              <!-- <img id="coverPhoto" src="<?php echo $imagePath ?>" alt=''> -->
+              <div id="uploads"></div>
+              <div class="dropzone" id="dropzone">Drop files here to upload</div>
+              <ul id="uploaded-images">
+                <?php if (isset($imageURLs)) {
+                  foreach ($imageURLs as $imageNumber => $imagePath) {
+                    ?>
+                    <li>
+                      <div id="<?php echo $imageNumber ?>" class="uploaded-image" style="background-image: url('<?php echo $imagePath ?>')"></div>
+                    </li>
+                <?php  }
+                }  ?>
+              </ul>
+              <div class="loading-circle">
+                <div id="floatingBarsG">
+                  <div class="blockG" id="rotateG_01"></div>
+                  <div class="blockG" id="rotateG_02"></div>
+                  <div class="blockG" id="rotateG_03"></div>
+                  <div class="blockG" id="rotateG_04"></div>
+                  <div class="blockG" id="rotateG_05"></div>
+                  <div class="blockG" id="rotateG_06"></div>
+                  <div class="blockG" id="rotateG_07"></div>
+                  <div class="blockG" id="rotateG_08"></div>
+                </div>
+              </div>
             </div>
 
             <section class="details">
               <div class="col col1">
                 <h2>PERSONNEL</h2>
-                <textarea name="personnel" ><?php echo $results['article']->personnel ?></textarea>
+                <textarea id="personnel" name="personnel" ><?php echo $results['article']->personnel ?></textarea>
               </div>
               <div class="col col2">
                 <h2>SERVICES</h2>
-                <textarea name="services" ><?php echo $results['article']->services ?></textarea>
+                <textarea id="services" name="services" ><?php echo $results['article']->services ?></textarea>
               </div>
               <div class="col col3">
                 <h2>CONTRACT AMOUNT</h2>
-                <input type="text" name="contractAmount" value="<?php echo $results['article']->contractAmount ?>">
+                <input id="contractAmount" type="text" name="contractAmount" value="<?php echo $results['article']->contractAmount ?>">
                 <h2>Completion Date</h2>
-                <input type="text" name="completionDate" value="<?php echo $results['article']->completionDate ?>">
+                <input id="completionDate" type="text" name="completionDate" value="<?php echo $results['article']->completionDate ?>">
               </div>
             </section>
             <div class="pageBreak"></div>
@@ -55,12 +79,13 @@
             <div class="pageBreak"></div>
 
             <div class="imageUpload">
-              <label for="fileToUpload">Image: </label>
-              <input type="file" name="imagePath" id="imagePath">
+              <!-- <label for="fileToUpload">Image: </label> -->
+              <!-- <input type="file" name="imagePath" id="imagePath"> -->
+              <input type="file" id="file-select" name="photos[]" multiple/>
             </div>
 
             <div class="buttons">
-              <input type="submit" class="button" id="save" class="<?php $_GET['subcategory']; ?>" name="saveChanges" value="SAVE" />
+              <input type="submit" class="button save" id="<?php echo $_GET['subcategory']; ?>" name="saveChanges" value="SAVE" />
               <input type="submit" class="button" id="cancle" formnovalidate name="cancel" value="CANCLE" />
               <?php if ( $results['article']->id ) { ?>
                     <a href="admin.php?action=deleteArticle&amp;articleId=<?php echo $results['article']->id ?>" onclick="return confirm('Delete This Article?')"><button class="button" id="delete" type="button" name="button">DELETE</button></a>
