@@ -107,6 +107,51 @@ class Article
   $conn = null;
   }
 
+  // Removes "temp" from file name in file path
+  public static function detempifyImagePathsForID( $articleID ) {
+    // Get current image path for articleID
+
+    $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+    $sql = "SELECT imagePath FROM portfolio WHERE id = :id";
+    $st = $conn->prepare($sql);
+    $st->bindValue(":id", $articleID, PDO::PARAM_INT);
+    $st->execute();
+    $oldImagePath = $st->fetch();
+    $conn = null;
+
+    // Change image path
+    $newImagePath = str_replace('temp', $articleID, $oldImagePath);
+    // Update database
+    $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
+    $sql = "UPDATE portfolio SET imagePath=:imagePath WHERE id = :id";
+    $st = $conn->prepare ( $sql );
+    $st->bindValue( ":imagePath", $newImagePath[0], PDO::PARAM_STR );
+    $st->bindValue( ":id", $articleID, PDO::PARAM_INT );
+    $st->execute();
+    $conn = null;
+  }
+
+  public static function imagePathForID( $articleID ) {
+    $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+    $sql = "SELECT imagePath FROM portfolio WHERE id = :id";
+    $st = $conn->prepare($sql);
+    $st->bindValue(":id", $articleID, PDO::PARAM_INT);
+    $st->execute();
+    $oldImagePath = $st->fetch();
+    $conn = null;
+    return $oldImagePath;
+  }
+
+  public static function updateImagePathForID( $imagePath, $articleID ) {
+    $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
+    $sql = "UPDATE portfolio SET imagePath=:imagePath WHERE id = :id";
+    $st = $conn->prepare ( $sql );
+    $st->bindValue( ":imagePath", $imagePath, PDO::PARAM_STR );
+    $st->bindValue( ":id", $articleID, PDO::PARAM_INT );
+    $st->execute();
+    $conn = null;
+  }
+
   public function update() {
 
     // Does the Article object have an ID?
@@ -132,9 +177,6 @@ class Article
 
     // Does the Article object have an ID?
     if ( is_null( $this->id ) ) trigger_error ( "Article::delete(): Attempt to delete an Article object that does not have its ID property set.", E_USER_ERROR );
-
-    // Delete the image
-    unlink($this->imagePath);
 
     // Delete the Article
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );

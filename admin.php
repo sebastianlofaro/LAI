@@ -220,12 +220,29 @@ function editArticle() {
 
 function deleteArticle() {
   $pageTitle = "";
+  $articleID = (int)$_GET['articleId'];
+  $directoryToDelete = dirname(__FILE__) . "/media/img/portfolio/" . $articleID;
 
-  if ( !$article = Article::getById( (int)$_GET['articleId'] ) ) {
+  if ( !$article = Article::getById($articleID) ) {
     header( "Location: admin.php?error=articleNotFound" );
     return;
   }
+  // Delete article from database
   $article->delete();
+  // Delete article photo directory from file system
+  function recursiveRemoveDirectory($directory) {
+    foreach(glob("{$directory}/*") as $file) {
+      if(is_dir($file)) {
+        recursiveRemoveDirectory($file);
+      } else {
+        unlink($file);
+      }
+    }
+    rmdir($directory);
+  }
+
+  recursiveRemoveDirectory($directoryToDelete);
+
   header( "Location: admin.php?status=articleDeleted" );
 }
 
@@ -253,19 +270,9 @@ function listArticles() {
 
   $data = Article::getListOfSubCat((int)Subcategory::topSubCat()['id']);
 
-
   $results['articles'] = $data['results'];
   $results['totalRows'] = $data['totalRows'];
   $results['subcategories'] = $subMenuData['results'];
-
-  // if ( isset( $_GET['error'] ) ) {
-  //   if ( $_GET['error'] == "articleNotFound" ) $results['errorMessage'] = "Error: Article not found.";
-  // }
-  //
-  // if ( isset( $_GET['status'] ) ) {
-  //   if ( $_GET['status'] == "changesSaved" ) $results['statusMessage'] = "Your changes have been saved.";
-  //   if ( $_GET['status'] == "articleDeleted" ) $results['statusMessage'] = "Article deleted.";
-  // }
 
   require( TEMPLATE_PATH . "/admin/listArticles.php" );
 }

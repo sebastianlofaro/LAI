@@ -37,7 +37,10 @@
       <li>
         <a href="admin.php?action=editArticle&amp;articleId=<?php echo $article->id?>&amp;subcategory=<?php echo $subCatID ?>" >
           <!-- <img class="thumbnail" src="<?php echo $article->imagePath ?>" alt=''> -->
-          <div class="thumbnail" style="background-image: url('<?php echo $article->imagePath ?>')"></div>
+
+          <div class="thumbnail">
+            <div class="imagesPackage" style="display: none"><?php echo $article->imagePath ?></div>
+          </div>
           <p><?php echo htmlspecialchars($article->title); ?></p>
         </a>
       </li>

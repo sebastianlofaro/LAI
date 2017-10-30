@@ -128,7 +128,7 @@ $("#newSubCatBtn").on("click", function(e) {
 
 //###################### Handle Photo Upload ######################
 var photoURL = [];
-(function() {
+function activateDropzone() {
   var dropzone = document.getElementById('dropzone');
 
   var upload = function(files) {
@@ -139,13 +139,14 @@ var photoURL = [];
     for (x = 0; x < files.length; x++) {
       formData.append('files[]',files[x], x);
     }
-    //formData.append('subcategory', $(".save").attr("id"));
+    var subCatID = $(".save").attr("id");
+    //formData.append('subcategory', subCatID);
+    console.log();
     xhr.onload = function() {
       var data = JSON.parse(this.responseText);
       console.log(data);
       var html = "";
       $.each(data, function(index, value) {
-        //console.log('value.file: ' + value.file);
         photoURL.push(value.file);
         html = html + "<li><div class='uploaded-image' style = 'background-image: url(" + value.file + ")'></div></li>"
       });
@@ -171,9 +172,12 @@ var photoURL = [];
     this.className = 'dropzone';
     return false;
   }
-}());
+}
+if (document.getElementById('dropzone')) {
+  activateDropzone();
+};
 
-// Save new job
+// ###################### Save New Job ######################
 $('.save').on('click', function(e) {
   e.preventDefault();
   // get values of form fields.
@@ -201,6 +205,24 @@ $('.save').on('click', function(e) {
 // Delete image
 $('#uploaded-images').on("click", '.uploaded-image', function(e) {
   console.log($(this));
+  // Tell AJAX to unlink photo of photoID in directoryID
+  $photoID = $(this).attr('id');
+  $directoryID = $("input[name~='articleId']").val();
+  console.log('photoID: ' + $photoID + ' directoryID: ' + $directoryID);
+
+  //Make AJAX request
+  $.ajax({
+    url: 'ajax.php',
+    type: 'post',
+    data: { 'action': 'deleteImage', 'photoID': $photoID, 'directoryID': $directoryID },
+    success: function(data, status) {
+      // window.history.back();
+      // var dataObject = $.parseJSON(data);
+      // console.log(dataObject);
+      console.log(data)
+    }
+  });
+
 });
 
 

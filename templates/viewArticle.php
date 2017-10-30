@@ -20,7 +20,9 @@
         <div class="content-wrapper">
           <div class="content-container">
             <div class="main-image">
-              <img src="<?php echo $results['article']->imagePath ?>" alt=''>
+              <div class="images" style="display: none"><?php echo $results['article']->imagePath ?></div>
+              <div class="imageContainer"></div>
+              <img id="projectImage" src="" alt=''>
             </div>
             <section class="details">
               <div class="col col1">

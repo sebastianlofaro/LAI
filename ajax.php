@@ -30,14 +30,25 @@ switch ( $action ) {
   case 'deleteClient':
     deleteClient();
     break;
-  case 'uploadPhotos':
-    echo "Upload Succesful";
+  case 'uploadImages':
+    uploadImages();
+    break;
+  case 'deleteImage':
+    deleteImage();
     break;
   case 'newArticle':
     newArticle();
     break;
   default:
     echo "ERROR";
+}
+
+
+function uploadImages() {
+  $subcategory = $_POST['subcategory'];
+  $formData = $_POST['formData'];
+
+  echo $formData;
 }
 
 
@@ -59,7 +70,12 @@ function newArticle() {
   //$article->storeImage($imagePath);
   $article->storeFormValues( $package );
   $article->insert();
-  echo json_encode($package);
+  $articleID = $article->id;
+  // Change the file name from "temp" to the id of the article
+  rename(dirname(__FILE__) . "/media/img/portfolio/" . "temp", dirname(__FILE__) . "/media/img/portfolio/" . $articleID);
+  // Update the paths of all the images with new directory name.
+  Article::detempifyImagePathsForID($articleID);
+  echo json_encode($articleID);
 }
 
 function newClient() {
@@ -111,6 +127,50 @@ function deleteClient() {
   $subcategory = $_POST['subcategory'];
   Client::delete($key);
   echo json_encode(Client::getListOfClients($subcategory));
+}
+
+function deleteImage() {
+  $photoID = $_POST['photoID'];
+  $directoryID = $_POST['directoryID'];
+  $pathEnding = $directoryID . "/" . $photoID;
+  // Delete the file from the file system
+  unlink(dirname(__FILE__) . "/media/img/portfolio/" . $pathEnding);
+  // Remove the file path from database
+  //  Get current imagePath from database
+  $oldImagePath = Article::imagePathForID($directoryID);
+  // Convert string 'oldImagePath' to array on ",".
+  $imagePathsArray = explode(",", $oldImagePath[0]);
+  $indexToRemove;
+  foreach ($imagePathsArray as $key => $path) {
+    if (strpos($path, $pathEnding) !== false) {
+      // remove this index from the array
+      $indexToRemove = $key;
+    }
+  }
+  var_dump($imagePathsArray[$indexToRemove]);
+  // Delete image from aray
+  unset($imagePathsArray[$indexToRemove]);
+  // Re-Index files in directory
+  $newFileName = 0;
+  $newImagePath = '';
+  for ($i=0; $i <= sizeof($imagePathsArray); $i++) {
+    //Change the names of all the files in position i except for $indexToRemove
+    if ($i != $indexToRemove) {
+      rename("media/img/portfolio/" . $directoryID . "/" . $i , "media/img/portfolio/" . $directoryID . "/" . $newFileName);
+      if ($newImagePath === '') {
+        $newImagePath = "media/img/portfolio/" . $directoryID . "/" . $newFileName;
+      }
+      else {
+        $newImagePath = $newImagePath . ",media/img/portfolio/" . $directoryID . "/" . $newFileName;
+      }
+      $newFileName = $newFileName + 1;
+    }
+  }
+  // // Turn updated array back into string.
+  // $newImagePath = implode(",", $imagePathsArray);
+  // Update database with newImagePath
+  Article::updateImagePathForID($newImagePath, $directoryID);
+  echo json_encode($newImagePath);
 }
 
 function deleteSubCat() {

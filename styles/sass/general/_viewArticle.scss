@@ -70,4 +70,15 @@
       margin: 0 auto;
       text-align: left;
     }
+  .imageContainer {
+    width: 60vw;
+    height: 35vw;
+    max-height: 600px;
+    max-width: 900px;
+    margin: 0 auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    //background-color: red;
+  }
 }
