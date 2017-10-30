@@ -30,9 +30,6 @@ switch ( $action ) {
   case 'deleteClient':
     deleteClient();
     break;
-  case 'uploadImages':
-    uploadImages();
-    break;
   case 'deleteImage':
     deleteImage();
     break;
@@ -44,12 +41,6 @@ switch ( $action ) {
 }
 
 
-function uploadImages() {
-  $subcategory = $_POST['subcategory'];
-  $formData = $_POST['formData'];
-
-  echo $formData;
-}
 
 
 function newArticle() {
@@ -72,7 +63,7 @@ function newArticle() {
   $article->insert();
   $articleID = $article->id;
   // Change the file name from "temp" to the id of the article
-  rename(dirname(__FILE__) . "/media/img/portfolio/" . "temp", dirname(__FILE__) . "/media/img/portfolio/" . $articleID);
+  rename(dirname(__FILE__) . "/media/img/portfolio/" . $subcategory . "/temp", dirname(__FILE__) . "/media/img/portfolio/" . $subcategory . "/" . $articleID);
   // Update the paths of all the images with new directory name.
   Article::detempifyImagePathsForID($articleID);
   echo json_encode($articleID);
@@ -132,7 +123,8 @@ function deleteClient() {
 function deleteImage() {
   $photoID = $_POST['photoID'];
   $directoryID = $_POST['directoryID'];
-  $pathEnding = $directoryID . "/" . $photoID;
+  $subcategory = $_POST['subcategory'];
+  $pathEnding = $subcategory . "/" . $directoryID . "/" . $photoID;
   // Delete the file from the file system
   unlink(dirname(__FILE__) . "/media/img/portfolio/" . $pathEnding);
   // Remove the file path from database
@@ -156,12 +148,12 @@ function deleteImage() {
   for ($i=0; $i <= sizeof($imagePathsArray); $i++) {
     //Change the names of all the files in position i except for $indexToRemove
     if ($i != $indexToRemove) {
-      rename("media/img/portfolio/" . $directoryID . "/" . $i , "media/img/portfolio/" . $directoryID . "/" . $newFileName);
+      rename("media/img/portfolio/" . $subcategory . "/" . $directoryID . "/" . $i , "media/img/portfolio/" . $subcategory . "/" . $directoryID . "/" . $newFileName);
       if ($newImagePath === '') {
-        $newImagePath = "media/img/portfolio/" . $directoryID . "/" . $newFileName;
+        $newImagePath = "media/img/portfolio/" . $subcategory . "/" . $directoryID . "/" . $newFileName;
       }
       else {
-        $newImagePath = $newImagePath . ",media/img/portfolio/" . $directoryID . "/" . $newFileName;
+        $newImagePath = $newImagePath . ",media/img/portfolio/" . $subcategory . "/" . $directoryID . "/" . $newFileName;
       }
       $newFileName = $newFileName + 1;
     }

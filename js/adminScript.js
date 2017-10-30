@@ -61,47 +61,16 @@ $("document").ready(function() {
 
 //###################### Pressed newSubCatForCategory button ######################
 
-$(".newSubCatBtn").on("click", function(e) {
-  var $subCatName = $(".newSubCat").val();
-  var $category = 1; //FIXME Check this... Should it be static?
-  var $indexOfSubCat = $("#adminClientSubcategories").children().length - 1;
-  console.log('btn clicked.');
-  console.log($subCatName);
-
-  function insertSubCatInDOM(name, id) {
-    var html = '<li class="subcategory"><a id="' + id + '" href="?action=clientsSubCat&amp;id=' + id + '&amp;category=1&amp;index=' + $indexOfSubCat + '"><p> ' + name + ' </p></a></li>';
-    $('#adminClientSubcategories').append(html);
-  }
-
-  if ($subCatName) {
-
-    $.ajax({
-      url: 'ajax.php',
-      type: 'post',
-      data: {'action': 'newSubCatForCategory', 'name': $subCatName, 'category': $category },
-      success: function(data, status) {
-        // Update the DOM
-        var dataObject = $.parseJSON(data);
-        console.log(dataObject);
-        var indexOfLastSubCat = dataObject['results'].length - 1;
-        var name = dataObject['results'][indexOfLastSubCat]['name'];
-        var id = dataObject['results'][indexOfLastSubCat]['id'];
-
-        insertSubCatInDOM(name, id);
-      }
-    });
-  }
-});
 
 $("#newSubCatBtn").on("click", function(e) {
   var $subCatName = $(".newSubCat").val();
   var $category = 0; //FIXME Check this... Should it be static?
-  var $indexOfSubCat = $("#adminClientSubcategories").children().length - 1;
+  var $indexOfSubCat = $("#adminSubcategories").children().length - 1;
   console.log('btn clicked.');
   console.log($subCatName);
 
   function insertSubCatInDOM(name, id) {
-    var html = '<li class="subcategory"><a id="' + id + '" href="?action=clientsSubCat&amp;id=' + id + '&amp;category=1&amp;index=' + $indexOfSubCat + '"><p> ' + name + ' </p></a></li>';
+    var html = '<li class="subcategory"><a id="' + id + '" href="?action=portfolioSubCat&amp;id=' + id + '&amp;category=1&amp;index=' + $indexOfSubCat + '"><p> ' + name + ' </p></a></li>';
     $('#adminSubcategories').append(html);
   }
 
@@ -140,8 +109,8 @@ function activateDropzone() {
       formData.append('files[]',files[x], x);
     }
     var subCatID = $(".save").attr("id");
-    //formData.append('subcategory', subCatID);
-    console.log();
+    formData.append('subcategory', subCatID);
+    console.log(subCatID);
     xhr.onload = function() {
       var data = JSON.parse(this.responseText);
       console.log(data);
@@ -205,6 +174,7 @@ $('.save').on('click', function(e) {
 // Delete image
 $('#uploaded-images').on("click", '.uploaded-image', function(e) {
   console.log($(this));
+  var $subcategory = $('.save').attr('id');
   // Tell AJAX to unlink photo of photoID in directoryID
   $photoID = $(this).attr('id');
   $directoryID = $("input[name~='articleId']").val();
@@ -214,12 +184,9 @@ $('#uploaded-images').on("click", '.uploaded-image', function(e) {
   $.ajax({
     url: 'ajax.php',
     type: 'post',
-    data: { 'action': 'deleteImage', 'photoID': $photoID, 'directoryID': $directoryID },
+    data: { 'action': 'deleteImage', 'photoID': $photoID, 'directoryID': $directoryID, 'subcategory': $subcategory },
     success: function(data, status) {
-      // window.history.back();
-      // var dataObject = $.parseJSON(data);
-      // console.log(dataObject);
-      console.log(data)
+      console.log(data);
     }
   });
 

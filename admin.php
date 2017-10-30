@@ -50,6 +50,25 @@ function deleteSubCat() {
   $category = $_GET['category'];
   $subcategory = $_GET['subcategory'];
   Subcategory::deleteSubCat($category, $subcategory);
+  function recursiveRemoveDirectory($dir) {
+    if (!file_exists($dir)) {
+      return true;
+    }
+    if (!is_dir($dir)) {
+      return unlink($dir);
+    }
+    foreach (scandir($dir) as $item) {
+      if ($item == '.' || $item == '..') {
+        continue;
+      }
+      if (!recursiveRemoveDirectory($dir . DIRECTORY_SEPARATOR . $item)) {
+        return false;
+      }
+    }
+    return rmdir($dir);
+}
+  $directoryToDelete = dirname(__FILE__) . "/media/img/portfolio/" . $subcategory;
+  recursiveRemoveDirectory($directoryToDelete);
   if ($category == 1) {
     // Reload clients page
     clients();
@@ -137,26 +156,26 @@ function newArticle() {
     // User has posted the article edit form: save the new article
 
     // Store the image in the file system
-    $target_dir = "media/img/";
-    $target_file = $target_dir . basename($_FILES["imagePath"]["name"]);
-    $uploadOk = 1;
-    // validate image
-    if(file_exists($target_file)) {
-      // TODO notify user file exists
-      $uploadOk = 0;
-    }
-    // Check file size
-    if ($_FILES["imagePath"]["size"] > 500000000) {
-      // TODO notify user the file is too large
-      $uploadOk = 0;
-    }
-    if ($uploadOk) {
-      if (move_uploaded_file($_FILES["imagePath"]["tmp_name"], $target_file)) {
-          // File has been uploaded
-      } else {
-          // TODO notify user there was an error uploading the image
-      }
-    }
+    // $target_dir = "media/img/";
+    // $target_file = $target_dir . basename($_FILES["imagePath"]["name"]);
+    // $uploadOk = 1;
+    // // validate image
+    // if(file_exists($target_file)) {
+    //   // TODO notify user file exists
+    //   $uploadOk = 0;
+    // }
+    // // Check file size
+    // if ($_FILES["imagePath"]["size"] > 500000000) {
+    //   // TODO notify user the file is too large
+    //   $uploadOk = 0;
+    // }
+    // if ($uploadOk) {
+    //   if (move_uploaded_file($_FILES["imagePath"]["tmp_name"], $target_file)) {
+    //       // File has been uploaded
+    //   } else {
+    //       // TODO notify user there was an error uploading the image
+    //   }
+    // }
     // add the image path to the rest of the form post information
     $_POST["imagePath"] = $target_file;
     //$_POST["subcategory"] = (int) $_SESSION["subCat"];

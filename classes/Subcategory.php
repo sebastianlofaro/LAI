@@ -121,15 +121,15 @@ class Subcategory
     elseif ($category == 0) {
       // Delete Portfolio article
       //********** Delete all the images **********
-      $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-      $st = $conn->prepare( "SELECT imagePath FROM portfolio WHERE subcategory = :subCat" );
-      $st->bindValue(":subCat", $subcategory, PDO::PARAM_INT);
-      $st->execute();
-      $list = array();
-      while ( $imagePath = $st->fetch() ) {
-        unlink($imagePath[0]);
-      }
-      $conn = null;
+      // $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
+      // $st = $conn->prepare( "SELECT imagePath FROM portfolio WHERE subcategory = :subCat" );
+      // $st->bindValue(":subCat", $subcategory, PDO::PARAM_INT);
+      // $st->execute();
+      // $list = array();
+      // while ( $imagePath = $st->fetch() ) {
+      //   unlink($imagePath[0]);
+      // }
+      // $conn = null;
 
       //********** Delete all the posts from the database **********
       $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
