@@ -159,15 +159,16 @@ class Article
 
     // Update the Article
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-    $sql = "UPDATE portfolio SET title=:title, services=:services, content=:content, personnel=:personnel, contractAmount=:contractAmount, completionDate=:completionDate WHERE id = :id";
+    $sql = "UPDATE portfolio SET title=:title, services=:services, content=:content, personnel=:personnel, contractAmount=:contractAmount, completionDate=:completionDate, subcategory=:subcategory, imagePath=:imagePath WHERE id = :id";
     $st = $conn->prepare ( $sql );
     $st->bindValue( ":title", $this->title, PDO::PARAM_STR );
     $st->bindValue( ":services", $this->services, PDO::PARAM_STR );
     $st->bindValue( ":content", $this->content, PDO::PARAM_STR );
-
     $st->bindValue( ":personnel", $this->personnel, PDO::PARAM_STR );
     $st->bindValue( ":contractAmount", $this->contractAmount, PDO::PARAM_STR );
     $st->bindValue( ":completionDate", $this->completionDate, PDO::PARAM_STR );
+    $st->bindValue( ":subcategory", $this->subcategory, PDO::PARAM_INT );
+    $st->bindValue( ":imagePath", $this->imagePath, PDO::PARAM_STR );
     $st->bindValue( ":id", $this->id, PDO::PARAM_INT );
     $st->execute();
     $conn = null;

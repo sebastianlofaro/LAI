@@ -1,5 +1,6 @@
 $("document").ready(function() {
   var clientNameHolder = '';
+  //var imagePaths;
 
 
   // $("#clientsTable").find(".client").hover(
@@ -27,7 +28,7 @@ $("document").ready(function() {
   $("#clientsTable").on("click", ".client", function(e) {
     // Delete client then reload table
     $key = $(this).attr('id');
-    console.log("$key: " + $(this).attr('id'));
+    //console.log("$key: " + $(this).attr('id'));
     var $subcategory = $(".newClientBtn").attr('id'); // FIXME: this needs to be a variable not hard coded.
 
     function buildPageFromJSON(data) {
@@ -39,7 +40,7 @@ $("document").ready(function() {
         }
       }
       html = html + "</tr>";
-      console.log(html);
+      //console.log(html);
       $('#clientsTable').html(html);
     }
 
@@ -66,8 +67,6 @@ $("#newSubCatBtn").on("click", function(e) {
   var $subCatName = $(".newSubCat").val();
   var $category = 0; //FIXME Check this... Should it be static?
   var $indexOfSubCat = $("#adminSubcategories").children().length - 1;
-  console.log('btn clicked.');
-  console.log($subCatName);
 
   function insertSubCatInDOM(name, id) {
     var html = '<li class="subcategory"><a id="' + id + '" href="?action=portfolioSubCat&amp;id=' + id + '&amp;category=1&amp;index=' + $indexOfSubCat + '"><p> ' + name + ' </p></a></li>';
@@ -83,7 +82,6 @@ $("#newSubCatBtn").on("click", function(e) {
       success: function(data, status) {
         // Update the DOM
         var dataObject = $.parseJSON(data);
-        console.log(dataObject);
         var indexOfLastSubCat = dataObject['results'].length - 1;
         var name = dataObject['results'][indexOfLastSubCat]['name'];
         var id = dataObject['results'][indexOfLastSubCat]['id'];
@@ -110,18 +108,30 @@ function activateDropzone() {
     }
     var subCatID = $(".save").attr("id");
     formData.append('subcategory', subCatID);
-    console.log(subCatID);
+    formData.append('directoryID', $("input[name~='articleId']").val());
+    formData.append('photoIndex', $("#uploaded-images").children().length);
+
     xhr.onload = function() {
       var data = JSON.parse(this.responseText);
-      console.log(data);
+      console.log('Response text from image upload: ' + data);
       var html = "";
+      var existingImages = $('#imagePaths').html()
+      console.log('Previously existing images: ')
       $.each(data, function(index, value) {
-        photoURL.push(value.file);
-        html = html + "<li><div class='uploaded-image' style = 'background-image: url(" + value.file + ")'></div></li>"
+        html = html + "<li><div class='uploaded-image' id='" + value.name + "' style = 'background-image: url(" + value.file + ")'></div></li>"
+        imagePaths = imagePaths + value.file + ",";
       });
-      photoURL = photoURL.toString();
-      console.log("photoURL String: " + photoURL);
-      $('#uploaded-images').html(html);
+      // Remove the extra "," on the end of imagePaths
+      imagePaths = imagePaths.slice(0, -1);
+
+
+      $('#uploaded-images').html(html + $('#uploaded-images').html()); // ______ Might need to just adjust
+      if (existingImages) {
+        $('#imagePaths').html(existingImages + "," + imagePaths.replace(existingImages, ''));
+      }
+      else {
+        $('#imagePaths').html(imagePaths);
+      }
     }
 
     xhr.open('post', 'upload.php');
@@ -150,19 +160,20 @@ if (document.getElementById('dropzone')) {
 $('.save').on('click', function(e) {
   e.preventDefault();
   // get values of form fields.
-  $title = $('#title').val();
-  $personnel = $('#personnel').val();
-  $services = $('#services').val();
-  $contractAmount = $('#contractAmount').val();
-  $completionDate = $('#completionDate').val();
-  $content = $('#content').val();
-  $subcategory = $(this).attr('id');
-  console.log("title: " + $title + "   personnel: " + $personnel + "   services: " + $services + "   contractAmount: " + $contractAmount + "   completionDate: " + $completionDate + "   content: " + $content + "   photoURL: " + photoURL);
+  var $title = $('#title').val();
+  var $personnel = $('#personnel').val();
+  var $services = $('#services').val();
+  var $contractAmount = $('#contractAmount').val();
+  var $completionDate = $('#completionDate').val();
+  var $content = $('#content').val();
+  var $subcategory = $(this).attr('id');
+  var $articleID = $("input[name~='articleId']").val() == "" ? 'null' : $("input[name~='articleId']").val();
+  var photosURL = $('#imagePaths').text();
 
   $.ajax({
     url: 'ajax.php',
     type: 'post',
-    data: {'action': 'newArticle', 'subcategory': $subcategory,  'title': $title , 'personnel': $personnel , 'services': $services , 'contractAmount': $contractAmount , 'completionDate': $completionDate , 'content': $content , 'photoURL': photoURL },
+    data: {'action': 'saveArticle', 'subcategory': $subcategory,  'title': $title , 'personnel': $personnel , 'services': $services , 'contractAmount': $contractAmount , 'completionDate': $completionDate , 'content': $content , 'photoURL': photosURL, 'id': $articleID },
     success: function(data, status) {
       // window.history.back();
       console.log(data);
@@ -171,22 +182,24 @@ $('.save').on('click', function(e) {
 });
 
 
-// Delete image
+// ###################### Delete image ######################
 $('#uploaded-images').on("click", '.uploaded-image', function(e) {
-  console.log($(this));
+  $(this).hide();
   var $subcategory = $('.save').attr('id');
   // Tell AJAX to unlink photo of photoID in directoryID
-  $photoID = $(this).attr('id');
-  $directoryID = $("input[name~='articleId']").val();
-  console.log('photoID: ' + $photoID + ' directoryID: ' + $directoryID);
-
+  var $photoID = $(this).attr('id');
+  var $directoryID = $("input[name~='articleId']").val();
+  var $imagePaths = $('#imagePaths').text();
   //Make AJAX request
   $.ajax({
     url: 'ajax.php',
     type: 'post',
-    data: { 'action': 'deleteImage', 'photoID': $photoID, 'directoryID': $directoryID, 'subcategory': $subcategory },
+    data: { 'action': 'deleteImage', 'photoID': $photoID, 'directoryID': $directoryID, 'subcategory': $subcategory, 'tempImagePaths': imagePaths},
     success: function(data, status) {
+      data = data.replace(/\\/g, '');
       console.log(data);
+      photoURL = data;
+      $('#imagePaths').text(photoURL);
     }
   });
 

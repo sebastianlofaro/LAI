@@ -1,5 +1,12 @@
 $(document).ready(function() {
 
+  // ###################### Remove "" from imagePaths ######################
+
+  if($('#imagePaths').text()) {
+    $('#imagePaths').text($('#imagePaths').text().replace(/\"/g, ''));
+  }
+
+  // ######################  ######################
 
   $('.hamburger-menu').on("click", function() {
     $('.nav-items').slideToggle("slow", function() {
@@ -23,7 +30,7 @@ $(document).ready(function() {
   }
 
 
-  //###################### Display Thumbnails ######################
+  // ###################### Display Thumbnails ######################
 
   $('.thumbnail').each(function(e) {
     // Get the image paths (as string)

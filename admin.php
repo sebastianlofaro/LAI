@@ -144,10 +144,10 @@ function logout() {
 
 
 function newArticle() {
-  $pageTitle = "";
+  $results = array();
+  $results['pageTitle'] = "New Article";
   $subcategory = $_GET["subcategory"];
   $_POST['subcategory'] = $subcategory;
-  $results = array();
   $imagePath = 'media/img/addPhoto.png';
 
   $results['formAction'] = "newArticle";
@@ -155,30 +155,7 @@ function newArticle() {
   if ( isset( $_POST['saveChanges'] ) ) {
     // User has posted the article edit form: save the new article
 
-    // Store the image in the file system
-    // $target_dir = "media/img/";
-    // $target_file = $target_dir . basename($_FILES["imagePath"]["name"]);
-    // $uploadOk = 1;
-    // // validate image
-    // if(file_exists($target_file)) {
-    //   // TODO notify user file exists
-    //   $uploadOk = 0;
-    // }
-    // // Check file size
-    // if ($_FILES["imagePath"]["size"] > 500000000) {
-    //   // TODO notify user the file is too large
-    //   $uploadOk = 0;
-    // }
-    // if ($uploadOk) {
-    //   if (move_uploaded_file($_FILES["imagePath"]["tmp_name"], $target_file)) {
-    //       // File has been uploaded
-    //   } else {
-    //       // TODO notify user there was an error uploading the image
-    //   }
-    // }
-    // add the image path to the rest of the form post information
     $_POST["imagePath"] = $target_file;
-    //$_POST["subcategory"] = (int) $_SESSION["subCat"];
 
     $article = new Article;
 
@@ -203,10 +180,11 @@ function newArticle() {
 
 function editArticle() {
   $pageTitle = "";
-
+  $subcategory = $_GET['subcategory'];
   $results = array();
   $results['pageTitle'] = "Edit Article";
   $results['formAction'] = "editArticle";
+  $articleID = (int)$_GET['articleId'];
 
   if ( isset( $_POST['saveChanges'] ) ) {
     // User has posted the article edit form: save the article changes
@@ -227,10 +205,10 @@ function editArticle() {
   } else {
 
     // User has not posted the article edit form yet: display the form
-    $results['article'] = Article::getById( (int)$_GET['articleId'] );
+    $results['article'] = Article::getById( $articleID );
     // Get image URLs
     $imageURLs = explode(",", $results['article']->imagePath);
-    // var_dump($imageURLs);
+    $imageURLs = str_replace("\"", "", $imageURLs);
     require( TEMPLATE_PATH . "/admin/editArticleGUI.php" );
   }
 
@@ -239,8 +217,9 @@ function editArticle() {
 
 function deleteArticle() {
   $pageTitle = "";
+  $subcategory = $_GET['subcategory'];
   $articleID = (int)$_GET['articleId'];
-  $directoryToDelete = dirname(__FILE__) . "/media/img/portfolio/" . $articleID;
+  $directoryToDelete = dirname(__FILE__) . "/media/img/portfolio/" . $subcategory . "/" . $articleID;
 
   if ( !$article = Article::getById($articleID) ) {
     header( "Location: admin.php?error=articleNotFound" );

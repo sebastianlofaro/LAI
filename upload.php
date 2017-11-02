@@ -1,23 +1,41 @@
 <?php
 header('Content-Type: application/json');
+require( "config.php" );
+
 
 $uploaded = array();
 $subcategory = $_REQUEST['subcategory'];
+$directoryID = $_REQUEST['directoryID'];
+$photoIndex = $_REQUEST['photoIndex'];
+
 if (!empty($_FILES['files']['tmp_name'][0])) {
-  // var_dump('media/img/' . $subcategory);
-  mkdir(dirname(__FILE__) . "/media/img/portfolio/" . $subcategory);
-  mkdir(dirname(__FILE__) . "/media/img/portfolio/" . $subcategory . "/temp");
+  // Test if directory already exists for this article
+  if ($directoryID) {
+    $fileName = $directoryID;
+  }
+  else {
+    $fileName = 'temp';
+  }
+  // make sure file does not exist
+  if (!file_exists(dirname(__FILE__) . "/media/img/portfolio/" . $subcategory . '/' . $fileName)) {
+    // File does not exist, create file.
+    mkdir(dirname(__FILE__) . "/media/img/portfolio/" . $subcategory . '/' . $fileName);
+  }
+  
   foreach ($_FILES['files']['name'] as $position => $name) {
-    if (move_uploaded_file($_FILES['files']['tmp_name'][$position], 'media/img/portfolio/' . $subcategory . '/' . 'temp/' .  $position)) {
+    $photoName = $position + $photoIndex;
+    if (move_uploaded_file($_FILES['files']['tmp_name'][$position], 'media/img/portfolio/' . $subcategory . '/' . $fileName . '/' . $photoName)) {
       $uploaded[] = array(
         'name' => $name,
-        'file' => 'media/img/portfolio/' . $subcategory . '/' . 'temp/' . $position
+        'file' => 'media/img/portfolio/' . $subcategory . '/' . $fileName . '/' . $photoName
       );
     }
-  //  var_dump($_FILES['files']['tmp_name'][$position]);
   }
 }
-
+// if ($existingImages !== '') {
+//   // add existing images to new upload
+//   $uploaded = array_merge($existingImages, $uploaded);
+// }
 echo json_encode($uploaded);
 
  ?>

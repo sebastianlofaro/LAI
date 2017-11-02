@@ -30,6 +30,7 @@
             <div class="main-image">
               <!-- <img id="coverPhoto" src="<?php echo $imagePath ?>" alt=''> -->
               <div id="uploads"></div>
+              <div id="imagePaths" style=""><?php if ($results['pageTitle'] === "Edit Article") {echo $results['article']->imagePath;} ?></div>
               <div class="dropzone" id="dropzone">Drop files here to upload</div>
               <ul id="uploaded-images">
                 <?php if (isset($imageURLs)) {
@@ -88,7 +89,7 @@
               <input type="submit" class="button save" id="<?php echo $_GET['subcategory']; ?>" name="saveChanges" value="SAVE" />
               <input type="submit" class="button" id="cancle" formnovalidate name="cancel" value="CANCLE" />
               <?php if ( $results['article']->id ) { ?>
-                    <a href="admin.php?action=deleteArticle&amp;articleId=<?php echo $results['article']->id ?>" onclick="return confirm('Delete This Article?')"><button class="button" id="delete" type="button" name="button">DELETE</button></a>
+                    <a href="admin.php?action=deleteArticle&amp;articleId=<?php echo $results['article']->id ?>&amp;subcategory=<?php echo $results['article']->subcategory ?>" onclick="return confirm('Delete This Article?')"><button class="button" id="delete" type="button" name="button">DELETE</button></a>
               <?php } ?>
             </div>
 

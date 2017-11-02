@@ -33,8 +33,8 @@ switch ( $action ) {
   case 'deleteImage':
     deleteImage();
     break;
-  case 'newArticle':
-    newArticle();
+  case 'saveArticle':
+    saveArticle();
     break;
   default:
     echo "ERROR";
@@ -43,7 +43,7 @@ switch ( $action ) {
 
 
 
-function newArticle() {
+function saveArticle() {
   $title = $_POST['title'];
   $personnel = $_POST['personnel'];
   $services = $_POST['services'];
@@ -52,21 +52,36 @@ function newArticle() {
   $content = $_POST['content'];
   $photoURL = $_POST['photoURL'];
   $subcategory = $_POST['subcategory'];
+  $id = $_POST['id'];
   //$photoURLList = explode(',',$photoURL);
-  $package = [ "title" => $title, "personnel" => $personnel, "services" => $services, "contractAmount" => $contractAmount, "completionDate" => $completionDate, "content" => $content, "imagePath" => $photoURL, "subcategory" => $subcategory];
 
-  // Add the article to the database
-  $article = new Article;
+  // Test if article already exists
+  if ($id != 'null') {
+    // Existing Article: update database
+    $package = [ "title" => $title, "personnel" => $personnel, "services" => $services, "contractAmount" => $contractAmount, "completionDate" => $completionDate, "content" => $content, "imagePath" => $photoURL, "subcategory" => $subcategory, "id" => $id];
+    $article = new Article;
+    //$article->storeImage($imagePath);
+    $article->storeFormValues( $package );
+    $article->update();
+    $articleID = $article->id;
+    echo json_decode($articleID);
+  }
+  else {
+    // New Article: add to database and images directroy name to id
+    $package = [ "title" => $title, "personnel" => $personnel, "services" => $services, "contractAmount" => $contractAmount, "completionDate" => $completionDate, "content" => $content, "imagePath" => $photoURL, "subcategory" => $subcategory];
 
-  //$article->storeImage($imagePath);
-  $article->storeFormValues( $package );
-  $article->insert();
-  $articleID = $article->id;
-  // Change the file name from "temp" to the id of the article
-  rename(dirname(__FILE__) . "/media/img/portfolio/" . $subcategory . "/temp", dirname(__FILE__) . "/media/img/portfolio/" . $subcategory . "/" . $articleID);
-  // Update the paths of all the images with new directory name.
-  Article::detempifyImagePathsForID($articleID);
-  echo json_encode($articleID);
+    // Add the article to the database
+    $article = new Article;
+    //$article->storeImage($imagePath);
+    $article->storeFormValues( $package );
+    $article->insert();
+    $articleID = $article->id;
+    // Change the file name from "temp" to the id of the article
+    rename(dirname(__FILE__) . "/media/img/portfolio/" . $subcategory . "/temp", dirname(__FILE__) . "/media/img/portfolio/" . $subcategory . "/" . $articleID);
+    // Update the paths of all the images with new directory name.
+    Article::detempifyImagePathsForID($articleID);
+    echo json_encode($articleID);
+  }
 }
 
 function newClient() {
@@ -123,23 +138,35 @@ function deleteClient() {
 function deleteImage() {
   $photoID = $_POST['photoID'];
   $directoryID = $_POST['directoryID'];
+  $tempImagePaths = $_POST['tempImagePaths'];
   $subcategory = $_POST['subcategory'];
+  // __________________________________________________________________________ If there is no directoryID set it's value to "temp" (this means it is a new article)
+  if ($directoryID == '') {
+    $directoryID = 'temp';
+  }
+  // Create path ending
   $pathEnding = $subcategory . "/" . $directoryID . "/" . $photoID;
   // Delete the file from the file system
   unlink(dirname(__FILE__) . "/media/img/portfolio/" . $pathEnding);
-  // Remove the file path from database
-  //  Get current imagePath from database
-  $oldImagePath = Article::imagePathForID($directoryID);
+  // __________________________________________________________________________ Remove the file path from database
+  // Test if creating new article or editing existing article
+  if ($directoryID === 'temp') {
+    // Get tempImagePaths from AJAX
+    $oldImagePath = array($tempImagePaths);
+  }
+  else {
+    //  Get current imagePath from database
+    $oldImagePath = Article::imagePathForID($directoryID);
+  }
   // Convert string 'oldImagePath' to array on ",".
   $imagePathsArray = explode(",", $oldImagePath[0]);
-  $indexToRemove;
+  $indexToRemove = '';
   foreach ($imagePathsArray as $key => $path) {
     if (strpos($path, $pathEnding) !== false) {
       // remove this index from the array
       $indexToRemove = $key;
     }
   }
-  var_dump($imagePathsArray[$indexToRemove]);
   // Delete image from aray
   unset($imagePathsArray[$indexToRemove]);
   // Re-Index files in directory
@@ -158,10 +185,6 @@ function deleteImage() {
       $newFileName = $newFileName + 1;
     }
   }
-  // // Turn updated array back into string.
-  // $newImagePath = implode(",", $imagePathsArray);
-  // Update database with newImagePath
-  Article::updateImagePathForID($newImagePath, $directoryID);
   echo json_encode($newImagePath);
 }
 
