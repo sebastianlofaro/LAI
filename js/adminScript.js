@@ -109,23 +109,25 @@ function activateDropzone() {
     var subCatID = $(".save").attr("id");
     formData.append('subcategory', subCatID);
     formData.append('directoryID', $("input[name~='articleId']").val());
-    formData.append('photoIndex', $("#uploaded-images").children().length);
+    formData.append('photoIndex', $('#imagePaths').text() == "" ? 0 : $('#imagePaths').text().split(',').length);
 
     xhr.onload = function() {
+      var imagePaths = '';
       var data = JSON.parse(this.responseText);
-      console.log('Response text from image upload: ' + data);
       var html = "";
       var existingImages = $('#imagePaths').html()
-      console.log('Previously existing images: ')
       $.each(data, function(index, value) {
-        html = html + "<li><div class='uploaded-image' id='" + value.name + "' style = 'background-image: url(" + value.file + ")'></div></li>"
+        html = html + "<li><div class='uploaded-image' id='" + ( parseInt(value.name) + $('#imagePaths').text() == "" ? 0 : $('#imagePaths').text().split(',').length ) + "' style = 'background-image: url(" + value.file + ")'></div></li>"
         imagePaths = imagePaths + value.file + ",";
       });
+      console.log('upload response HTML: ' + html)
       // Remove the extra "," on the end of imagePaths
       imagePaths = imagePaths.slice(0, -1);
+        console.log('upload response imagePaths: ' + imagePaths)
 
 
-      $('#uploaded-images').html(html + $('#uploaded-images').html()); // ______ Might need to just adjust
+      $('#uploaded-images').html($('#uploaded-images').html() + html);
+      console.log('(upload photo callback) existingImages: ' + existingImages);
       if (existingImages) {
         $('#imagePaths').html(existingImages + "," + imagePaths.replace(existingImages, ''));
       }
@@ -185,21 +187,33 @@ $('.save').on('click', function(e) {
 // ###################### Delete image ######################
 $('#uploaded-images').on("click", '.uploaded-image', function(e) {
   $(this).hide();
-  var $subcategory = $('.save').attr('id');
   // Tell AJAX to unlink photo of photoID in directoryID
+  var $subcategory = $('.save').attr('id');
   var $photoID = $(this).attr('id');
   var $directoryID = $("input[name~='articleId']").val();
   var $imagePaths = $('#imagePaths').text();
-  //Make AJAX request
+
+  console.log('photoID: ' + $photoID);
+  console.log('directoryID: ' + $directoryID);
+  console.log('imagePaths: ' + $imagePaths);
+  console.log('subcategory: ' + $subcategory);
+
   $.ajax({
     url: 'ajax.php',
     type: 'post',
-    data: { 'action': 'deleteImage', 'photoID': $photoID, 'directoryID': $directoryID, 'subcategory': $subcategory, 'tempImagePaths': imagePaths},
+    data: { 'action': 'deleteImage', 'photoID': $photoID, 'directoryID': $directoryID, 'subcategory': $subcategory, 'tempImagePaths': $imagePaths },
     success: function(data, status) {
-      data = data.replace(/\\/g, '');
       console.log(data);
-      photoURL = data;
-      $('#imagePaths').text(photoURL);
+      data = data.replace(/\\/g, '');
+      data = data.replace(/\"/g, '');
+      console.log(data);
+      $('#imagePaths').html(data);
+      imagePathsArray = data.split(',');
+      var html = '';
+      $.each(imagePathsArray, function(index, value) {
+        html = html + "<li><div class='uploaded-image' id='" + index + "' style = 'background-image: url(" + value + ")'></div></li>"
+      });
+      $('#uploaded-images').html(html);
     }
   });
 

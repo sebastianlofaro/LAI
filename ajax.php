@@ -41,7 +41,49 @@ switch ( $action ) {
 }
 
 
+function deleteImage() {
+  $photoID = $_POST['photoID'];
+  $directoryID = $_POST['directoryID'];
+  $subcategory = $_POST['subcategory'];
+  $tempImagePaths = $_POST['tempImagePaths'];
 
+  if ($directoryID == '') {
+    $directoryID = 'temp';
+  }
+
+  // Create path ending
+  $pathEnding = $subcategory . "/" . $directoryID . "/" . $photoID;
+  // Delete the file from the file system
+  unlink(dirname(__FILE__) . "/media/img/portfolio/" . $pathEnding);
+
+  $imagePathsArray = explode(",", $tempImagePaths);
+  $indexToRemove;
+  foreach ($imagePathsArray as $key => $path) {
+    if (strpos($path, $pathEnding) !== false) {
+      // remove this index from the array
+      $indexToRemove = $key;
+    }
+  }
+  // Delete image from aray
+  unset($imagePathsArray[$indexToRemove]);
+  // Re-Index files in directory
+  $newFileName = 0;
+  $newImagePath = '';
+  for ($i=0; $i <= sizeof($imagePathsArray); $i++) {
+    //Change the names of all the files in position i except for $indexToRemove
+    if ($i != $indexToRemove) {
+      rename("media/img/portfolio/" . $subcategory . "/" . $directoryID . "/" . $i , "media/img/portfolio/" . $subcategory . "/" . $directoryID . "/" . $newFileName);
+      if ($newImagePath === '') {
+        $newImagePath = "media/img/portfolio/" . $subcategory . "/" . $directoryID . "/" . $newFileName;
+      }
+      else {
+        $newImagePath = $newImagePath . ",media/img/portfolio/" . $subcategory . "/" . $directoryID . "/" . $newFileName;
+      }
+      $newFileName = $newFileName + 1;
+    }
+  }
+  echo json_encode($newImagePath);
+}
 
 function saveArticle() {
   $title = $_POST['title'];
@@ -133,59 +175,6 @@ function deleteClient() {
   $subcategory = $_POST['subcategory'];
   Client::delete($key);
   echo json_encode(Client::getListOfClients($subcategory));
-}
-
-function deleteImage() {
-  $photoID = $_POST['photoID'];
-  $directoryID = $_POST['directoryID'];
-  $tempImagePaths = $_POST['tempImagePaths'];
-  $subcategory = $_POST['subcategory'];
-  // __________________________________________________________________________ If there is no directoryID set it's value to "temp" (this means it is a new article)
-  if ($directoryID == '') {
-    $directoryID = 'temp';
-  }
-  // Create path ending
-  $pathEnding = $subcategory . "/" . $directoryID . "/" . $photoID;
-  // Delete the file from the file system
-  unlink(dirname(__FILE__) . "/media/img/portfolio/" . $pathEnding);
-  // __________________________________________________________________________ Remove the file path from database
-  // Test if creating new article or editing existing article
-  if ($directoryID === 'temp') {
-    // Get tempImagePaths from AJAX
-    $oldImagePath = array($tempImagePaths);
-  }
-  else {
-    //  Get current imagePath from database
-    $oldImagePath = Article::imagePathForID($directoryID);
-  }
-  // Convert string 'oldImagePath' to array on ",".
-  $imagePathsArray = explode(",", $oldImagePath[0]);
-  $indexToRemove = '';
-  foreach ($imagePathsArray as $key => $path) {
-    if (strpos($path, $pathEnding) !== false) {
-      // remove this index from the array
-      $indexToRemove = $key;
-    }
-  }
-  // Delete image from aray
-  unset($imagePathsArray[$indexToRemove]);
-  // Re-Index files in directory
-  $newFileName = 0;
-  $newImagePath = '';
-  for ($i=0; $i <= sizeof($imagePathsArray); $i++) {
-    //Change the names of all the files in position i except for $indexToRemove
-    if ($i != $indexToRemove) {
-      rename("media/img/portfolio/" . $subcategory . "/" . $directoryID . "/" . $i , "media/img/portfolio/" . $subcategory . "/" . $directoryID . "/" . $newFileName);
-      if ($newImagePath === '') {
-        $newImagePath = "media/img/portfolio/" . $subcategory . "/" . $directoryID . "/" . $newFileName;
-      }
-      else {
-        $newImagePath = $newImagePath . ",media/img/portfolio/" . $subcategory . "/" . $directoryID . "/" . $newFileName;
-      }
-      $newFileName = $newFileName + 1;
-    }
-  }
-  echo json_encode($newImagePath);
 }
 
 function deleteSubCat() {
