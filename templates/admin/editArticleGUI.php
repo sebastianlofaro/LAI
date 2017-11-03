@@ -30,6 +30,7 @@
             <div class="main-image">
               <!-- <img id="coverPhoto" src="<?php echo $imagePath ?>" alt=''> -->
               <div id="uploads"></div>
+              <div id="lastImageID"></div>
               <div id="imagePaths" style=""><?php if ($results['pageTitle'] === "Edit Article") {echo $results['article']->imagePath;} ?></div>
               <div class="dropzone" id="dropzone">Drop files here to upload</div>
               <ul id="uploaded-images">

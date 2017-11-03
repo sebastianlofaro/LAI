@@ -6,7 +6,12 @@ require( "config.php" );
 $uploaded = array();
 $subcategory = $_REQUEST['subcategory'];
 $directoryID = $_REQUEST['directoryID'];
-$photoIndex = $_REQUEST['photoIndex'];
+$lastImageID = $_REQUEST['lastImageID'];
+$newLastImageID;
+
+// add one to lastImageID to get next image id.
+$lastImageID = $lastImageID + 1;
+
 
 if (!empty($_FILES['files']['tmp_name'][0])) {
   // Test if directory already exists for this article
@@ -21,9 +26,10 @@ if (!empty($_FILES['files']['tmp_name'][0])) {
     // File does not exist, create file.
     mkdir(dirname(__FILE__) . "/media/img/portfolio/" . $subcategory . '/' . $fileName);
   }
-  
+
   foreach ($_FILES['files']['name'] as $position => $name) {
-    $photoName = $position + $photoIndex;
+    $photoName = $position + $lastImageID;
+    $newLastImageID = $photoName;
     if (move_uploaded_file($_FILES['files']['tmp_name'][$position], 'media/img/portfolio/' . $subcategory . '/' . $fileName . '/' . $photoName)) {
       $uploaded[] = array(
         'name' => $name,
@@ -31,11 +37,12 @@ if (!empty($_FILES['files']['tmp_name'][0])) {
       );
     }
   }
+
+  echo json_encode( array(
+    'uploaded' => $uploaded,
+    'lastImageID' => $newLastImageID
+  ));
 }
-// if ($existingImages !== '') {
-//   // add existing images to new upload
-//   $uploaded = array_merge($existingImages, $uploaded);
-// }
-echo json_encode($uploaded);
+
 
  ?>

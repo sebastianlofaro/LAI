@@ -66,22 +66,23 @@ function deleteImage() {
   }
   // Delete image from aray
   unset($imagePathsArray[$indexToRemove]);
+  $newImagePath = implode(',', $imagePathsArray);
   // Re-Index files in directory
-  $newFileName = 0;
-  $newImagePath = '';
-  for ($i=0; $i <= sizeof($imagePathsArray); $i++) {
-    //Change the names of all the files in position i except for $indexToRemove
-    if ($i != $indexToRemove) {
-      rename("media/img/portfolio/" . $subcategory . "/" . $directoryID . "/" . $i , "media/img/portfolio/" . $subcategory . "/" . $directoryID . "/" . $newFileName);
-      if ($newImagePath === '') {
-        $newImagePath = "media/img/portfolio/" . $subcategory . "/" . $directoryID . "/" . $newFileName;
-      }
-      else {
-        $newImagePath = $newImagePath . ",media/img/portfolio/" . $subcategory . "/" . $directoryID . "/" . $newFileName;
-      }
-      $newFileName = $newFileName + 1;
-    }
-  }
+  // $newFileName = 0;
+  // $newImagePath = '';
+  // for ($i=0; $i <= sizeof($imagePathsArray); $i++) {
+  //   //Change the names of all the files in position i except for $indexToRemove
+  //   if ($i != $indexToRemove) {
+  //     rename("media/img/portfolio/" . $subcategory . "/" . $directoryID . "/" . $i , "media/img/portfolio/" . $subcategory . "/" . $directoryID . "/" . $newFileName);
+  //     if ($newImagePath === '') {
+  //       $newImagePath = "media/img/portfolio/" . $subcategory . "/" . $directoryID . "/" . $newFileName;
+  //     }
+  //     else {
+  //       $newImagePath = $newImagePath . ",media/img/portfolio/" . $subcategory . "/" . $directoryID . "/" . $newFileName;
+  //     }
+  //     $newFileName = $newFileName + 1;
+  //   }
+  // }
   echo json_encode($newImagePath);
 }
 

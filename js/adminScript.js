@@ -107,17 +107,24 @@ function activateDropzone() {
       formData.append('files[]',files[x], x);
     }
     var subCatID = $(".save").attr("id");
-    formData.append('subcategory', subCatID);
-    formData.append('directoryID', $("input[name~='articleId']").val());
-    formData.append('photoIndex', $('#imagePaths').text() == "" ? 0 : $('#imagePaths').text().split(',').length);
+    formData.append( 'subcategory', subCatID );
+    formData.append( 'directoryID', $("input[name~='articleId']").val() );
+    formData.append( 'lastImageID', $('#lastImageID').text() == "" ? -1 : $('#lastImageID').text() );
 
     xhr.onload = function() {
       var imagePaths = '';
+      console.log(this.responseText);
       var data = JSON.parse(this.responseText);
+      console.log(data);
+      console.log(data.uploaded);
+
       var html = "";
       var existingImages = $('#imagePaths').html()
-      $.each(data, function(index, value) {
-        html = html + "<li><div class='uploaded-image' id='" + ( parseInt(value.name) + $('#imagePaths').text() == "" ? 0 : $('#imagePaths').text().split(',').length ) + "' style = 'background-image: url(" + value.file + ")'></div></li>"
+      console.log(data.uploaded)
+      $.each(data.uploaded, function(index, value) {
+        console.log('index: ' + index + "   value: " + value + '   lastImageID: ' + data.lastImageID);
+        console.log($('#lastImageID').text())
+        html = html + "<li><div class='uploaded-image' id='" + ( $('#lastImageID').text() === "" ? index : parseInt($('#lastImageID').text()) + index + 1) + "' style = 'background-image: url(" + value.file + ")'></div></li>"
         imagePaths = imagePaths + value.file + ",";
       });
       console.log('upload response HTML: ' + html)
@@ -127,13 +134,14 @@ function activateDropzone() {
 
 
       $('#uploaded-images').html($('#uploaded-images').html() + html);
-      console.log('(upload photo callback) existingImages: ' + existingImages);
       if (existingImages) {
         $('#imagePaths').html(existingImages + "," + imagePaths.replace(existingImages, ''));
       }
       else {
         $('#imagePaths').html(imagePaths);
       }
+      // Set lastImagID in the DOM
+      $('#lastImageID').html(data.lastImageID);
     }
 
     xhr.open('post', 'upload.php');
@@ -208,12 +216,13 @@ $('#uploaded-images').on("click", '.uploaded-image', function(e) {
       data = data.replace(/\"/g, '');
       console.log(data);
       $('#imagePaths').html(data);
-      imagePathsArray = data.split(',');
-      var html = '';
-      $.each(imagePathsArray, function(index, value) {
-        html = html + "<li><div class='uploaded-image' id='" + index + "' style = 'background-image: url(" + value + ")'></div></li>"
-      });
-      $('#uploaded-images').html(html);
+      // imagePathsArray = data.split(',');
+      // var html = '';
+      // $.each(imagePathsArray, function(index, value) {
+      //   console.log('index: ' + index + '   value: ' + value);
+      //   html = html + "<li><div class='uploaded-image' id='" + ( parseInt($('#lastImageID').text()) + index) + "' style = 'background-image: url(" + value + ")'></div></li>"
+      // });
+      // $('#uploaded-images').html(html);
     }
   });
 
