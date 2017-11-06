@@ -179,11 +179,13 @@ $('.save').on('click', function(e) {
   var $subcategory = $(this).attr('id');
   var $articleID = $("input[name~='articleId']").val() == "" ? 'null' : $("input[name~='articleId']").val();
   var photosURL = $('#imagePaths').text();
+  var $lastImageID = $('#lastImageID').text();
+  console.log('save clicked')
 
   $.ajax({
     url: 'ajax.php',
     type: 'post',
-    data: {'action': 'saveArticle', 'subcategory': $subcategory,  'title': $title , 'personnel': $personnel , 'services': $services , 'contractAmount': $contractAmount , 'completionDate': $completionDate , 'content': $content , 'photoURL': photosURL, 'id': $articleID },
+    data: {'action': 'saveArticle', 'subcategory': $subcategory,  'title': $title , 'personnel': $personnel , 'services': $services , 'contractAmount': $contractAmount , 'completionDate': $completionDate , 'content': $content , 'photoURL': photosURL , 'lastImageID': $lastImageID , 'id': $articleID },
     success: function(data, status) {
       // window.history.back();
       console.log(data);

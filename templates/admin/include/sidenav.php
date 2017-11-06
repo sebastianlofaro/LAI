@@ -7,7 +7,7 @@
     <?php $index = 0; ?>
     <?php foreach ( $results['subcategories'] as $subcategory ) { ?>
       <li class="subcategory">
-        <a id="<?php echo $subcategory->id ?>" href="?action=portfolioSubCat&amp;id=<?php echo $subcategory->id ?>&amp;index=<?php echo $index ?>">
+        <a class="hover-lightblue" id="<?php echo $subcategory->id ?>" href="?action=portfolioSubCat&amp;id=<?php echo $subcategory->id ?>&amp;index=<?php echo $index ?>">
           <p><?php echo htmlspecialchars($subcategory->name); ?></p>
         </a>
       </li>

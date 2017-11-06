@@ -82,8 +82,9 @@ function deleteSubCat() {
 function clientSubCatForID() {
   $pageTitle = "";
   $subCatID = $_GET['id'];
-  $category = $_GET['category'];
+  //$category = $_GET['category'];
   $titleIndex = $_GET['index'];
+  $section = 2;
   $data = Client::getListOfClients($subCatID);
   $subMenuData = Subcategory::getListForCategory($category);
   $results = array();

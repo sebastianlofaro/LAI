@@ -95,23 +95,24 @@ function saveArticle() {
   $content = $_POST['content'];
   $photoURL = $_POST['photoURL'];
   $subcategory = $_POST['subcategory'];
+  $lastImageID = $_POST['lastImageID'];
   $id = $_POST['id'];
   //$photoURLList = explode(',',$photoURL);
 
   // Test if article already exists
   if ($id != 'null') {
     // Existing Article: update database
-    $package = [ "title" => $title, "personnel" => $personnel, "services" => $services, "contractAmount" => $contractAmount, "completionDate" => $completionDate, "content" => $content, "imagePath" => $photoURL, "subcategory" => $subcategory, "id" => $id];
+    $package = [ "title" => $title, "personnel" => $personnel, "services" => $services, "contractAmount" => $contractAmount, "completionDate" => $completionDate, "content" => $content, "imagePath" => $photoURL, "lastImageID" => $lastImageID, "subcategory" => $subcategory, "id" => $id];
     $article = new Article;
     //$article->storeImage($imagePath);
     $article->storeFormValues( $package );
     $article->update();
     $articleID = $article->id;
-    echo json_decode($articleID);
+    echo json_decode($subcategory);
   }
   else {
     // New Article: add to database and images directroy name to id
-    $package = [ "title" => $title, "personnel" => $personnel, "services" => $services, "contractAmount" => $contractAmount, "completionDate" => $completionDate, "content" => $content, "imagePath" => $photoURL, "subcategory" => $subcategory];
+    $package = [ "title" => $title, "personnel" => $personnel, "services" => $services, "contractAmount" => $contractAmount, "completionDate" => $completionDate, "content" => $content, "imagePath" => $photoURL, "subcategory" => $subcategory, "lastImageID" => $lastImageID];
 
     // Add the article to the database
     $article = new Article;
@@ -120,10 +121,12 @@ function saveArticle() {
     $article->insert();
     $articleID = $article->id;
     // Change the file name from "temp" to the id of the article
-    rename(dirname(__FILE__) . "/media/img/portfolio/" . $subcategory . "/temp", dirname(__FILE__) . "/media/img/portfolio/" . $subcategory . "/" . $articleID);
-    // Update the paths of all the images with new directory name.
-    Article::detempifyImagePathsForID($articleID);
-    echo json_encode($articleID);
+    if ( is_dir(dirname(__FILE__) . "/media/img/portfolio/" . $subcategory . "/temp") ) {
+      rename(dirname(__FILE__) . "/media/img/portfolio/" . $subcategory . "/temp", dirname(__FILE__) . "/media/img/portfolio/" . $subcategory . "/" . $articleID);
+      // Update the paths of all the images with new directory name.
+      Article::detempifyImagePathsForID($articleID);
+    }
+    echo json_encode($subcategory);
   }
 }
 

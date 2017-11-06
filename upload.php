@@ -9,8 +9,9 @@ $directoryID = $_REQUEST['directoryID'];
 $lastImageID = $_REQUEST['lastImageID'];
 $newLastImageID;
 
-// add one to lastImageID to get next image id.
-$lastImageID = $lastImageID + 1;
+
+  // add one to lastImageID to get next image id.
+  $lastImageID = $lastImageID + 1;
 
 
 if (!empty($_FILES['files']['tmp_name'][0])) {

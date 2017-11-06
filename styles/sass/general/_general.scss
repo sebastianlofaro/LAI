@@ -7,6 +7,13 @@
       outline: none;
   }
 }
+*:visited {
+  color: black;
+}
+
+a {
+  color: black;
+}
 
 .hidden {
   display: none;
@@ -39,6 +46,19 @@ body {
     color: white;
   }
 
+#deleteClientSubCatBtn {
+  background: white;
+  color: red;
+  margin: 10px;
+  padding: 5px 40px;
+  font-weight: 500;
+  border: 2px solid red;
+}
+#deleteClientSubCatBtn:hover {
+  color: white;
+  background-color: red;
+}
+
 .form-wrapper {
   margin: 0 auto;
   margin-top: 50px;
@@ -59,10 +79,7 @@ body {
 #header {
   display: flex;
   flex-wrap: wrap;
-  > *, #slogan {
-    margin: 0 auto;
-    max-width: 100%;
-  }
+  justify-content: space-around;
 }
 
 .main-content {
@@ -81,6 +98,27 @@ body {
   }
 }
 
+#newSubCat {
+  height: 30px;
+  margin-top: 7px;
+}
+
+#newSubCatBtn {
+  background: none;
+  border: 3px solid green;
+  color: green;
+  margin-top: 7px;
+  height: 30px;
+  width: 30px;
+}
+#newSubCatBtn:hover {
+  color: white;
+  background-color: green;
+}
+
+#newSubCatWrapper {
+  display: flex;
+}
 
 .secondaryMenu {
   //box-shadow: 0px 11px 29px 5px rgba(0,0,0,0.22);
@@ -104,12 +142,13 @@ body {
       width: auto;
     }
   }
-  a {
-    color: black;
-  }
   a:hover {
     color: #23c1ee;
   }
+}
+
+.hover-lightblue:hover {
+  color: #23c1ee;
 }
 
 .selected {
@@ -117,10 +156,14 @@ body {
   :first-child {color: rgb(3,77,114);}
 }
 
+.selected-secondary {
+  color: #23c1ee;
+}
+
 .side-nav {
   background-color: white;
   @include desktop {
-    display: inline-block;
+    display: flex;
   }
   .selected {
     background-color: white;
@@ -132,13 +175,16 @@ body {
     flex-direction: row;
     justify-content: space-between;
     padding-left: 0;
+    width: 100%;
     max-width: 1000px;
     margin: 10px auto;
     li {
       margin: 7px;
       a {
-        color: black;
         font-size: .9em;
+      }
+      a:hover {
+        color: #23c1ee;
       }
     }
   }

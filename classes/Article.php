@@ -104,10 +104,11 @@ class Article
   $st->bindValue( ":contractAmount", $this->contractAmount, PDO::PARAM_STR );
   $st->bindValue( ":completionDate", $this->completionDate, PDO::PARAM_STR );
   $st->bindValue( ":subcategory", $this->subcategory, PDO::PARAM_INT );
-  $st->bindValue( ":lastImageID", $this->lastImageID, PDO::PARAM_INT );
+  $st->bindValue( ":lastImageID", $this->lastImageID, PDO::PARAM_STR );
   $st->execute();
   $this->id = $conn->lastInsertId();
   $conn = null;
+  var_dump($this->lastImageID);
   }
 
   // Removes "temp" from file name in file path

@@ -3,9 +3,9 @@
 <div class="aboutUs">
   <nav class="secondaryMenu">
     <ul>
-      <li><a href="?action=aboutUs&amp;subMenu=companyProfile">Company Profile</a></li>
-      <li><a href="?action=aboutUs&amp;subMenu=team">Our Team</a></li>
-      <li><a href="?action=aboutUs&amp;subMenu=affiliations">Affiliations, Licenses, Qualifications</a></li>
+      <li><a class="hover-lightblue <?php if ($selectedSubCat != "team" && $selectedSubCat != "affiliations") {echo "selected-secondary";} ?>" href="?action=aboutUs&amp;subMenu=companyProfile">Company Profile</a></li>
+      <li><a class="hover-lightblue <?php if ($selectedSubCat === "team") {echo "selected-secondary";} ?>" href="?action=aboutUs&amp;subMenu=team">Our Team</a></li>
+      <li><a class="hover-lightblue <?php if ($selectedSubCat === "affiliations") {echo "selected-secondary";} ?>" href="?action=aboutUs&amp;subMenu=affiliations">Affiliations, Licenses, Qualifications</a></li>
     </ul>
   </nav>
   <div class="wrapper">

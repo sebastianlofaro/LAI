@@ -32,10 +32,19 @@ footer {
     flex-direction: row;
   }
   .col {
-    margin: 10px;
+    margin: 5px;
+    @include desktop {
+      margin: 10px;
+    }
+  }
+  .col1 {
+    margin-bottom: 0;
+    @include desktop {
+      margin: 10px;
+    }
   }
   .col2 {
-    flex-grow: 2;
+    margin-bottom: 0;
     @include desktop {
       text-align: center;
     }
@@ -48,18 +57,29 @@ footer {
     text-align: right;
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    margin-top: 0;
     @include desktop {
       align-items: flex-start;
       justify-content: flex-end;
     }
+    img {
+      width: 35px;
+      height: 35px;
+    }
     p {
       margin-left: 5px;
-      margin-top: 8px;
+      margin-top: 10px;
     }
   }
   .col-double {
     display: flex;
     flex-direction: column;
+  }
+  .col-group {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
   }
   .col4 {
     text-align: right;
@@ -75,5 +95,8 @@ footer {
     :hover {
       cursor: pointer;
     }
+  }
+  .logout {
+    color: #23c1ee;
   }
 }

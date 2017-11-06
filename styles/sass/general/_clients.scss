@@ -2,6 +2,7 @@
   .clientAdmin:hover {
     cursor: default;
     color: red;
+    border: 2px solid red;
   }
   .content {
     min-height: calc(100vh - 291px);
@@ -12,7 +13,7 @@
     background-image: url('../../media/shattered.png');
     background-repeat: repeat;
     @include desktop {
-      padding: 0 0 250px 0;
+      padding: 0px 0 250px 0;
     }
     .wrapper{
       background-color: white;
@@ -38,6 +39,31 @@
       display: none;
     }
   }
+
+  #newClientInput {
+    height: 30px;
+    margin: 0;
+  }
+
+  .newClientBtn {
+    height: 30px;
+    width: 30px;
+    border: 3px solid green;
+    color: green;
+    background-color: white;
+    margin: 0;
+  }
+  .newClientBtn:hover {
+    color: white;
+    background-color: green;
+  }
+
+  #newClientInputWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
   table {
     display: none;
     margin: 50px auto;
@@ -48,6 +74,7 @@
       padding: 10px 20px;
       font-size: 1.2em;
       font-weight: 200;
+      width: 30%;
     }
   }
 }
