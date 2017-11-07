@@ -30,7 +30,7 @@
             <div class="main-image">
               <!-- <img id="coverPhoto" src="<?php echo $imagePath ?>" alt=''> -->
               <div id="uploads"></div>
-              <div id="lastImageID"></div>
+              <div id="lastImageID"><?php if(isset($results['article']->lastImageID)) {echo $results['article']->lastImageID;} ?></div>
               <div id="imagePaths" style=""><?php if ($results['pageTitle'] === "Edit Article") {echo $results['article']->imagePath;} ?></div>
               <div class="dropzone" id="dropzone">Drop files here to upload</div>
               <ul id="uploaded-images">
@@ -38,7 +38,7 @@
                   foreach ($imageURLs as $imageNumber => $imagePath) {
                     ?>
                     <li>
-                      <div id="<?php echo $imageNumber ?>" class="uploaded-image" style="background-image: url('<?php echo $imagePath ?>')"></div>
+                      <div id="<?php $imageID; preg_match('([^/]+$)', $imagePath, $imageID); echo $imageID[0]; ?>" class="uploaded-image" style="background-image: url('<?php echo $imagePath ?>')"></div>
                     </li>
                 <?php  }
                 }  ?>
