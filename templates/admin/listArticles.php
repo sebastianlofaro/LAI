@@ -30,6 +30,7 @@
         <li class=""><a href="?action=clients">CLIENTS</a></li>
         <li class=""><a href="#">ABOUT&nbsp;US</a></li>
         <li class=""><a href="#">CONTACT&nbsp;US</a></li>
+        <div class="category" style="display: none">0</div>
       </ul>
     </nav>
 <section id="listArticles" class="main-content">

@@ -1,7 +1,7 @@
 <nav class="side-nav">
   <ul id="adminClientSubcategories">
     <li id="newSubCatWrapper" class="newSubCatWrapper">
-      <input id="newSubCat" class="newSubCat" type="text" name="" value="" placeholder="new subcategory" style="display: block">
+      <input id="newSubCat" class="newSubCat" type="text" name="" value="" placeholder="New Subcategory" style="display: block">
       <button id="newSubCatBtn" class="newSubCatBtn" type="button" name="button">+</button>
     </li>
     <?php

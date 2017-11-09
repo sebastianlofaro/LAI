@@ -51,7 +51,6 @@ class Article
     $sql = "SELECT SQL_CALC_FOUND_ROWS * FROM portfolio WHERE subcategory = $key";
 
     $st = $conn->prepare( $sql );
-    //$st = bindValue( ":key", $key, PDO::PARAM_INT );
     $st->execute();
     $list = array();
 

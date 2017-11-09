@@ -31,6 +31,7 @@
         <li class=""><a href="#">ABOUT&nbsp;US</a></li>
         <li class=""><a href="#">CONTACT&nbsp;US</a></li>
       </ul>
+      <div class="category" style="display: none">1</div>
     </nav>
 
 <div id="clients">
@@ -44,9 +45,18 @@
       <a href="?action=deleteSubCat&amp;category=1&amp;subcategory=<?php echo $results['menuData'][$titleIndex]->id; ?>"><button type="button" id="deleteClientSubCatBtn" name="deleteClientSubCatBtn">Delete</button></a>
       <p>The listing below represents a partial listing of our <?php echo strtolower($results['menuData'][$titleIndex]->name) ?> clientele.</p>
       <div id="newClientInputWrapper">
-        <input type="text" id="newClientInput" name="client" value="" placeholder="newClient">
+        <input type="text" id="newClientInput" name="client" value="" placeholder="New Client">
         <button type="button" name="newClient" class="newClientBtn" id="<?php echo $results['menuData'][$titleIndex]->id; ?>"> + </button>
       </div>
+      <ul class="mobile-list">
+        <?php
+        $html = '';
+        for ($i=0; $i < count($results['clients']); $i++) {
+          $html = $html . "<li class='client clientAdmin' id='" . $results['clients'][$i]->id . "''>" . $results['clients'][$i]->name . "</li>";
+        }
+        echo $html;
+         ?>
+      </ul>
       <table id="clientsTable">
         <?php
         // Makes a table 3 columns wide

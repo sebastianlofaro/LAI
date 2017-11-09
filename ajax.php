@@ -67,22 +67,6 @@ function deleteImage() {
   // Delete image from aray
   unset($imagePathsArray[$indexToRemove]);
   $newImagePath = implode(',', $imagePathsArray);
-  // Re-Index files in directory
-  // $newFileName = 0;
-  // $newImagePath = '';
-  // for ($i=0; $i <= sizeof($imagePathsArray); $i++) {
-  //   //Change the names of all the files in position i except for $indexToRemove
-  //   if ($i != $indexToRemove) {
-  //     rename("media/img/portfolio/" . $subcategory . "/" . $directoryID . "/" . $i , "media/img/portfolio/" . $subcategory . "/" . $directoryID . "/" . $newFileName);
-  //     if ($newImagePath === '') {
-  //       $newImagePath = "media/img/portfolio/" . $subcategory . "/" . $directoryID . "/" . $newFileName;
-  //     }
-  //     else {
-  //       $newImagePath = $newImagePath . ",media/img/portfolio/" . $subcategory . "/" . $directoryID . "/" . $newFileName;
-  //     }
-  //     $newFileName = $newFileName + 1;
-  //   }
-  // }
   echo json_encode($newImagePath);
 }
 
@@ -97,14 +81,13 @@ function saveArticle() {
   $subcategory = $_POST['subcategory'];
   $lastImageID = $_POST['lastImageID'];
   $id = $_POST['id'];
-  //$photoURLList = explode(',',$photoURL);
+
 
   // Test if article already exists
   if ($id != 'null') {
     // Existing Article: update database
     $package = [ "title" => $title, "personnel" => $personnel, "services" => $services, "contractAmount" => $contractAmount, "completionDate" => $completionDate, "content" => $content, "imagePath" => $photoURL, "lastImageID" => $lastImageID, "subcategory" => $subcategory, "id" => $id];
     $article = new Article;
-    //$article->storeImage($imagePath);
     $article->storeFormValues( $package );
     $article->update();
     $articleID = $article->id;
@@ -116,7 +99,6 @@ function saveArticle() {
 
     // Add the article to the database
     $article = new Article;
-    //$article->storeImage($imagePath);
     $article->storeFormValues( $package );
     $article->insert();
     $articleID = $article->id;

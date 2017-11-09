@@ -1,6 +1,6 @@
-<div class="pageTitle">
+<!-- <div class="pageTitle">
   <h1 class="pageTitle">Our Team</h1>
-</div>
+</div> -->
 <ul class="teamList">
   <li>
     <div class="headshotThumbnail" style="background-image: url('media/headshots/AnitaMcCormick.jpg')"></div>

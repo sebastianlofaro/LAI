@@ -23,7 +23,6 @@ $(document).ready(function() {
     function showSlides() {
       slideIndex++;
       if (slideIndex >= $slides.length) {slideIndex = 0}
-      //$('#projectImage').attr('src', $slides[slideIndex]);
       $('.imageContainer').css("background-image", "url(" + $slides[slideIndex] + ")");
       setTimeout(showSlides, 4000);
     }
@@ -53,7 +52,6 @@ $(document).ready(function() {
     function rotateImages(e) {
       imageIndex++;
       if (imageIndex >= images.length) {imageIndex = 0}
-      //$('#projectImage').attr('src', $slides[slideIndex]);
       $this.css("background-image", "url(" + images[imageIndex] + ")");
       timeout = setTimeout(rotateImages, 1000);
     }

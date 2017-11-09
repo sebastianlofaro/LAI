@@ -23,7 +23,6 @@
             <div class="main-image">
               <div class="images" style="display: none"><?php echo $results['article']->imagePath ?></div>
               <div class="imageContainer"></div>
-              <img id="projectImage" src="" alt=''>
             </div>
             <section class="details">
               <div class="col col1">
@@ -46,7 +45,7 @@
             <div class="pageBreak"></div>
             <section id="description">
               <h2>Project Narrative</h2>
-              <p><?php echo htmlspecialchars(nl2br($results['article']->content)); ?></p>
+              <p><?php echo nl2br(htmlspecialchars($results['article']->content)); ?></p>
             </section>
             <div class="pageBreak"></div>
           </div>

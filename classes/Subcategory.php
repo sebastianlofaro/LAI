@@ -37,7 +37,7 @@ class Subcategory
 
   public static function getListForCategory($category) {
     $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-    $sql = "SELECT * FROM side_menu WHERE main_category = $category";
+    $sql = "SELECT * FROM side_menu WHERE main_category = $category ORDER BY id";
 
     $st = $conn->prepare($sql);
     $st->execute();
@@ -86,21 +86,6 @@ class Subcategory
     $conn = null;
   }
 
-// TODO: Replaced by insert() above.
-  // public function insert() {
-  //   // Make sure the Subcategory doesnt already have an ID.
-  //   if ( !is_null( $this->id ) ) trigger_error ( "Subcategory::insert(): Subcategory to insert an Article object that already has its ID property set (to $this->id).", E_USER_ERROR );
-  //
-  //   // Insert the Subcategory
-  //   $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-  //   $sql = "INSERT INTO side_menu ( name ) VALUES ( :name )";
-  //   $st = $conn->prepare ( $sql );
-  //   $st->bindValue( ":name", $this->name, PDO::PARAM_STR );
-  //   $st->execute();
-  //   $this->id = $conn->lastInsertId();
-  //   $conn = null;
-  // }
-
   public static function deleteSubCat($category, $subcategory) {
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
     $st = $conn->prepare ( "DELETE FROM side_menu WHERE id = :id LIMIT 1" );
@@ -120,16 +105,6 @@ class Subcategory
     }
     elseif ($category == 0) {
       // Delete Portfolio article
-      //********** Delete all the images **********
-      // $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-      // $st = $conn->prepare( "SELECT imagePath FROM portfolio WHERE subcategory = :subCat" );
-      // $st->bindValue(":subCat", $subcategory, PDO::PARAM_INT);
-      // $st->execute();
-      // $list = array();
-      // while ( $imagePath = $st->fetch() ) {
-      //   unlink($imagePath[0]);
-      // }
-      // $conn = null;
 
       //********** Delete all the posts from the database **********
       $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );

@@ -8,7 +8,7 @@
     <?php foreach ( $results['subcategories'] as $subcategory ) { ?>
       <li class="subcategory">
         <a class="hover-lightblue" id="<?php echo $subcategory->id ?>" href="?action=portfolioSubCat&amp;id=<?php echo $subcategory->id ?>&amp;index=<?php echo $index ?>">
-          <p><?php echo htmlspecialchars($subcategory->name); ?></p>
+          <p><?php echo str_replace(" ", "&nbsp;", htmlspecialchars($subcategory->name)); ?></p>
         </a>
       </li>
     <?php

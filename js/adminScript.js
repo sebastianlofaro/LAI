@@ -1,17 +1,5 @@
 $("document").ready(function() {
   var clientNameHolder = '';
-  //var imagePaths;
-
-
-  // $("#clientsTable").find(".client").hover(
-  //   function() {
-  //     clientNameHolder = $(this).html();
-  //     $(this).html("Delete");
-  //   }, function() {
-  //     $(this).html(clientNameHolder);
-  //     clientNameHolder = "";
-  //   }
-  // );
 
   $("#clientsTable").on("mouseenter", ".client", function() {
     clientNameHolder = $(this).html();
@@ -28,8 +16,7 @@ $("document").ready(function() {
   $("#clientsTable").on("click", ".client", function(e) {
     // Delete client then reload table
     $key = $(this).attr('id');
-    //console.log("$key: " + $(this).attr('id'));
-    var $subcategory = $(".newClientBtn").attr('id'); // FIXME: this needs to be a variable not hard coded.
+    var $subcategory = $(".newClientBtn").attr('id');
 
     function buildPageFromJSON(data) {
       var html = "<tr>";
@@ -40,7 +27,6 @@ $("document").ready(function() {
         }
       }
       html = html + "</tr>";
-      //console.log(html);
       $('#clientsTable').html(html);
     }
 
@@ -65,12 +51,15 @@ $("document").ready(function() {
 
 $("#newSubCatBtn").on("click", function(e) {
   var $subCatName = $(".newSubCat").val();
-  var $category = 0; //FIXME Check this... Should it be static?
+  var $category = parseInt($(".category").text())
   var $indexOfSubCat = $("#adminSubcategories").children().length - 1;
 
+  var action;
+  $category == 0 ? action = "portfolioSubCat" : action = "clientsSubCat";
+
   function insertSubCatInDOM(name, id) {
-    var html = '<li class="subcategory"><a id="' + id + '" href="?action=portfolioSubCat&amp;id=' + id + '&amp;category=1&amp;index=' + $indexOfSubCat + '"><p> ' + name + ' </p></a></li>';
-    $('#adminSubcategories').append(html);
+    var html = '<li class="subcategory"><a id="' + id + '" href="?action=' + action + '&amp;id=' + id + '&amp;category=1&amp;index=' + $indexOfSubCat + '"><p> ' + name + ' </p></a></li>';
+    $category == 0 ? $('#adminSubcategories').append(html) : $('#adminClientSubcategories').append(html)
   }
 
   if ($subCatName) {
@@ -80,6 +69,7 @@ $("#newSubCatBtn").on("click", function(e) {
       type: 'post',
       data: {'action': 'newSubCatForCategory', 'name': $subCatName, 'category': $category },
       success: function(data, status) {
+        console.log(data);
         // Update the DOM
         var dataObject = $.parseJSON(data);
         var indexOfLastSubCat = dataObject['results'].length - 1;
@@ -128,7 +118,6 @@ function activateDropzone() {
         imagePaths = imagePaths + value.file + ",";
       });
       console.log('upload response HTML: ' + html)
-      // Remove the extra "," on the end of imagePaths
       imagePaths = imagePaths.slice(0, -1);
         console.log('upload response imagePaths: ' + imagePaths)
 
@@ -166,6 +155,14 @@ if (document.getElementById('dropzone')) {
   activateDropzone();
 };
 
+
+// ###################### Save New Job ######################
+
+$('#cancle').on('click', function(e) {
+  e.preventDefault();
+  window.history.back();
+});
+
 // ###################### Save New Job ######################
 $('.save').on('click', function(e) {
   e.preventDefault();
@@ -187,8 +184,9 @@ $('.save').on('click', function(e) {
     type: 'post',
     data: {'action': 'saveArticle', 'subcategory': $subcategory,  'title': $title , 'personnel': $personnel , 'services': $services , 'contractAmount': $contractAmount , 'completionDate': $completionDate , 'content': $content , 'photoURL': photosURL , 'lastImageID': $lastImageID , 'id': $articleID },
     success: function(data, status) {
-      // window.history.back();
+      window.history.back();
       console.log(data);
+      console.log(window.history);
     }
   });
 });
@@ -218,13 +216,6 @@ $('#uploaded-images').on("click", '.uploaded-image', function(e) {
       data = data.replace(/\"/g, '');
       console.log(data);
       $('#imagePaths').html(data);
-      // imagePathsArray = data.split(',');
-      // var html = '';
-      // $.each(imagePathsArray, function(index, value) {
-      //   console.log('index: ' + index + '   value: ' + value);
-      //   html = html + "<li><div class='uploaded-image' id='" + ( parseInt($('#lastImageID').text()) + index) + "' style = 'background-image: url(" + value + ")'></div></li>"
-      // });
-      // $('#uploaded-images').html(html);
     }
   });
 

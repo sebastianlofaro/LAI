@@ -16,10 +16,15 @@
     color: #ccc;
     line-height: 300px;
     text-align: center;
+    margin: 0 auto;
   }
   .dropzone.dragover {
     border-color: #000;
     color: #000;
+  }
+
+  .dropzone-wrapper {
+    width: 100%;
   }
 
   .title {
@@ -49,6 +54,10 @@
   }
 
   .main-image {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
     img {
       width: 100%;
     }
@@ -134,5 +143,20 @@
     border: 1px solid black;
     background-position: center;
     background-size: cover;
+  }
+  #uploaded-images {
+    padding: 0;
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    li {
+      padding: 3px;
+      margin: 7px
+    }
+    li:hover {
+      background-color: red;
+      border: none;
+    }
   }
 }
