@@ -72,10 +72,9 @@ function deleteImage() {
 
 function saveArticle() {
   $title = $_POST['title'];
-  $personnel = $_POST['personnel'];
-  $services = $_POST['services'];
-  $contractAmount = $_POST['contractAmount'];
-  $completionDate = $_POST['completionDate'];
+  $owners = $_POST['owners'];
+  $contractors = $_POST['contractors'];
+  $consultants = $_POST['consultants'];
   $content = $_POST['content'];
   $photoURL = $_POST['photoURL'];
   $subcategory = $_POST['subcategory'];
@@ -86,7 +85,7 @@ function saveArticle() {
   // Test if article already exists
   if ($id != 'null') {
     // Existing Article: update database
-    $package = [ "title" => $title, "personnel" => $personnel, "services" => $services, "contractAmount" => $contractAmount, "completionDate" => $completionDate, "content" => $content, "imagePath" => $photoURL, "lastImageID" => $lastImageID, "subcategory" => $subcategory, "id" => $id];
+    $package = [ "title" => $title, "owners" => $owners, "contractors" => $contractors, "consultants" => $consultants, "content" => $content, "imagePath" => $photoURL, "lastImageID" => $lastImageID, "subcategory" => $subcategory, "id" => $id];
     $article = new Article;
     $article->storeFormValues( $package );
     $article->update();
@@ -95,7 +94,7 @@ function saveArticle() {
   }
   else {
     // New Article: add to database and images directroy name to id
-    $package = [ "title" => $title, "personnel" => $personnel, "services" => $services, "contractAmount" => $contractAmount, "completionDate" => $completionDate, "content" => $content, "imagePath" => $photoURL, "subcategory" => $subcategory, "lastImageID" => $lastImageID];
+    $package = [ "title" => $title, "owners" => $owners, "contractors" => $contractors, "consultants" => $consultants, "content" => $content, "imagePath" => $photoURL, "lastImageID" => $lastImageID, "subcategory" => $subcategory];
 
     // Add the article to the database
     $article = new Article;

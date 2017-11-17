@@ -15,17 +15,8 @@
     <div class="content">
       <ul class="articles">
         <?php foreach ( $results['articles'] as $article ) { ?>
-                <!-- <li>
-                  <a href=".?action=viewArticle&amp;articleId=<?php echo $article->id?>">
-
-                    <div class="thumbnail" style="background-image: url('<?php echo $article->imagePath ?>')"></div>
-                    <h3> <?php echo htmlspecialchars($article->title); ?> </h3>
-                  </a>
-                </li> -->
                 <li>
-                  <a href=".?action=viewArticle&amp;articleId=<?php echo $article->id?>" >
-                    <!-- <img class="thumbnail" src="<?php echo $article->imagePath ?>" alt=''> -->
-
+                  <a href=".?action=viewArticle&amp;articleId=<?php echo $article->id?>&amp;index=<?php echo $titleIndex?>" >
                     <div class="thumbnail">
                       <div class="imagesPackage" style="display: none"><?php echo $article->imagePath ?></div>
                     </div>

@@ -34,6 +34,5 @@
         <li class="<?php if(isset($selectedCategory)) if($selectedCategory == 1) echo "selected"; ?>"><a href="?action=portfolio">PORTFOLIO</a></li>
         <li class="<?php if(isset($selectedCategory)) if($selectedCategory == 2) echo "selected"; ?>"><a href="?action=clients">CLIENTS</a></li>
         <li class="<?php if(isset($selectedCategory)) if($selectedCategory == 3) echo "selected"; ?>"><a href="?action=aboutUs">ABOUT&nbsp;US</a></li>
-        <li class="<?php if(isset($selectedCategory)) if($selectedCategory == 4) echo "selected"; ?>"><a href="?action=contactUs">CONTACT&nbsp;US</a></li>
       </ul>
     </nav>

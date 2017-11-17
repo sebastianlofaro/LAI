@@ -42,6 +42,9 @@ footer {
     @include desktop {
       margin: 10px;
     }
+    p {
+      color: white;
+    }
   }
   .col2 {
     margin-bottom: 0;

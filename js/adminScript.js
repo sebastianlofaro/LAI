@@ -1,3 +1,4 @@
+
 $("document").ready(function() {
   var clientNameHolder = '';
 
@@ -11,7 +12,47 @@ $("document").ready(function() {
     clientNameHolder = "";
   });
 
-//**************************** Click on client in client table. (Delete Client) ****************************
+
+  //###################### Add Client ######################
+
+  $(".newClientBtn").on("click", function(e) {
+    e.preventDefault();
+    var $key = $(this).attr('id');
+    var $clientName = $('#newClientInput').val();
+    $('#newClientInput').val("")
+    console.log("newClientButton clicked.");
+
+    function buildPageFromJSON(data) {
+      var html = "<tr>";
+      for (var i = 0; i < data.length; i++) {
+        html = html + "<td class='client clientAdmin' id>" + data[i]['name'] + "</td>";
+        if ((i + 1) % 3 == 0) {
+          html = html + "</tr><tr>";
+        }
+      }
+      html = html + "</tr>";
+      console.log(html);
+      $('#clientsTable').html(html);
+    }
+
+    $.ajax({
+      url: 'ajax.php',
+      type: 'post',
+      data: {'action': 'newClient', 'key': $key, 'name': $clientName},
+      success: function (data, status) {
+        var dataObject = $.parseJSON(data);
+        buildPageFromJSON(dataObject['results']);
+        console.log(dataObject['results'].length);
+      },
+      error: function(xhr, desc, err) {
+        console.log("ERROR: " . xhr);
+        console.log("Details: " + desc + "\nError:" + err);
+      }
+    });
+
+  });
+
+//###################### Delete Client ######################
   var $key = "";
   $("#clientsTable").on("click", ".client", function(e) {
     // Delete client then reload table
@@ -21,7 +62,7 @@ $("document").ready(function() {
     function buildPageFromJSON(data) {
       var html = "<tr>";
       for (var i = 0; i < data.length; i++) {
-        html = html + "<td class='client' id=\'" + data[i]['id'] + "\'>" + data[i]['name'] + "</td>";
+        html = html + "<td class='client clientAdmin' id=\'" + data[i]['id'] + "\'>" + data[i]['name'] + "</td>";
         if ((i + 1) % 3 == 0) {
           html = html + "</tr><tr>";
         }
@@ -44,6 +85,24 @@ $("document").ready(function() {
       }
     });
   });
+
+
+//###################### Support return key in textfield ######################
+
+
+$('input').on('keyup', function(e) {
+  console.log('this: ' + $(this).attr('id'));
+  console.log('Key code: ' + e.keyCode);
+  if (e.keyCode === 13) {
+    // User has pressed return in text field
+    if ($(this).attr('id') === "newSubCat") {
+      $('#newSubCatBtn').trigger('click');
+    }
+    else if ($(this).attr('id') === "newClientInput") {
+      $('.newClientBtn').trigger('click');
+    }
+  }
+});
 
 
 //###################### Pressed newSubCatForCategory button ######################
@@ -102,6 +161,8 @@ function activateDropzone() {
     formData.append( 'lastImageID', $('#lastImageID').text() == "" ? -1 : $('#lastImageID').text() );
 
     xhr.onload = function() {
+      $('.loading-circle').hide();
+      $('.dropzone-wrapper').show();
       var imagePaths = '';
       console.log(this.responseText);
       var data = JSON.parse(this.responseText);
@@ -140,6 +201,8 @@ function activateDropzone() {
   dropzone.ondrop = function(e) {
     e.preventDefault();
     this.className = 'dropzone';
+    $('.dropzone-wrapper').hide();
+    $('.loading-circle').show();
     upload(e.dataTransfer.files);
   }
   dropzone.ondragover = function() {
@@ -156,7 +219,7 @@ if (document.getElementById('dropzone')) {
 };
 
 
-// ###################### Save New Job ######################
+// ###################### Cancle New Job ######################
 
 $('#cancle').on('click', function(e) {
   e.preventDefault();
@@ -168,21 +231,25 @@ $('.save').on('click', function(e) {
   e.preventDefault();
   // get values of form fields.
   var $title = $('#title').val();
-  var $personnel = $('#personnel').val();
-  var $services = $('#services').val();
-  var $contractAmount = $('#contractAmount').val();
-  var $completionDate = $('#completionDate').val();
+  // var $personnel = $('#personnel').val();
+  // var $services = $('#services').val();
+  // var $contractAmount = $('#contractAmount').val();
+  // var $completionDate = $('#completionDate').val();
+  var $owners = $('#owners').val();
+  var $contractors = $('#contractors').val();
+  var $consultants = $('#consultants').val();
   var $content = $('#content').val();
   var $subcategory = $(this).attr('id');
   var $articleID = $("input[name~='articleId']").val() == "" ? 'null' : $("input[name~='articleId']").val();
   var photosURL = $('#imagePaths').text();
   var $lastImageID = $('#lastImageID').text();
+
   console.log('save clicked')
 
   $.ajax({
     url: 'ajax.php',
     type: 'post',
-    data: {'action': 'saveArticle', 'subcategory': $subcategory,  'title': $title , 'personnel': $personnel , 'services': $services , 'contractAmount': $contractAmount , 'completionDate': $completionDate , 'content': $content , 'photoURL': photosURL , 'lastImageID': $lastImageID , 'id': $articleID },
+    data: {'action': 'saveArticle', 'subcategory': $subcategory,  'title': $title , 'owners': $owners , 'contractors': $contractors , 'consultants': $consultants , 'content': $content , 'photoURL': photosURL , 'lastImageID': $lastImageID , 'id': $articleID },
     success: function(data, status) {
       window.history.back();
       console.log(data);
@@ -219,6 +286,18 @@ $('#uploaded-images').on("click", '.uploaded-image', function(e) {
     }
   });
 
+});
+
+
+
+// ###################### Make sure database matches file system ######################
+
+// $('#imagePaths').text().change(function(e) {
+//   console.log('Image path change.');
+// });
+
+$('#imagePaths').bind("DOMSubtreeModified",function(){
+  console.log('IMAGE PATH CHANGED!!!!!  ' + $('#imagePaths').text());
 });
 
 

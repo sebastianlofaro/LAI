@@ -57,9 +57,6 @@
       }
       .col {
         text-align: center;
-        @include desktop {
-          text-align: left;
-        }
         ul {
           padding: 0;
         }

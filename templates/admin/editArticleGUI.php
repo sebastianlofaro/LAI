@@ -9,14 +9,7 @@
         </div>
       </div>
       <nav class="side-nav">
-        <ul>
-          <li class="selected"><a href="#">Neighborhoods</a></li>
-          <li><a href="#">Parks</a></li>
-          <li><a href="#">Playgrounds</a></li>
-          <li><a href="#">Splash Parks</a></li>
-          <li><a href="#">Roof Gardens</a></li>
-          <li><a href="#">Institutions/Commercial</a></li>
-        </ul>
+        <?php include "include/sidenav.php" ?>
       </nav>
       <div class="content-wrapper">
         <div class="content-container">
@@ -61,23 +54,29 @@
 
             <section class="details">
               <div class="col col1">
-                <h2>PERSONNEL</h2>
-                <textarea id="personnel" name="personnel" ><?php echo $results['article']->personnel ?></textarea>
+                <h2>Owners</h2>
+                <textarea id="owners" name="owners" ><?php echo $results['article']->owners ?></textarea>
+                <!-- <h2>PERSONNEL</h2>
+                <textarea id="personnel" name="personnel" ><?php echo $results['article']->personnel ?></textarea> -->
               </div>
               <div class="col col2">
-                <h2>SERVICES</h2>
-                <textarea id="services" name="services" ><?php echo $results['article']->services ?></textarea>
+                <h2>Contractors</h2>
+                <textarea id="contractors" name="contractors" ><?php echo $results['article']->contractors ?></textarea>
+                <!-- <h2>SERVICES</h2>
+                <textarea id="services" name="services" ><?php echo $results['article']->services ?></textarea> -->
               </div>
               <div class="col col3">
-                <h2>CONTRACT AMOUNT</h2>
+                <h2>Consultants</h2>
+                <textarea id="consultants" name="consultants" ><?php echo $results['article']->consultants ?></textarea>
+                <!-- <h2>CONTRACT AMOUNT</h2>
                 <input id="contractAmount" type="text" name="contractAmount" value="<?php echo $results['article']->contractAmount ?>">
                 <h2>Completion Date</h2>
-                <input id="completionDate" type="text" name="completionDate" value="<?php echo $results['article']->completionDate ?>">
+                <input id="completionDate" type="text" name="completionDate" value="<?php echo $results['article']->completionDate ?>"> -->
               </div>
             </section>
             <div class="pageBreak"></div>
             <section id="description">
-              <h2>PROJECT NARRATIVE</h2>
+              <h2>Project Narrative</h2>
               <textarea name="content" id="content" placeholder="The HTML content of the article" required maxlength="100000" ><?php echo htmlspecialchars( $results['article']->content )?></textarea>
             </section>
             <div class="pageBreak"></div>

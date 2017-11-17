@@ -11,6 +11,7 @@
         <div class="popOutContent">
           <div class="title">
             <h1>Anita McCormick</h1>
+            <p>X</p>
             <h2>Founder, Owner, President</h2>
           </div>
           <div class="mainContent">
@@ -32,6 +33,7 @@
         <div class="popOutContent">
           <div class="title">
             <h1>Jay Williams</h1>
+            <p>X</p>
             <h2>Vice&nbsp;President, General&nbsp;Manager</h2>
           </div>
           <div class="mainContent">
@@ -49,13 +51,14 @@
   <li>
     <div class="headshotThumbnail" style="background-image: url('media/headshots/CarmeloOrellana.jpg')"></div>
     <h3>Carmelo Orellana</h3>
-    <h4>Operations Manager</h4>
+    <h4>Vice President, Operations Manager</h4>
     <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
             <h1>Carmelo Orellana</h1>
-            <h2></h2>
+            <p>X</p>
+            <h2>Vice President, Operations Manager</h2>
           </div>
           <div class="mainContent">
             <div class="headshot" style="background-image: url('media/headshots/CarmeloOrellana.jpg')"></div>
@@ -77,6 +80,7 @@
         <div class="popOutContent">
           <div class="title">
             <h1>Kevin Arp</h1>
+            <p>X</p>
             <h2>Senior Project Manager</h2>
           </div>
           <div class="mainContent">
@@ -90,13 +94,14 @@
   <li>
     <div class="headshotThumbnail" style="background-image: url('media/headshots/DebbieGerac.jpg')"></div>
     <h3>Debbie Gerac</h3>
-    <h4>Office Manager</h4>
+    <h4>Office Manager, Project Administrator</h4>
     <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
             <h1>Debbie Gerac</h1>
-            <h2>Office Manager</h2>
+            <p>X</p>
+            <h2>Office Manager, Project Administrator</h2>
           </div>
           <div class="mainContent">
             <div class="headshot" style="background-image: url('media/headshots/DebbieGerac.jpg')"></div>
@@ -110,13 +115,14 @@
   <li>
     <div class="headshotThumbnail" style="background-image: url('media/headshots/DanaMcCormick.jpg')"></div>
     <h3>Dana McCormick</h3>
-    <h4>Corporate Secretary, Estimator, Purchaser</h4>
+    <h4>Corporate Secretary, Estimator</h4>
     <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
-            <h1></h1>
-            <h2></h2>
+            <h1>Dana McCormick</h1>
+            <p>X</p>
+            <h2>Corporate Secretary, Estimator</h2>
           </div>
           <div class="mainContent">
             <div class="headshot" style="background-image: url('media/headshots/DanaMcCormick.jpg')"></div>
@@ -132,13 +138,14 @@
   <li>
     <div class="headshotThumbnail" style="background-image: url('media/headshots/KarenOrellana.jpg')"></div>
     <h3>Karen Orellana</h3>
-    <h4>Administrative Assistant</h4>
+    <h4>Administrative Assistant, Project Administrator</h4>
     <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
             <h1>Karen Orellana</h1>
-            <h2>Administrative Assistant</h2>
+            <p>X</p>
+            <h2>Administrative Assistant, Project Administrator</h2>
           </div>
           <div class="mainContent">
             <div class="headshot" style="background-image: url('media/headshots/KarenOrellana.jpg')"></div>
@@ -157,6 +164,7 @@
         <div class="popOutContent">
           <div class="title">
             <h1>Debbie O’Donnell</h1>
+            <p>X</p>
             <h2>Human Resources Manager</h2>
           </div>
           <div class="mainContent">
@@ -170,13 +178,14 @@
   <li>
     <div class="headshotThumbnail" style="background-image: url('media/headshots/FavioOrellana.jpg')"></div>
     <h3>Favio Orellana</h3>
-    <h4>Project Manager</h4>
+    <h4>Senior Quality Control Manager</h4>
     <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
             <h1>Favio Orellana</h1>
-            <h2>Project Manager</h2>
+            <p>X</p>
+            <h2>Senior Quality Control Manager</h2>
           </div>
           <div class="mainContent">
             <div class="headshot" style="background-image: url('media/headshots/FavioOrellana.jpg')"></div>
@@ -191,13 +200,14 @@
   <li>
     <div class="headshotThumbnail" style="background-image: url('media/headshots/PorfirioMartinez.jpg')"></div>
     <h3>Porfirio Martinez</h3>
-    <h4>Project Manager</h4>
+    <h4>Quality Control Manager</h4>
     <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
             <h1>Porfirio Martinez</h1>
-            <h2>Project Manager</h2>
+            <p>X</p>
+            <h2>Quality Control Manager</h2>
           </div>
           <div class="mainContent">
             <div class="headshot" style="background-image: url('media/headshots/PorfirioMartinez.jpg')"></div>
@@ -210,35 +220,16 @@
     </div>
   </li>
   <li>
-    <div class="headshotThumbnail" style="background-image: url('media/headshots/MichelleGerac.jpg')"></div>
-    <h3>Michelle Gerac</h3>
-    <h4>Project Manager</h4>
-    <div class="popOut" style="display: none;">
-      <div class="popOutContainer">
-        <div class="popOutContent">
-          <div class="title">
-            <h1>Michelle Gerac</h1>
-            <h2>Project Manager</h2>
-          </div>
-          <div class="mainContent">
-            <div class="headshot" style="background-image: url('media/headshots/MichelleGerac.jpg')"></div>
-            <p>Michelle Gerac came to work for Landscape Art in March 2013 as an assistant bookkeeper and field support. Her dedication, passion for learning, and organizational skills gave her the opportunity to move out of the office and into the role of project manager. Projects under her management have included Mandell Park Renovation, with the installation of a community garden consisting of a labyrinth of raised masonry planters, decomposed granite paths, extensive rain gardens, compost bins, and a live plant roof over a recycled storage building. Silverlake Recreation Center consisted of two  playgrounds, site drainage, a pavilion and two picnic structures. At Wright’s Landing, Michelle oversaw the installation of a playground, a splash pad, a terraced vegetative retaining wall and a waterfall.</p>
-            <p>Michelle graduated magna cum laude from University of Houston-Clear Lake with a Bachelor’s degree in Biology. She is a State of Texas Licensed Irrigator (LI21183), has earned her OSHA 30 Hour Certification and communicates effectively in Spanish.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </li>
-  <li>
     <div class="headshotThumbnail" style="background-image: url('media/headshots/SantosSorto.jpg')"></div>
     <h3>Santos Sorto</h3>
-    <h4>Project Manager</h4>
+    <h4>Quality Control Manager</h4>
     <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
             <h1>Santos Sorto</h1>
-            <h2>Project Manager</h2>
+            <p>X</p>
+            <h2>Quality Control Manager</h2>
           </div>
           <div class="mainContent">
             <div class="headshot" style="background-image: url('media/headshots/SantosSorto.jpg')"></div>
@@ -251,13 +242,14 @@
   <li>
     <div class="headshotThumbnail" style="background-image: url('media/headshots/OscarVega.jpg')"></div>
     <h3>Oscar Vega</h3>
-    <h4>Mechanic</h4>
+    <h4>Fleet Manager</h4>
     <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
             <h1>Oscar Vega</h1>
-            <h2>Mechanic</h2>
+            <p>X</p>
+            <h2>Fleet Manager</h2>
           </div>
           <div class="mainContent">
             <div class="headshot" style="background-image: url('media/headshots/OscarVega.jpg')"></div>
@@ -276,6 +268,7 @@
         <div class="popOutContent">
           <div class="title">
             <h1>Mary Garcia</h1>
+            <p>X</p>
             <h2>Bookkeeper</h2>
           </div>
           <div class="mainContent">
@@ -288,36 +281,18 @@
   </li>
   <li>
     <div class="headshotThumbnail" style="background-image: url('media/headshots/FreddieDelcid.png')"></div>
-    <h3>Freddie Delcid</h3>
-    <h4>Mechanic</h4>
+    <h3>Freddie Del Cid</h3>
+    <h4>Assistant Project Manager</h4>
     <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
-            <h1>Freddie Delcid</h1>
-            <h2>Mechanic</h2>
+            <h1>Freddie Del Cid</h1>
+            <p>X</p>
+            <h2>Assistant Project Manager</h2>
           </div>
           <div class="mainContent">
             <div class="headshot" style="background-image: url('media/headshots/FreddieDelcid.png')"></div>
-            <p></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </li>
-  <li>
-    <div class="headshotThumbnail" style="background-image: url('media/headshots/NolanLamar.jpg')"></div>
-    <h3>Nolan Lamar</h3>
-    <h4>Project Manager</h4>
-    <div class="popOut" style="display: none;">
-      <div class="popOutContainer">
-        <div class="popOutContent">
-          <div class="title">
-            <h1>Nolan Lamar</h1>
-            <h2>Project Manager</h2>
-          </div>
-          <div class="mainContent">
-            <div class="headshot" style="background-image: url('media/headshots/NolanLamar.jpg')"></div>
             <p></p>
           </div>
         </div>

@@ -16,6 +16,9 @@ class Article
   public $completionDate = null;
   public $subcategory = null;
   public $lastImageID = null;
+  public $owners = null;
+  public $contractors = null;
+  public $consultants = null;
 
   public function __construct($data=array()) {
     if (isset($data['id'])) $this->id = (int) $data['id'];
@@ -28,6 +31,9 @@ class Article
     if (isset($data['completionDate'])) $this->completionDate  = $data["completionDate"];
     if (isset($data['subcategory'])) $this->subcategory = (int) $data["subcategory"];
     if (isset($data['lastImageID'])) $this->lastImageID = $data['lastImageID'];
+    if (isset($data['owners'])) $this->owners = $data['owners'];
+    if (isset($data['contractors'])) $this->contractors = $data['contractors'];
+    if (isset($data['consultants'])) $this->consultants = $data['consultants'];
   }
 
   public function storeFormValues ($params) {
@@ -93,21 +99,19 @@ class Article
   if ( !is_null( $this->id ) ) trigger_error ( "Article::insert(): Attempt to insert an Article object that already has its ID property set (to $this->id).", E_USER_ERROR );
   // Insert the Article
   $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-  $sql = "INSERT INTO portfolio ( title, services, content, imagePath, personnel, contractAmount, completionDate, subcategory, lastImageID ) VALUES ( :title, :services, :content, :imagePath, :personnel, :contractAmount, :completionDate, :subcategory, :lastImageID )";
+  $sql = "INSERT INTO portfolio ( title, content, imagePath, subcategory, lastImageID, owners, contractors, consultants ) VALUES ( :title, :content, :imagePath, :subcategory, :lastImageID, :owners, :contractors, :consultants )";
   $st = $conn->prepare ( $sql );
   $st->bindValue( ":title", $this->title, PDO::PARAM_STR );
-  $st->bindValue( ":services", $this->services, PDO::PARAM_STR );
   $st->bindValue( ":content", $this->content, PDO::PARAM_STR );
   $st->bindValue( ":imagePath", $this->imagePath, PDO::PARAM_STR );
-  $st->bindValue( ":personnel", $this->personnel, PDO::PARAM_STR );
-  $st->bindValue( ":contractAmount", $this->contractAmount, PDO::PARAM_STR );
-  $st->bindValue( ":completionDate", $this->completionDate, PDO::PARAM_STR );
   $st->bindValue( ":subcategory", $this->subcategory, PDO::PARAM_INT );
   $st->bindValue( ":lastImageID", $this->lastImageID, PDO::PARAM_STR );
+  $st->bindValue( ":owners", $this->owners, PDO::PARAM_STR );
+  $st->bindValue( ":contractors", $this->contractors, PDO::PARAM_STR );
+  $st->bindValue( ":consultants", $this->consultants, PDO::PARAM_STR );
   $st->execute();
   $this->id = $conn->lastInsertId();
   $conn = null;
-  var_dump($this->lastImageID);
   }
 
   // Removes "temp" from file name in file path
@@ -162,7 +166,7 @@ class Article
 
     // Update the Article
     $conn = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
-    $sql = "UPDATE portfolio SET title=:title, services=:services, content=:content, personnel=:personnel, contractAmount=:contractAmount, completionDate=:completionDate, subcategory=:subcategory, imagePath=:imagePath, lastImageID=:lastImageID WHERE id = :id";
+    $sql = "UPDATE portfolio SET title=:title, services=:services, content=:content, personnel=:personnel, contractAmount=:contractAmount, completionDate=:completionDate, subcategory=:subcategory, imagePath=:imagePath, lastImageID=:lastImageID, owners=:owners, contractors=:contractors, consultants=:consultants WHERE id = :id";
     $st = $conn->prepare ( $sql );
     $st->bindValue( ":title", $this->title, PDO::PARAM_STR );
     $st->bindValue( ":services", $this->services, PDO::PARAM_STR );
@@ -174,6 +178,9 @@ class Article
     $st->bindValue( ":imagePath", $this->imagePath, PDO::PARAM_STR );
     $st->bindValue( ":id", $this->id, PDO::PARAM_INT );
     $st->bindValue( ":lastImageID", $this->lastImageID, PDO::PARAM_INT );
+    $st->bindValue( ":owners", $this->owners, PDO::PARAM_STR );
+    $st->bindValue( ":contractors", $this->contractors, PDO::PARAM_STR );
+    $st->bindValue( ":consultants", $this->consultants, PDO::PARAM_STR );
     $st->execute();
     $conn = null;
   }

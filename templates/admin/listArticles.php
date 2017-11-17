@@ -29,7 +29,6 @@
         <li class="selected"><a href="?action=portfolio">PORTFOLIO</a></li>
         <li class=""><a href="?action=clients">CLIENTS</a></li>
         <li class=""><a href="#">ABOUT&nbsp;US</a></li>
-        <li class=""><a href="#">CONTACT&nbsp;US</a></li>
         <div class="category" style="display: none">0</div>
       </ul>
     </nav>
@@ -38,7 +37,7 @@
     <div class="jumbotronImage"></div>
     <div class="jumbotronMessage">
       <div class="">
-        <h1 class="pageTitle"><?php echo $results['subcategories'][(int)$subCatIndex]->name; ?></h1>
+        <h1 class="pageTitle"><?php echo $results['menuData'][(int)$subCatIndex]->name; ?></h1>
         <a href="?action=deleteSubCat&amp;category=0&amp;subcategory=<?php echo $results['subcategories'][(int)$subCatIndex]->id; ?>"><button type="button" name="deletePortfolioSubCat" class="deleteSubCatBtn">DELETE</button></a>
       </div>
 
@@ -62,15 +61,14 @@
 
   <ul class="articles">
     <li>
-      <a href="admin.php?action=newArticle&amp;subcategory=<?php echo $subCatID ?>">
+      <a href="admin.php?action=newArticle&amp;subcategory=<?php echo $subCatID ?>&amp;index=<?php echo $subCatIndex?>">
         <img class="darkBorder thumbnail" src="media/img/addimage.png" alt=''>
         <p>New Article</p>
       </a>
     </li>
     <?php foreach ( $results['articles'] as $article ) { ?>
       <li>
-        <a href="admin.php?action=editArticle&amp;articleId=<?php echo $article->id?>&amp;subcategory=<?php echo $subCatID ?>" >
-          <!-- <img class="thumbnail" src="<?php echo $article->imagePath ?>" alt=''> -->
+        <a href="admin.php?action=editArticle&amp;articleId=<?php echo $article->id?>&amp;subcategory=<?php echo $subCatID ?>&amp;index=<?php echo $subCatIndex?>" >
 
           <div class="thumbnail">
             <div class="imagesPackage" style="display: none"><?php echo $article->imagePath ?></div>
@@ -80,7 +78,6 @@
       </li>
     <?php } ?>
   </ul>
-        <!-- <p><?php echo $results['totalRows']?> article<?php echo ( $results['totalRows'] != 1 ) ? 's' : '' ?> in total.</p> -->
 
       </div>
     </div>

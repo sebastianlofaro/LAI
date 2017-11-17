@@ -29,6 +29,5 @@
         <li class=""><a href="?action=portfolio">PORTFOLIO</a></li>
         <li class=""><a href="?action=clients">CLIENTS</a></li>
         <li class=""><a href="#">ABOUT&nbsp;US</a></li>
-        <li class=""><a href="#">CONTACT&nbsp;US</a></li>
       </ul>
     </nav>

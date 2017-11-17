@@ -84,7 +84,8 @@ function home() {
 function viewArticle() {
   $pageTitle = "Portfolio";
   $selectedCategory = 1;
-  $titleIndex = 0;
+  $titleIndex = $_GET['index'];
+  $subMenuData = Subcategory::getListForCategory(0);
   if ( !isset($_GET["articleId"]) || !$_GET["articleId"] ) {
     portfolio();
     return;
@@ -93,6 +94,7 @@ function viewArticle() {
   $results = array();
   $results['article'] = Article::getById( (int)$_GET["articleId"] );
   $results['pageTitle'] = $results['article']->title . "Title";
+  $results['menuData'] = $subMenuData["results"];
   $pageID = "viewArticle";
   require( TEMPLATE_PATH . "/viewArticle.php" );
 }

@@ -223,9 +223,6 @@ input {
       }
     }
     li:last-child {
-      @include desktop {
-        margin-right: auto;
-      }
     }
   }
 }

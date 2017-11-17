@@ -3,8 +3,8 @@
 <div class="aboutUs">
   <nav class="secondaryMenu">
     <ul>
-      <li><a class="hover-lightblue <?php if ($selectedSubCat != "team" && $selectedSubCat != "affiliations") {echo "selected-secondary";} ?>" href="?action=aboutUs&amp;subMenu=companyProfile">Company Profile</a></li>
-      <li><a class="hover-lightblue <?php if ($selectedSubCat === "team") {echo "selected-secondary";} ?>" href="?action=aboutUs&amp;subMenu=team">Our Team</a></li>
+      <li><a class="hover-lightblue <?php if ($selectedSubCat != "team" && $selectedSubCat != "affiliations") {echo "selected-secondary";} ?>" href="?action=aboutUs&amp;subMenu=companyProfile">Our Team</a></li>
+      <li><a class="hover-lightblue <?php if ($selectedSubCat === "team") {echo "selected-secondary";} ?>" href="?action=aboutUs&amp;subMenu=team">Company Profile</a></li>
       <li><a class="hover-lightblue <?php if ($selectedSubCat === "affiliations") {echo "selected-secondary";} ?>" href="?action=aboutUs&amp;subMenu=affiliations">Affiliations, Licenses, Qualifications</a></li>
     </ul>
   </nav>
@@ -14,13 +14,13 @@
     <?php
     switch ($selectedSubCat) {
       case 'team':
-        include "templates/ourTeam.php";
+        include "templates/companyProfile.php";
         break;
       case 'affiliations':
         include "templates/affiliations.php";
         break;
       default:
-        include "templates/companyProfile.php";
+        include "templates/ourTeam.php";
         break;
     }
      ?>

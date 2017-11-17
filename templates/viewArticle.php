@@ -6,18 +6,7 @@
             <h1><?php echo htmlspecialchars($results['article']->title) ?></h1>
           </div>
         </div>
-        <nav class="side-nav">
-
-          <ul>
-            <li class="hover-lightblue"><a href="#">Neighborhoods</a></li>
-            <li class="hover-lightblue"><a href="#">Parks</a></li>
-            <li class="hover-lightblue"><a href="#">Playgrounds</a></li>
-            <li class="hover-lightblue"><a href="#">Splash Parks</a></li>
-            <li class="hover-lightblue"><a href="#">Roof Gardens</a></li>
-            <li class="hover-lightblue"><a href="#">Institutions/Commercial</a></li>
-          </ul>
-        </nav>
-
+        <?php include "templates/include/sideNav.php" ?>
         <div class="content-wrapper">
           <div class="content-container">
             <div class="main-image">
@@ -26,20 +15,16 @@
             </div>
             <section class="details">
               <div class="col col1">
-                <h2>Personnel</h2>
-                <p><?php echo nl2br(htmlspecialchars($results['article']->personnel)) ?></p>
+                <h2>Owners</h2>
+                <p><?php echo nl2br(htmlspecialchars($results['article']->owners)) ?></p>
               </div>
               <div class="col col2">
-                <h2>Services</h2>
-                <p><?php echo nl2br(htmlspecialchars($results['article']->services)) ?></p>
+                <h2>Contractors</h2>
+                <p><?php echo nl2br(htmlspecialchars($results['article']->contractors)) ?></p>
               </div>
               <div class="col col3">
-                <h2>Contract Amount</h2>
-                <p><?php echo nl2br(htmlspecialchars($results['article']->contractAmount)) ?></p>
-                <h2>Completion Date</h2>
-                <ul>
-                  <p><?php echo nl2br(htmlspecialchars($results['article']->completionDate)) ?></p>
-                </ul>
+                <h2>Consultants</h2>
+                <p><?php echo nl2br(htmlspecialchars($results['article']->consultants)) ?></p>
               </div>
             </section>
             <div class="pageBreak"></div>

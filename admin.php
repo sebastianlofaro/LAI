@@ -150,7 +150,9 @@ function newArticle() {
   $subcategory = $_GET["subcategory"];
   $_POST['subcategory'] = $subcategory;
   $imagePath = 'media/img/addPhoto.png';
-
+  $subMenuData = Subcategory::getListForCategory(0);
+  $results['menuData'] = $subMenuData['results'];
+  $subCatIndex = $_GET['index'];
   $results['formAction'] = "newArticle";
 
   if ( isset( $_POST['saveChanges'] ) ) {
@@ -186,6 +188,9 @@ function editArticle() {
   $results['pageTitle'] = "Edit Article";
   $results['formAction'] = "editArticle";
   $articleID = (int)$_GET['articleId'];
+  $subMenuData = Subcategory::getListForCategory(0);
+  $results['menuData'] = $subMenuData['results'];
+  $subCatIndex = $_GET['index'];
 
   if ( isset( $_POST['saveChanges'] ) ) {
     // User has posted the article edit form: save the article changes
@@ -256,6 +261,7 @@ function portfolioSubCat() {
   $results['articles'] = $data['results'];
   $results['totalRows'] = $data['totalRows'];
   $results['subcategories'] = $subMenuData['results'];
+  $results['menuData'] = $subMenuData['results'];
 
   require( TEMPLATE_PATH . "/admin/listArticles.php" );
 }
@@ -271,7 +277,7 @@ function listArticles() {
 
   $results['articles'] = $data['results'];
   $results['totalRows'] = $data['totalRows'];
-  $results['subcategories'] = $subMenuData['results'];
+  $results['menuData'] = $subMenuData['results'];
 
   require( TEMPLATE_PATH . "/admin/listArticles.php" );
 }
