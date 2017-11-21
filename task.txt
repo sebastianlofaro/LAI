@@ -1,1 +1,7 @@
-Google Maps API Key: AIzaSyD0gG67Y2pRKiW0EcGaOjV-qyQNhQj5Dio
+Make portfolio default to first subcategory
+
+Make slide show controls (Forward, Reverse, Stop, Expand)
+
+Attempt: to add DELETE support for Internet Explorer
+
+Update the imaageFilePath in the database every time the file system is updated
