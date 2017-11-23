@@ -273,7 +273,7 @@ function listArticles() {
   $subMenuData = Subcategory::getListForCategory(0);
   $subCatID = $subMenuData['results'][$subCatIndex]->id;
 
-  $data = Article::getListOfSubCat((int)Subcategory::topSubCat()['id']);
+  $data = Article::getListOfSubCat((int)Subcategory::topSubCatForCategory(0)['id']);
 
   $results['articles'] = $data['results'];
   $results['totalRows'] = $data['totalRows'];

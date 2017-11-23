@@ -25,7 +25,6 @@ if (!empty($_FILES['files']['tmp_name'][0])) {
   // make sure file does not exist
   if (!file_exists(dirname(__FILE__) . "/media/img/portfolio/" . $subcategory . '/' . $fileName)) {
     // File does not exist, create file.
-    // mkdir(dirname(__FILE__) . "/media/img/portfolio/" . $subcategory . '/' . $fileName); //FIXME: delete this line possibly
     $oldmask = umask(0);
     mkdir(dirname(__FILE__) . "/media/img/portfolio/" . $subcategory . '/' . $fileName, 0777);
     umask($oldmask);

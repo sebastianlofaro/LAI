@@ -26,18 +26,9 @@ class Subcategory
     return $st->fetch();
   }
 
-// TODO: topSubCat() to be replaced by topSubCatForCategory()
-  public static function topSubCat() {
-    $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-    $sql = "SELECT id FROM side_menu LIMIT 1";
-    $st = $conn->prepare($sql);
-    $st->execute();
-    return $st->fetch();
-  }
-
   public static function getListForCategory($category) {
     $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-    $sql = "SELECT * FROM side_menu WHERE main_category = $category ORDER BY id";
+    $sql = "SELECT * FROM side_menu WHERE main_category = $category";
 
     $st = $conn->prepare($sql);
     $st->execute();
@@ -52,23 +43,6 @@ class Subcategory
     return (array("results"=>$list));
   }
 
-// TODO: getList() to be replaced by getListForCategory()
-  public static function getList() {
-    $conn = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-    $sql = "SELECT * FROM side_menu";
-
-    $st = $conn->prepare($sql);
-    $st->execute();
-    $list = array();
-
-    while ( $row = $st->fetch() ) {
-      $subcategory = new Subcategory($row);
-      $list[] = $subcategory;
-    }
-
-    $conn = null;
-    return (array("results"=>$list));
-  }
 
   public function insert() {
     // Make sure the Subcategory doesnt already have an ID.

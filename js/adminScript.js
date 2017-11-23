@@ -91,8 +91,6 @@ $("document").ready(function() {
 
 
 $('input').on('keyup', function(e) {
-  console.log('this: ' + $(this).attr('id'));
-  console.log('Key code: ' + e.keyCode);
   if (e.keyCode === 13) {
     // User has pressed return in text field
     if ($(this).attr('id') === "newSubCat") {
@@ -110,8 +108,17 @@ $('input').on('keyup', function(e) {
 
 $("#newSubCatBtn").on("click", function(e) {
   var $subCatName = $(".newSubCat").val();
+  $(".newSubCat").val("");
   var $category = parseInt($(".category").text())
-  var $indexOfSubCat = $("#adminSubcategories").children().length - 1;
+  switch ($category) {
+    case 0:
+      var $indexOfSubCat = $("#adminSubcategories").children().length - 1;
+      break;
+    case 1:
+      var $indexOfSubCat = $("#adminClientSubcategories").children().length - 1;
+      break;
+  }
+  //var $indexOfSubCat = $("#adminSubcategories").children().length - 1;
 
   var action;
   $category == 0 ? action = "portfolioSubCat" : action = "clientsSubCat";

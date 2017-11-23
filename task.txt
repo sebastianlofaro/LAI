@@ -1,7 +1,11 @@
-Make portfolio default to first subcategory
+:) Make portfolio default to first subcategory
 
 Make slide show controls (Forward, Reverse, Stop, Expand)
 
 Attempt: to add DELETE support for Internet Explorer
 
 Update the imaageFilePath in the database every time the file system is updated
+
+:) Empty text field when submitted
+
+:) Fix bug that causes new subcategory to have incorrect index when created
