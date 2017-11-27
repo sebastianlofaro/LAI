@@ -4,12 +4,6 @@
     min-height: calc(100vh);
     padding-bottom: 188px;
     background: white;
-    .side-nav {
-
-    }
-    .content-wrapper {
-      box-shadow: inset 0px 6px 18px -6px rgba(0,0,0,0.62);
-    }
     .content-container {
       margin: 0 auto;
       max-width: 1000px;
@@ -39,9 +33,12 @@
       background-color: #23c1ee;
     }
     .main-image {
-      width: 90%;
+      width: 100%;
       margin: 0 auto;
       margin-top: 5vh;
+      @include desktop {
+        width: 90%;
+      }
     }
     .details {
       margin: 0 auto;
@@ -68,14 +65,57 @@
       text-align: left;
     }
   .imageContainer {
-    width: 60vw;
-    height: 35vw;
+    width: 100vw;
+    height: 60vw;
     max-height: 600px;
     max-width: 900px;
     margin: 0 auto;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    //background-color: red;
+    position: relative;
+    @include desktop {
+      width: 60vw;
+      height: 35vw;
+    }
+    .slide {
+      width: 100%;
+      height: 100%;
+      max-height: 600px;
+      max-width: 900px;
+      background-position: center;
+      background-size: cover;
+      position: absolute;
+      @include desktop {
+        width: 60vw;
+        height: 35vw;
+      }
+    }
+    .slideshow-controls {
+      position: absolute;
+      z-index: 100;
+      top: calc(50% - 27px);
+      width: 100%;
+      .image-nav-arrow {
+        position: absolute;
+        font-size: 3em;
+        color: white;
+        padding: 0;
+        p {
+          margin: 0;
+          text-shadow: 1px 1px 3px black;
+        }
+        p:hover {
+          cursor: pointer;
+          color: #23c1ee
+        }
+      }
+      .back-arrow {
+        left: 10px;
+      }
+      .forward-arrow {
+        right: 10px;
+      }
+    }
   }
 }

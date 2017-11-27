@@ -51,14 +51,14 @@
   <li>
     <div class="headshotThumbnail" style="background-image: url('media/headshots/CarmeloOrellana.jpg')"></div>
     <h3>Carmelo Orellana</h3>
-    <h4>Vice President, Operations Manager</h4>
+    <h4>Vice&nbsp;President, Operations&nbsp;Manager</h4>
     <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
             <h1>Carmelo Orellana</h1>
             <p>X</p>
-            <h2>Vice President, Operations Manager</h2>
+            <h2>Vice&nbsp;President, Operations&nbsp;Manager</h2>
           </div>
           <div class="mainContent">
             <div class="headshot" style="background-image: url('media/headshots/CarmeloOrellana.jpg')"></div>
@@ -74,14 +74,14 @@
   <li>
     <div class="headshotThumbnail" style="background-image: url('media/headshots/KevinArp.png')"></div>
     <h3>Kevin Arp</h3>
-    <h4>Senior Project Manager</h4>
+    <h4>Senior&nbsp;Project&nbsp;Manager</h4>
     <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
             <h1>Kevin Arp</h1>
             <p>X</p>
-            <h2>Senior Project Manager</h2>
+            <h2>Senior&nbsp;Project&nbsp;Manager</h2>
           </div>
           <div class="mainContent">
             <div class="headshot" style="background-image: url('media/headshots/KevinArp.png')"></div>
@@ -94,14 +94,14 @@
   <li>
     <div class="headshotThumbnail" style="background-image: url('media/headshots/DebbieGerac.jpg')"></div>
     <h3>Debbie Gerac</h3>
-    <h4>Office Manager, Project Administrator</h4>
+    <h4>Office&nbsp;Manager, Project&nbsp;Administrator</h4>
     <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
             <h1>Debbie Gerac</h1>
             <p>X</p>
-            <h2>Office Manager, Project Administrator</h2>
+            <h2>Office&nbsp;Manager, Project&nbsp;Administrator</h2>
           </div>
           <div class="mainContent">
             <div class="headshot" style="background-image: url('media/headshots/DebbieGerac.jpg')"></div>
@@ -115,14 +115,14 @@
   <li>
     <div class="headshotThumbnail" style="background-image: url('media/headshots/DanaMcCormick.jpg')"></div>
     <h3>Dana McCormick</h3>
-    <h4>Corporate Secretary, Estimator</h4>
+    <h4>Corporate&nbsp;Secretary, Estimator</h4>
     <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
             <h1>Dana McCormick</h1>
             <p>X</p>
-            <h2>Corporate Secretary, Estimator</h2>
+            <h2>Corporate&nbsp;Secretary, Estimator</h2>
           </div>
           <div class="mainContent">
             <div class="headshot" style="background-image: url('media/headshots/DanaMcCormick.jpg')"></div>
@@ -138,14 +138,14 @@
   <li>
     <div class="headshotThumbnail" style="background-image: url('media/headshots/KarenOrellana.jpg')"></div>
     <h3>Karen Orellana</h3>
-    <h4>Administrative Assistant, Project Administrator</h4>
+    <h4>Administrative&nbsp;Assistant, Project&nbsp;Administrator</h4>
     <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
             <h1>Karen Orellana</h1>
             <p>X</p>
-            <h2>Administrative Assistant, Project Administrator</h2>
+            <h2>Administrative&nbsp;Assistant, Project&nbsp;Administrator</h2>
           </div>
           <div class="mainContent">
             <div class="headshot" style="background-image: url('media/headshots/KarenOrellana.jpg')"></div>
@@ -158,14 +158,14 @@
   <li>
     <div class="headshotThumbnail" style="background-image: url('media/headshots/DebbieODonnell.jpg')"></div>
     <h3>Debbie O’Donnell</h3>
-    <h4>Human Resources Manager</h4>
+    <h4>Human&nbsp;Resources&nbsp;Manager</h4>
     <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
             <h1>Debbie O’Donnell</h1>
             <p>X</p>
-            <h2>Human Resources Manager</h2>
+            <h2>Human&nbsp;Resources&nbsp;Manager</h2>
           </div>
           <div class="mainContent">
             <div class="headshot" style="background-image: url('media/headshots/DebbieODonnell.jpg')"></div>
@@ -178,14 +178,14 @@
   <li>
     <div class="headshotThumbnail" style="background-image: url('media/headshots/FavioOrellana.jpg')"></div>
     <h3>Favio Orellana</h3>
-    <h4>Senior Quality Control Manager</h4>
+    <h4>Senior&nbsp;Quality&nbsp;Control&nbsp;Manager</h4>
     <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
             <h1>Favio Orellana</h1>
             <p>X</p>
-            <h2>Senior Quality Control Manager</h2>
+            <h2>Senior&nbsp;Quality&nbsp;Control&nbsp;Manager</h2>
           </div>
           <div class="mainContent">
             <div class="headshot" style="background-image: url('media/headshots/FavioOrellana.jpg')"></div>
@@ -200,14 +200,14 @@
   <li>
     <div class="headshotThumbnail" style="background-image: url('media/headshots/PorfirioMartinez.jpg')"></div>
     <h3>Porfirio Martinez</h3>
-    <h4>Quality Control Manager</h4>
+    <h4>Quality&nbsp;Control&nbsp;Manager</h4>
     <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
             <h1>Porfirio Martinez</h1>
             <p>X</p>
-            <h2>Quality Control Manager</h2>
+            <h2>Quality&nbsp;Control&nbsp;Manager</h2>
           </div>
           <div class="mainContent">
             <div class="headshot" style="background-image: url('media/headshots/PorfirioMartinez.jpg')"></div>
@@ -222,14 +222,14 @@
   <li>
     <div class="headshotThumbnail" style="background-image: url('media/headshots/SantosSorto.jpg')"></div>
     <h3>Santos Sorto</h3>
-    <h4>Quality Control Manager</h4>
+    <h4>Quality&nbsp;Control&nbsp;Manager</h4>
     <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
             <h1>Santos Sorto</h1>
             <p>X</p>
-            <h2>Quality Control Manager</h2>
+            <h2>Quality&nbsp;Control&nbsp;Manager</h2>
           </div>
           <div class="mainContent">
             <div class="headshot" style="background-image: url('media/headshots/SantosSorto.jpg')"></div>
@@ -242,14 +242,14 @@
   <li>
     <div class="headshotThumbnail" style="background-image: url('media/headshots/OscarVega.jpg')"></div>
     <h3>Oscar Vega</h3>
-    <h4>Fleet Manager</h4>
+    <h4>Fleet&nbsp;Manager</h4>
     <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
             <h1>Oscar Vega</h1>
             <p>X</p>
-            <h2>Fleet Manager</h2>
+            <h2>Fleet&nbsp;Manager</h2>
           </div>
           <div class="mainContent">
             <div class="headshot" style="background-image: url('media/headshots/OscarVega.jpg')"></div>
@@ -282,17 +282,98 @@
   <li>
     <div class="headshotThumbnail" style="background-image: url('media/headshots/FreddieDelcid.png')"></div>
     <h3>Freddie Del Cid</h3>
-    <h4>Assistant Project Manager</h4>
+    <h4>Assistant&nbsp;Project&nbsp;Manager</h4>
     <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
             <h1>Freddie Del Cid</h1>
             <p>X</p>
-            <h2>Assistant Project Manager</h2>
+            <h2>Assistant&nbsp;Project&nbsp;Manager</h2>
           </div>
           <div class="mainContent">
             <div class="headshot" style="background-image: url('media/headshots/FreddieDelcid.png')"></div>
+            <p></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+
+  <li>
+    <div class="headshotThumbnail" style="background-image: url('media/headshots/placeholder.png')"></div>
+    <h3>Rebecca</h3>
+    <h4>Project&nbsp;Manager, Purchaser</h4>
+    <div class="popOut" style="display: none;">
+      <div class="popOutContainer">
+        <div class="popOutContent">
+          <div class="title">
+            <h1>Rebecca</h1>
+            <p>X</p>
+            <h2>Project&nbsp;Manager, Purchaser</h2>
+          </div>
+          <div class="mainContent">
+            <div class="headshot" style="background-image: url('media/headshots/placeholder.png')"></div>
+            <p></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class="headshotThumbnail" style="background-image: url('media/headshots/placeholder.png')"></div>
+    <h3>Shannon</h3>
+    <h4>Controller</h4>
+    <div class="popOut" style="display: none;">
+      <div class="popOutContainer">
+        <div class="popOutContent">
+          <div class="title">
+            <h1>Shannon</h1>
+            <p>X</p>
+            <h2>Controller</h2>
+          </div>
+          <div class="mainContent">
+            <div class="headshot" style="background-image: url('media/headshots/placeholder.png')"></div>
+            <p></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class="headshotThumbnail" style="background-image: url('media/headshots/placeholder.png')"></div>
+    <h3>Miguel</h3>
+    <h4>Quality&nbsp;Control&nbsp;Manager</h4>
+    <div class="popOut" style="display: none;">
+      <div class="popOutContainer">
+        <div class="popOutContent">
+          <div class="title">
+            <h1>Miguel</h1>
+            <p>X</p>
+            <h2>Quality&nbsp;Control&nbsp;Manager</h2>
+          </div>
+          <div class="mainContent">
+            <div class="headshot" style="background-image: url('media/headshots/placeholder.png')"></div>
+            <p></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class="headshotThumbnail" style="background-image: url('media/headshots/placeholder.png')"></div>
+    <h3>Kayla</h3>
+    <h4>Project&nbsp;Assistant, Assistant&nbsp;Project&nbsp;Manager</h4>
+    <div class="popOut" style="display: none;">
+      <div class="popOutContainer">
+        <div class="popOutContent">
+          <div class="title">
+            <h1>Kayla</h1>
+            <p>X</p>
+            <h2>Project&nbsp;Assistant, Assistant&nbsp;Project&nbsp;Manager</h2>
+          </div>
+          <div class="mainContent">
+            <div class="headshot" style="background-image: url('media/headshots/placeholder.png')"></div>
             <p></p>
           </div>
         </div>

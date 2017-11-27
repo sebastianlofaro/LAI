@@ -1,11 +1,11 @@
-:) Make portfolio default to first subcategory
+:) Change "About Us" information
 
-Make slide show controls (Forward, Reverse, Stop, Expand)
+:) Make slide show controls (Forward, Reverse, Stop, Expand)
+
+:) Test for plurality (owners, contractors, consultants)
 
 Attempt: to add DELETE support for Internet Explorer
 
 Update the imaageFilePath in the database every time the file system is updated
 
-:) Empty text field when submitted
-
-:) Fix bug that causes new subcategory to have incorrect index when created
+Sanitize images on upload

@@ -14,52 +14,94 @@ $(document).ready(function() {
     });
   });
 
+  // ###################### Build Slideshow ######################
   if ($('#projectImage')) {
+    $('.slideshow-controls').hide();
     var slideIndex = 0;
     // get the src value of the img
     var $slides = $(".images").text().split(",");
-    // Show slides
-    showSlides();
-    function showSlides() {
-      slideIndex++;
-      if (slideIndex >= $slides.length) {slideIndex = 0}
-      $('.imageContainer').css("background-image", "url(" + $slides[slideIndex] + ")");
-      setTimeout(showSlides, 4000);
-    }
+    var html = "<div class='slideshow'>";
+    $.each($slides, function(index, value) {
+      html = html + "<div class='slide' style='background-image: url(\"" + value + "\");'></div>"
+    });
+    html = html + "</div>";
+    $('.imageContainer').html(html + $('.imageContainer').html());
+    $('.slideshow').cycle({
+      fx: 'fade',
+      prev: '.back-arrow',
+      next: '.forward-arrow',
+      pause: 1,
+      pauseOnPagerHover: true,
+      slideResize: 0
+    });
+    $('.imageContainer').hover(function(){
+      $('.slideshow-controls').show();
+    }, function(){
+      $('.slideshow-controls').hide();
+    });
   }
+
 
 
   // ###################### Display Thumbnails ######################
 
   $('.thumbnail').each(function(e) {
-    // Get the image paths (as string)
-    var $imagePathsString = $(this).children().text();
-    var images = $imagePathsString.split(',');
-    var coverImage = images[0];
-    $(this).css("background-image", "url(" + coverImage + ")")
+    if (!$(this).hasClass('newArticle')) {
+      // Get the image paths (as string)
+      var $imagePathsString = $(this).children().text();
+      var images = $imagePathsString.split(',');
+      var coverImage = images[0];
+      //$(this).css("background-image", "url(" + coverImage + ")")
+      var html = "<div class='thumbnailSlideshow'>";
+      $.each(images, function(index, value) {
+        html = html + "<div class='slide' style='background-image: url(\"" + value + "\");'></div>"
+      });
+      html =  html + "</div>";
+      $(this).html(html + $(this).html());
+      console.log(html);
+    }
   });
 
   //--------------------- Rotate Images ---------------------
-  var timeout = "";
-  $('.thumbnail').hover(function(){
-    console.log('hover in');
-    // Start  rotating images
-    var $this = $(this);
-    var $imagePathsString = $(this).children().text();
-    var images = $imagePathsString.split(',');
-    var imageIndex = 0;
-    rotateImages();
-    function rotateImages(e) {
-      imageIndex++;
-      if (imageIndex >= images.length) {imageIndex = 0}
-      $this.css("background-image", "url(" + images[imageIndex] + ")");
-      timeout = setTimeout(rotateImages, 1000);
-    }
-  }, function() {
-    console.log('hover out');
-    // Stop rotating images
-    clearTimeout(timeout);
+  // var timeout = "";
+  // $('.thumbnail').hover(function(){
+  //   console.log('hover in');
+  //   // Start  rotating images
+  //   var $this = $(this);
+  //   var $imagePathsString = $(this).children().text();
+  //   var images = $imagePathsString.split(',');
+  //   var imageIndex = 0;
+  //   rotateImages();
+  //   function rotateImages(e) {
+  //     imageIndex++;
+  //     if (imageIndex >= images.length) {imageIndex = 0}
+  //     $this.css("background-image", "url(" + images[imageIndex] + ")");
+  //     timeout = setTimeout(rotateImages, 2000);
+  //   }
+  // }, function() {
+  //   console.log('hover out');
+  //   // Stop rotating images
+  //   clearTimeout(timeout);
+  // });
+
+  $('.thumbnailSlideshow').cycle({
+    fx: 'fade',
+    prev: '.back-arrow',
+    next: '.forward-arrow',
+    pause: 1,
+    pauseOnPagerHover: true,
+    slideResize: 0,
+    timeout: 1000
   });
+  $('.thumbnailSlideshow').cycle('pause');
+  $('.thumbnailSlideshow').hover(function() {
+    // Hover in
+    $(this).cycle('resume');
+  }, function() {
+    // Hover out
+    $(this).cycle('pause');
+  });
+
 
 
 $('.teamList li').on("click", function() {

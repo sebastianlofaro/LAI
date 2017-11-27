@@ -7,11 +7,10 @@
   <title>Landscape Art inc.</title>
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
-  <link rel="stylesheet" href="styles/css/waves.min.css">
   <link rel="stylesheet" href="styles/css/style.css">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-  <script type="text/javascript" src="js/waves.min.js"></script>
+  <script type="text/javascript" src="js/cycle.js"></script>
   <script type="text/javascript" src="js/script.js"></script>
   <script type="text/javascript" src="js/adminScript.js"></script>
   <script src="js/animations.js"></script>
@@ -62,7 +61,7 @@
   <ul class="articles">
     <li>
       <a href="admin.php?action=newArticle&amp;subcategory=<?php echo $subCatID ?>&amp;index=<?php echo $subCatIndex?>">
-        <img class="darkBorder thumbnail" src="media/img/addimage.png" alt=''>
+        <img class="darkBorder thumbnail newArticle" src="media/img/addimage.png" alt=''>
         <p>New Article</p>
       </a>
     </li>

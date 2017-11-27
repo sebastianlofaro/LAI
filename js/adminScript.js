@@ -118,7 +118,6 @@ $("#newSubCatBtn").on("click", function(e) {
       var $indexOfSubCat = $("#adminClientSubcategories").children().length - 1;
       break;
   }
-  //var $indexOfSubCat = $("#adminSubcategories").children().length - 1;
 
   var action;
   $category == 0 ? action = "portfolioSubCat" : action = "clientsSubCat";
