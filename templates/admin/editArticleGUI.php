@@ -89,9 +89,9 @@
 
             <div class="buttons">
               <input type="submit" class="button save" id="<?php echo $_GET['subcategory']; ?>" name="saveChanges" value="SAVE" />
-              <input type="submit" class="button" id="cancle" formnovalidate name="cancel" value="CANCLE" />
+              <input type="submit" class="button" id="cancle" formnovalidate name="cancel" value="CANCEL" />
               <?php if ( $results['article']->id ) { ?>
-                    <a href="admin.php?action=deleteArticle&amp;articleId=<?php echo $results['article']->id ?>&amp;subcategory=<?php echo $results['article']->subcategory ?>" onclick="return confirm('Delete This Article?')"><button class="button" id="delete" type="button" name="button">DELETE</button></a>
+                    <a href="admin.php?action=deleteArticle&amp;articleId=<?php echo $results['article']->id ?>&amp;subcategory=<?php echo $results['article']->subcategory ?>" onclick="return confirm('Are you sure you would like to delete This post?')"><button class="button" id="delete" type="button" name="button">DELETE</button></a>
               <?php } ?>
             </div>
 

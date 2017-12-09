@@ -37,7 +37,7 @@
     <div class="jumbotronMessage">
       <div class="">
         <h1 class="pageTitle"><?php echo $results['menuData'][(int)$subCatIndex]->name; ?></h1>
-        <a href="?action=deleteSubCat&amp;category=0&amp;subcategory=<?php echo $results['subcategories'][(int)$subCatIndex]->id; ?>"><button type="button" name="deletePortfolioSubCat" class="deleteSubCatBtn">DELETE</button></a>
+        <a href="?action=deleteSubCat&amp;category=0&amp;subcategory=<?php echo $results['subcategories'][(int)$subCatIndex]->id; ?>"><button type="button" name="deletePortfolioSubCat" onclick="return confirm('Are you sure you would like to delete This subcategory?')" class="deleteSubCatBtn">DELETE</button></a>
       </div>
 
     </div>

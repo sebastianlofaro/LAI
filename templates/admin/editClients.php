@@ -41,7 +41,7 @@
     <div class="shadowTop"></div>
     <div class="wrapper clients-wrapper">
       <h1><?php echo $results['menuData'][$titleIndex]->name ?></h1>
-      <a href="?action=deleteSubCat&amp;category=1&amp;subcategory=<?php echo $results['menuData'][$titleIndex]->id; ?>"><button type="button" id="deleteClientSubCatBtn" name="deleteClientSubCatBtn">Delete</button></a>
+      <a onclick="return confirm('Are you sure you would like to delete This subcategory?')" href="?action=deleteSubCat&amp;category=1&amp;subcategory=<?php echo $results['menuData'][$titleIndex]->id; ?>"><button type="button" id="deleteClientSubCatBtn" name="deleteClientSubCatBtn">Delete</button></a>
       <p>The listing below represents a partial listing of our <?php echo strtolower($results['menuData'][$titleIndex]->name) ?> clientele.</p>
       <div id="newClientInputWrapper">
         <input type="text" id="newClientInput" name="client" value="" placeholder="New Client">

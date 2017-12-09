@@ -301,19 +301,19 @@
   </li>
 
   <li>
-    <div class="headshotThumbnail" style="background-image: url('media/headshots/placeholder.png')"></div>
-    <h3>Rebecca</h3>
+    <div class="headshotThumbnail" style="background-image: url('media/headshots/RebeccaDubiski.jpg')"></div>
+    <h3>Rebecca Dubiski</h3>
     <h4>Project&nbsp;Manager, Purchaser</h4>
     <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
-            <h1>Rebecca</h1>
+            <h1>Rebecca Dubiski</h1>
             <p>X</p>
             <h2>Project&nbsp;Manager, Purchaser</h2>
           </div>
           <div class="mainContent">
-            <div class="headshot" style="background-image: url('media/headshots/placeholder.png')"></div>
+            <div class="headshot" style="background-image: url('media/headshots/RebeccaDubiski.jpg')"></div>
             <p></p>
           </div>
         </div>
@@ -321,19 +321,19 @@
     </div>
   </li>
   <li>
-    <div class="headshotThumbnail" style="background-image: url('media/headshots/placeholder.png')"></div>
-    <h3>Shannon</h3>
+    <div class="headshotThumbnail" style="background-image: url('media/headshots/ShannonMitchells.JPG')"></div>
+    <h3>Shannon Mitchell</h3>
     <h4>Controller</h4>
     <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
-            <h1>Shannon</h1>
+            <h1>Shannon Mitchell</h1>
             <p>X</p>
             <h2>Controller</h2>
           </div>
           <div class="mainContent">
-            <div class="headshot" style="background-image: url('media/headshots/placeholder.png')"></div>
+            <div class="headshot" style="background-image: url('media/headshots/ShannonMitchells.JPG')"></div>
             <p></p>
           </div>
         </div>
@@ -342,13 +342,13 @@
   </li>
   <li>
     <div class="headshotThumbnail" style="background-image: url('media/headshots/placeholder.png')"></div>
-    <h3>Miguel</h3>
+    <h3>Miguel Herrera</h3>
     <h4>Quality&nbsp;Control&nbsp;Manager</h4>
     <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
-            <h1>Miguel</h1>
+            <h1>Miguel Herrera</h1>
             <p>X</p>
             <h2>Quality&nbsp;Control&nbsp;Manager</h2>
           </div>
@@ -361,19 +361,19 @@
     </div>
   </li>
   <li>
-    <div class="headshotThumbnail" style="background-image: url('media/headshots/placeholder.png')"></div>
-    <h3>Kayla</h3>
+    <div class="headshotThumbnail" style="background-image: url('media/headshots/KaylaGarcia.JPG')"></div>
+    <h3>Kayla Garcia</h3>
     <h4>Project&nbsp;Assistant, Assistant&nbsp;Project&nbsp;Manager</h4>
     <div class="popOut" style="display: none;">
       <div class="popOutContainer">
         <div class="popOutContent">
           <div class="title">
-            <h1>Kayla</h1>
+            <h1>Kayla Garcia</h1>
             <p>X</p>
             <h2>Project&nbsp;Assistant, Assistant&nbsp;Project&nbsp;Manager</h2>
           </div>
           <div class="mainContent">
-            <div class="headshot" style="background-image: url('media/headshots/placeholder.png')"></div>
+            <div class="headshot" style="background-image: url('media/headshots/KaylaGarcia.JPG')"></div>
             <p></p>
           </div>
         </div>
